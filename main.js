@@ -79,13 +79,7 @@ function peek () {
 }
 
 function loadText () {
-  const ts = document
-           . querySelector("#text")
-           . innerText
-           . trim()
-           . split(/\n/);
-
-  const pick = ts[Math.round(Math.random() * ts.length)];
+  const pick = texts[Math.round(Math.random() * texts.length)];
   textLength = pick.length;
 
   text = pick
