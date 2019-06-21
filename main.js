@@ -26,7 +26,7 @@ function putWord (w, otr) {
   init.innerText = w.substr(0, otr);
   foca.innerText = w[otr];
   tail.innerText = w.substr(otr+1);
-  inde.innerText = ' '.repeat(w.length - otr*2 - 1);
+  inde.innerText = ' '.repeat(Math.max(0,w.length - otr*2 - 1));
   cont.style.setProperty('--len', w.length);
   cont.style.setProperty('--mis', w.length+1);
   cont.style.setProperty('--cur', 0);
@@ -51,12 +51,12 @@ inp.oninput = ev => {
   if (timeBegin === undefined)
     timeBegin = new Date();
 
-  if (shouldPeek && cur === mis)
+  if (shouldPeek && cur === mis && text.length > 0)
     return peek ();
 
   unPeek ()
 
-  cont.style.setProperty('--cur', cur);
+  cont.style.setProperty ('--cur', cur);
   cont.style.setProperty ('--mis',
     cur === mis ? txt.length+1 : mis
   );
@@ -73,8 +73,9 @@ function peek () {
   if (text.length === 0) return;
   isPeeking = true;
 
-  const w   = text.pop(); text.push(w);
-  const otr = calcOtr (w.trimEnd().length);
+  const w     = text.pop(); text.push(w);
+  const parts = w.match(/([^\w]*)(.+)/);
+  const otr   = calcOtr (parts[2].trimEnd().length) + parts[1].length;
   putWord (w, otr);
 }
 
@@ -83,9 +84,9 @@ function loadText () {
   textLength = pick.length;
 
   text = pick
+       . trim()
        . split(/(?=[\.\?,!:;]\s+\w)|(?<=\w\s+)/)
-       . reverse()
-  text[0]= text[0].trimEnd();
+       . reverse();
 }
 
 function beginGame () {
@@ -116,7 +117,8 @@ function nextWord ()
     endGame();
   else {
     currentWord = text.pop();
-    currentOtr  = calcOtr (currentWord.trimEnd().length);
+    const parts = currentWord.match(/([^\w]*)(.+)/);
+    currentOtr  = calcOtr (parts[2].trimEnd().length) + parts[1].length;
     putWord(currentWord, currentOtr);
     isPeeking   = false;
     shouldPeek  = currentWord.match(/[()_\-\+]/) === null;
