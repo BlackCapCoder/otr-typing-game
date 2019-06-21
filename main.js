@@ -154,6 +154,7 @@ function nextWord ()
     currentWord = text.pop();
     isPeeking   = false;
     curr.setWord (currentWord);
+    curr.setCursor(0);
     setNext();
   }
 }
