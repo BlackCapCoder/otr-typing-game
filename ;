@@ -112,12 +112,11 @@ input {
 
 #words-left {
   text-align: center;
-  font-size: 18px;
+  font-size: 20px;
   position: fixed;
   left: 50%;
   color: #333;
-  bottom: 15px;
-  margin: 0;
+  bottom: 5px;
 }
 
 
@@ -131,9 +130,9 @@ input {
 #progress::before {
   content: '';
   background: purple;
-  opacity: 0.3;
+  opacity: 0.8;
   height: 100%;
   width: calc(100% * var(--value));
   position: absolute;
-  transition: width 2s ease;
+  transition: width 1s ease;
 }

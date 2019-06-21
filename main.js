@@ -51,12 +51,15 @@ const next = new Display (document.querySelector('#next'));
 const inp  = document.querySelector("input")
     , wpm  = document.querySelector("#wpm")
     , disp = document.querySelector("#display")
+    , left = document.querySelector("#words-left")
+    , prog = document.querySelector("#progress")
     ;
 
 let currentWord = null;
 let isPeeking   = false;
 let timeBegin   = undefined;
 let textLength  = 0;
+let wordCount   = 0;
 
 const calcWpm = (dt, len) =>
   1000*60/(dt/(len/5));
@@ -93,7 +96,6 @@ inp.oninput = ev => {
   curr.setCursor(cur);
   curr.setMistake(cur === mis ? txt.length+1 : mis);
 }
-// inp.onblur = () => beginGame();
 
 function peek () {
   if (isPeeking) return;
@@ -124,6 +126,8 @@ function loadText () {
        . split(/(?=[\.\?,!:;"()]\s+\w)|(?<=\w\s+)/)
        . reverse()
        . map (w => new Word(w));
+
+  wordCount = text.length;
 }
 
 function beginGame () {
@@ -148,15 +152,19 @@ function nextWord ()
 {
   inp.value = "";
 
-  if (text.length === 0)
+  if (text.length === 0) {
+    // prog.style.setProperty('--value', 1);
     endGame();
-  else {
+  } else {
+    // prog.style.setProperty('--value', 1 - (text.length / wordCount));
     currentWord = text.pop();
     isPeeking   = false;
     curr.setWord (currentWord);
     curr.setCursor(0);
     setNext();
+    left.innerText = text.length;
   }
 }
 
 window.onload = beginGame;
+inp.onblur = () => beginGame();
