@@ -11,7 +11,7 @@ const init = document.querySelector("#init")
 let currentWord = '';
 let currentOtr  = 4;
 let isPeeking   = false;
-let shouldPeek  = false;
+let shouldPeek  = 0;
 let timeBegin   = undefined;
 let textLength  = 0;
 
@@ -22,14 +22,14 @@ const calcWpm = (dt, len) =>
   1000*60/(dt/(len/5));
 
 
-function putWord (w, otr) {
+function putWord (w, otr, cur = 0) {
   init.innerText = w.substr(0, otr);
   foca.innerText = w[otr];
   tail.innerText = w.substr(otr+1);
   inde.innerText = ' '.repeat(Math.max(0,w.length - otr*2 - 1));
   cont.style.setProperty('--len', w.length);
   cont.style.setProperty('--mis', w.length+1);
-  cont.style.setProperty('--cur', 0);
+  cont.style.setProperty('--cur', cur);
 }
 
 
@@ -38,7 +38,7 @@ function putWord (w, otr) {
 
 inp.oninput = ev => {
   const txt = inp.value;
-  let cur = txt.length;
+  let cur = Math.min(currentWord.length, txt.length);
   let mis = 0;
 
   for (; mis < txt.length && txt[mis] === currentWord[mis]; mis++);
@@ -51,22 +51,21 @@ inp.oninput = ev => {
   if (timeBegin === undefined)
     timeBegin = new Date();
 
-  if (shouldPeek && cur === mis && text.length > 0)
+  if (mis >= shouldPeek && cur === mis && text.length > 0)
     return peek ();
 
-  unPeek ()
+  if (isPeeking) {
+    shouldPeek = cur + 4;
+    isPeeking = false;
+    putWord(currentWord, currentOtr);
+  }
 
   cont.style.setProperty ('--cur', cur);
   cont.style.setProperty ('--mis',
     cur === mis ? txt.length+1 : mis
   );
 }
-
-function unPeek () {
-  if (!isPeeking) return;
-  isPeeking = shouldPeek = false;
-  putWord(currentWord, currentOtr);
-}
+inp.onblur = () => beginGame();
 
 function peek () {
   if (isPeeking) return;
@@ -76,7 +75,7 @@ function peek () {
   const w     = text.pop(); text.push(w);
   const parts = w.match(/([^\w]*)(.+)/);
   const otr   = calcOtr (parts[2].trimEnd().length) + parts[1].length;
-  putWord (w, otr);
+  putWord (w, otr, -1);
 }
 
 function loadText () {
@@ -85,13 +84,14 @@ function loadText () {
 
   text = pick
        . trim()
-       . split(/(?=[\.\?,!:;]\s+\w)|(?<=\w\s+)/)
+       . split(/(?=[\.\?,!:;"()]\s+\w)|(?<=\w\s+)/)
        . reverse();
 }
 
 function beginGame () {
   inp.value = "";
-  shouldPeek = true;
+  disp.classList.remove('hidden');
+  timeBegin = undefined;
   loadText();
   nextWord();
 }
@@ -102,11 +102,7 @@ function endGame () {
   const x   = calcWpm (dt, textLength);
   wpm.querySelector('.val').innerText = Math.round(x);
   disp.classList.add('hidden');
-  setTimeout(() => {
-    disp.classList.remove('hidden');
-    timeBegin = undefined;
-    beginGame();
-  }, 2000);
+  setTimeout(beginGame, 2000);
 }
 
 function nextWord ()
@@ -121,7 +117,10 @@ function nextWord ()
     currentOtr  = calcOtr (parts[2].trimEnd().length) + parts[1].length;
     putWord(currentWord, currentOtr);
     isPeeking   = false;
-    shouldPeek  = currentWord.match(/[()_\-\+]/) === null;
+    shouldPeek  = currentWord.match(/[()_\-\+]/) !== null
+      ? currentWord.length - 2
+      : parts[1].length + 1
+      ;
   }
 }
 
