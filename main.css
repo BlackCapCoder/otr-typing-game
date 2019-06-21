@@ -17,20 +17,20 @@ body {
 pre {
   display: inline;
 }
-#content {
+.content {
   display: inline-block;
   position: relative;
   --unit: calc(100% / var(--len));
   overflow: hidden;
 }
-#content pre {
+.content pre {
   mix-blend-mode: multiply;
   background: black;
   text-decoration: underline;
   text-underline-position: under;
   text-decoration-color: #313131;
 }
-#content #focal {
+.content .focal {
   color: #ba76f1;
   text-decoration-color: #ba76f1;
   background: black;
@@ -44,7 +44,7 @@ pre {
   top: 0; bottom: 0;
 }
 
-#cursor {
+.cursor {
   left: calc(var(--unit) * var(--cur));
   width: var(--unit);
   background: white;
@@ -52,7 +52,7 @@ pre {
   opacity: 0.11;
 }
 
-#correct {
+.correct {
   left: 0;
   width: calc(var(--unit) * var(--cur));
   background: black;
@@ -61,7 +61,7 @@ pre {
   mix-blend-mode: screen;
 }
 
-#wrong {
+.wrong {
   left: calc(var(--unit) * var(--mis));
   width: calc(var(--unit) * calc(calc(var(--cur) + 1) - var(--mis)));
   background: red;
@@ -96,4 +96,16 @@ input {
 
 #display:not(.hidden) ~ #wpm {
   display: none;
+}
+
+.content {
+  transform: translateX(calc(calc(var(--unit) * var(--otr)) * -1));
+  left: 50%;
+}
+
+
+#next {
+  opacity: 0.2;
+  font-size: 30;
+  padding-top: 20px;
 }
