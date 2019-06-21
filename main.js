@@ -83,14 +83,14 @@ function loadText () {
   textLength = pick.length;
 
   text = pick
-       . split(/\s+/)
+       . split(/(?=[\.\?,!:;]\s+\w)|(?<=\w\s+)/)
        . reverse()
-       . map(w => w + ' ');
   text[0]= text[0].trimEnd();
 }
 
 function beginGame () {
   inp.value = "";
+  shouldPeek = true;
   loadText();
   nextWord();
 }
@@ -119,7 +119,7 @@ function nextWord ()
     currentOtr  = calcOtr (currentWord.trimEnd().length);
     putWord(currentWord, currentOtr);
     isPeeking   = false;
-    shouldPeek  = currentWord.match(/[,.!?":;()-_+]/) === null;
+    shouldPeek  = currentWord.match(/[()_\-\+]/) === null;
   }
 }
 
