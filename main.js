@@ -1,3 +1,7 @@
+// Number between 0-1. Decrese for easier texts
+let difficulty = 1.0;
+
+
 const calcOtr = len =>
   Math.min (4, Math.floor((len + 2) / 4));
 
@@ -65,6 +69,7 @@ const inp  = document.querySelector("input")
     , wpm  = document.querySelector("#wpm")
     , disp = document.querySelector("#display")
     , rest = document.querySelector("#rest")
+    , diff = document.querySelector("#difficulty")
     ;
 
 let currentWord = null;
@@ -99,8 +104,10 @@ inp.oninput = ev => {
   cursor  = cur;
   mistake = mis;
 
-  if (timeBegin === undefined)
+  if (timeBegin === undefined) {
     timeBegin = new Date();
+    diff.classList.add('hidden');
+  }
 
   clearTimeout(peekTimeout);
   peekTimeout = setTimeout(unpeek, peekTime);
@@ -148,8 +155,10 @@ function setNext () {
   text.reverse();
 }
 
-function loadText () {
-  const pick = texts[Math.round(Math.random() * texts.length)];
+function loadText (pick) {
+  if (pick === undefined)
+    pick = texts[Math.round(Math.random() * texts.length * difficulty)];
+
   textLength = pick.length;
 
   text = pick
@@ -159,6 +168,10 @@ function loadText () {
        . map (w => new Word(w));
 
   wordCount = text.length;
+
+  // The texts in texts.js is sorted according to this, easiest first
+  let score = text.reduce((acc, w) => acc + w.skipAt, 0)
+  diff.querySelector('.value').innerText = Math.round(score / textLength * 100);
 }
 
 function beginGame () {
@@ -167,6 +180,7 @@ function beginGame () {
   timeBegin = undefined;
   loadText();
   nextWord();
+  diff.classList.remove('hidden');
 }
 
 function endGame () {
@@ -195,3 +209,4 @@ function nextWord ()
 
 window.onload = beginGame;
 inp.onblur = () => beginGame();
+
