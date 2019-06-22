@@ -9,12 +9,14 @@ body {
   color:       white;
   font-weight: lighter;
   position: fixed;
-  left: 50%; top: 50%;
+  top: 33%;
+  left: 50%;
   transform: translate(-50%, -100%);
   pointer-events: none;
   height: 70px;
   transition: filter 0.05s ease-out;
   max-width: 500px;
+  width: calc(100vw - 40px);
 }
 pre {
   display: inline;
