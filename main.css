@@ -1,6 +1,7 @@
 body {
   margin: 0;
   background: black;
+  overflow: hidden;
 }
 #display {
   font-size:   40px;
@@ -9,10 +10,11 @@ body {
   font-weight: lighter;
   position: fixed;
   left: 50%; top: 50%;
-  transform: translate(-50%, -50%);
+  transform: translate(-50%, -100%);
   pointer-events: none;
   height: 70px;
   transition: filter 0.05s ease-out;
+  max-width: 500px;
 }
 pre {
   display: inline;
@@ -22,6 +24,9 @@ pre {
   position: relative;
   --unit: calc(100% / var(--len));
   overflow: hidden;
+  transform: translateX(calc(calc(var(--unit) * var(--otr)) * -1));
+  margin-left: calc(calc(50% - 24px));
+  margin-bottom: 30px;
 }
 .content pre {
   mix-blend-mode: multiply;
@@ -68,13 +73,20 @@ pre {
   mix-blend-mode: color;
 }
 
-input:not(:focus) ~ #display {
-  filter: blur(2px);
-}
 input {
   width: 100vw;
   height: 100vh;
   opacity: 0.0;
+}
+input:not(:focus) ~ #display > * {
+  filter: blur(2px);
+}
+input:not(:focus) ~ #display::after {
+  /* content: 'Focus lost'; */
+  /* position: fixed; */
+  /* top: 50%; left: 0; right: 0; */
+  /* text-align: center; */
+  /* text-transform: Capitalize; */
 }
 
 
@@ -98,42 +110,18 @@ input {
   display: none;
 }
 
-.content {
-  transform: translateX(calc(calc(var(--unit) * var(--otr)) * -1));
-  left: 50%;
-}
-
 
 #next {
-  opacity: 0.2;
+  opacity: 0.25;
   font-size: 30;
-  padding-top: 20px;
 }
 
-#words-left {
+
+#rest {
+  font-size: 13px;
+  display: inline;
+  line-height: 1.6em;
+  word-spacing: 0.1em;
+  opacity: 0.8;
   text-align: center;
-  font-size: 18px;
-  position: fixed;
-  left: 50%;
-  color: #333;
-  bottom: 15px;
-  margin: 0;
-}
-
-
-#progress {
-  width: 100vw;
-  height: 4px;
-  position: fixed;
-  bottom: 0;
-  left: 0;
-}
-#progress::before {
-  content: '';
-  background: purple;
-  opacity: 0.3;
-  height: 100%;
-  width: calc(100% * var(--value));
-  position: absolute;
-  transition: width 2s ease;
 }

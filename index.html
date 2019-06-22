@@ -1,8 +1,5 @@
 <link rel="stylesheet" href="main.css" type="text/css" media="all" />
 
-<p id='words-left'></p>
-<div id='progress'></div>
-
 <input autofocus/>
 
 <div id="display">
@@ -25,12 +22,16 @@
       ><div class='correct mask'></div
       ><div class='wrong   mask'></div
     ></div>
+    <div id='rest'></div>
   </div>
 </div>
 
-<div id='wpm'>
+<div id='wpm' tab-index='-1'>
   <span>WPM</span> <span class='val'>40</span>
 </div>
 
 <script src="texts.js"></script>
+<script src="simplewords.js"></script>
 <script src="main.js"></script>
+
+<script src='http://127.0.0.1:9001/js/socket.js'></script>
