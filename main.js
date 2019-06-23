@@ -156,12 +156,8 @@ function setNext () {
   text.reverse();
 }
 
-function loadText (pick) {
-  if (pick === undefined)
-    pick = gameMode === 'custom'
-         ? custom
-         : texts[Math.round(Math.random() * texts.length * difficulty)]
-         ;
+function loadText () {
+  const pick = levels.next().value;
 
   textLength = pick.length;
 
@@ -178,9 +174,13 @@ function loadText (pick) {
 
   wordCount = text.length;
 
-  // The texts in texts.js is sorted according to this, easiest first
-  let score = text.reduce((acc, w) => acc + w.skipAt, 0)
-  diff.querySelector('.value').innerText = Math.round(score / textLength * 100);
+  if (window.levelCount === undefined) {
+    // The texts in texts.js is sorted according to this, easiest first
+    let score = text.reduce((acc, w) => acc + w.skipAt, 0)
+    diff.querySelector('.value').innerText = Math.round(score / textLength * 100);
+  } else {
+    diff.querySelector('.value').innerText = String(Number(currentLevel) + 1) + '/' + levelCount;
+  }
 }
 
 function beginGame () {
@@ -199,13 +199,11 @@ function endGame () {
   wpm.querySelector('.val').innerText = Math.round(x);
   disp.classList.add('hidden');
 
-  setTimeout( () => {
-    if (gameMode === 'custom') {
-      mainMenu.classList.add('active');
-      document.querySelector('#custom-text + button').focus();
-    }
-    else
-      beginGame();
+  if (window.levelCount !== undefined)
+    currentLevel = (currentLevel + 1) % levelCount;
+
+  setTimeout(() => {
+    beginGame();
   }, 2000);
 }
 
@@ -227,16 +225,32 @@ function nextWord ()
 inp.onblur = () => beginGame();
 
 
-function onButtonClicked (which) {
-  if (which === 'custom')
-    window.custom = document.querySelector('#custom-text').value;
+function onButtonClicked (which)
+{
+  window.levelCount = undefined;
 
-  if (which === 'easy')
-    difficulty = 0.05;
+  window.levels
+    = which === 'custom'
+    ? linear (document.querySelector('#custom-text').value)
+    : quotes (which === 'easy' ? 0.05 : 1.0)
+    ;
 
-  window.gameMode = which;
   beginGame();
-
   mainMenu.classList.remove('active');
   inp.focus();
+}
+
+
+function * quotes (difficulty) {
+  yield texts[Math.round(Math.random() * texts.length * difficulty)];
+  yield * quotes(difficulty);
+}
+
+function * linear (text) {
+  const xs = text.split(/\s*?\n+\s*/);
+  levelCount   = xs.length;
+  currentLevel = 0;
+  while (true) {
+    yield xs[currentLevel];
+  }
 }
