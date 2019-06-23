@@ -1,7 +1,15 @@
 <link rel="stylesheet" href="main.css" type="text/css" media="all" />
 
-<input autofocus/>
+<div id="main-menu" class='active'>
+  <h2>Quotes</h2>
+  <button autofocus onclick='onButtonClicked("random")'>Random</button>
+  <button onclick='onButtonClicked("easy")'>Easy</button>
+  <h2>Custom text</h2>
+  <textarea id='custom-text'></textarea>
+  <button onclick='onButtonClicked("custom")'>Custom</button>
+</div>
 
+<input autofocus/>
 <div id="display">
   <div id="current">
     <div class='content'

@@ -70,6 +70,7 @@ const inp  = document.querySelector("input")
     , disp = document.querySelector("#display")
     , rest = document.querySelector("#rest")
     , diff = document.querySelector("#difficulty")
+    , mainMenu = document.querySelector('#main-menu')
     ;
 
 let currentWord = null;
@@ -157,11 +158,19 @@ function setNext () {
 
 function loadText (pick) {
   if (pick === undefined)
-    pick = texts[Math.round(Math.random() * texts.length * difficulty)];
+    pick = gameMode === 'custom'
+         ? custom
+         : texts[Math.round(Math.random() * texts.length * difficulty)]
+         ;
 
   textLength = pick.length;
 
   text = pick
+       . replace (/[\u2018\u2019]/g, "'")
+       . replace (/[\u201C\u201D]/g, '"')
+       . replace (/[\u2012\u2013\u2014\u2015]/g, '-')
+       . replace (/[\u2026]/g, '...')
+       . replace (/\s+/g, ' ')
        . trim()
        . split(/(?=[\.\?,!:;"()]\s+\w)|(?<=\w\s+)/)
        . reverse()
@@ -189,7 +198,15 @@ function endGame () {
   const x   = calcWpm (dt, textLength);
   wpm.querySelector('.val').innerText = Math.round(x);
   disp.classList.add('hidden');
-  setTimeout(beginGame, 2000);
+
+  setTimeout( () => {
+    if (gameMode === 'custom') {
+      mainMenu.classList.add('active');
+      document.querySelector('#custom-text + button').focus();
+    }
+    else
+      beginGame();
+  }, 2000);
 }
 
 function nextWord ()
@@ -207,6 +224,19 @@ function nextWord ()
   }
 }
 
-window.onload = beginGame;
 inp.onblur = () => beginGame();
 
+
+function onButtonClicked (which) {
+  if (which === 'custom')
+    window.custom = document.querySelector('#custom-text').value;
+
+  if (which === 'easy')
+    difficulty = 0.05;
+
+  window.gameMode = which;
+  beginGame();
+
+  mainMenu.classList.remove('active');
+  inp.focus();
+}

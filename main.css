@@ -14,7 +14,7 @@ body {
   transform: translate(-50%, -100%);
   pointer-events: none;
   height: 70px;
-  transition: filter 0.05s ease-out;
+  transition: filter 0.05s ease-out, left 0.8s ease-out;
   max-width: 500px;
   width: calc(100vw - 40px);
 }
@@ -133,4 +133,57 @@ input:not(:focus) ~ #display::after {
   font-size: 20px;
   margin-top: 60px;
   color: #888;
+}
+
+#main-menu:not(.active) { display: none; }
+#main-menu.active ~ #display { left: -100%; }
+#main-menu.active ~ input { display: none; }
+
+#main-menu {
+  width: calc(100vw - 40px);
+  max-width: 500px;
+  position: fixed;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  color: purple;
+  padding: 0 15px 15px 15px;
+  font-family: monospace;
+  text-align: center;
+  border-radius: 10px;
+  opacity: 0.85;
+}
+#main-menu h2 {
+  margin: 0;
+  padding: 40px 0 20px 0;
+  border-bottom: 1px solid;
+  margin-bottom: 20px;
+  font-size: 32px;
+  text-transform: uppercase;
+}
+#main-menu textarea {
+  display: block;
+  width: 100%;
+  margin-bottom: 20px;
+  height: 80px;
+  resize: none;
+  padding: 7px 12px;
+  color: white;
+}
+#main-menu button {
+  padding: 7px 30px;
+  color: #ba76f1;
+}
+#main-menu textarea, #main-menu button {
+  background: #111;
+  border: 0;
+  outline: 0;
+  border-radius: 3px;
+  border: 1px solid rgba(255,255,255,0.02);
+}
+#main-menu textarea:focus, #main-menu button:focus,
+#main-menu textarea:hover, #main-menu button:hover {
+  color: white;
+  background: #222;
+  box-shadow: 0 0 10px rgba(189, 121, 245, 0.3);
 }
