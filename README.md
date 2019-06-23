@@ -16,15 +16,3 @@ The game tries to be intelligent about this skipping behavior: for common
 words it always skips after the first letter. If the word contains special
 characters or uppercase letters it will only skip after those. If a mistake
 is made or you type slowly, the game will switch back to the current word.
-
-
-### Difficulty
-
-The number displayed at the bottom (not in the gif above) is the text's
-approximate difficulty. It is based on how early words can be skipped;
-lower is easier.
-
-
-If you open the console you can change the `difficulty` variable. It
-should have a number between 0 and 1, where lower means that easier
-texts will be chosen.
