@@ -261,8 +261,6 @@ function onButtonClicked (which)
 
 
 function * quotes (difficulty) {
-  const hards = hardLetters();
-  texts.sort((a, b) => scoreWord(hards, b) - scoreWord(hards, a));
   yield texts[Math.round(Math.random() * texts.length * difficulty)];
   yield * quotes(difficulty);
 }
@@ -279,17 +277,17 @@ function * linear (text) {
 function * easyQuotes (difficulty) {
   const hards = hardLetters();
   const xs = texts.slice(0);
-  xs.sort((a, b) => scoreWord(hards, a) - scoreWord(hards, b));
-  for (let i = 0; i < 5; i++)
-    yield xs[Math.round(Math.random() * texts.length * difficulty)];
+  xs.sort((a, b) => scoreText(hards, a) - scoreText(hards, b));
+  for (let i = 0; i < 10; i++)
+    yield xs[Math.round(Math.random() * xs.length * difficulty)];
   yield * easyQuotes(difficulty);
 }
 
 function * hardQuotes (difficulty) {
   const hards = hardLetters();
   const xs = texts.slice(0);
-  xs.sort((a, b) => scoreWord(hards, b) - scoreWord(hards, a));
-  for (let i = 0; i < 5; i++)
-    yield xs[Math.round(Math.random() * texts.length * difficulty)];
+  xs.sort((a, b) => scoreText(hards, b) - scoreText(hards, a));
+  for (let i = 0; i < 10; i++)
+    yield xs[Math.round(Math.random() * xs.length * difficulty)];
   yield * hardQuotes(difficulty);
 }

@@ -21,16 +21,17 @@ function saveStats () {
 }
 
 
-function scoreWord (matrix, str) {
-  let tot = 0;
-  for (let word of str.split(/\s+/)) {
-    let sum = 0;
-    for (let i in word) sum += matrix[word.charCodeAt(i)-97];
-    sum /= word.length;
-    if (word in stats) sum *= (1 / stats[word][0]) ** 0.3; // Make a word less likely to appear in the future
-    tot += sum;
-  }
-  return tot;
+function scoreWord (matrix, word) {
+  let sum = 0;
+  for (let i in word) sum += matrix[word.charCodeAt(i)-97];
+  sum /= word.length;
+  if (word in stats) sum *= (1 / stats[word][0]) ** 0.3; // Make a word less likely to appear in the future
+  return sum;
+}
+
+function scoreText (matrix, str) {
+  const ws = str.toLowerCase().replace(/\[^a-z ]/g, '').split(/ +/);
+  return ws.reduce((acc, w) => acc + scoreWord(matrix, w), 0) / ws.length;
 }
 
 function hardLetters () {
