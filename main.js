@@ -1,6 +1,3 @@
-// Number between 0-1. Decrese for easier texts
-let difficulty = 1.0;
-
 
 const calcOtr = len =>
   Math.min (4, Math.floor((len + 2) / 4));
@@ -246,8 +243,14 @@ function onButtonClicked (which)
   window.levels
     = which === 'custom'
     ? linear (document.querySelector('#custom-text').value)
-    : which === 'stats'
-    ? statistical ()
+    : which === 'easy-words'
+    ? easyWords ()
+    : which === 'hard-words'
+    ? hardWords ()
+    : which === 'easy-stats'
+    ? easyQuotes (0.05)
+    : which === 'hard-stats'
+    ? hardQuotes (0.05)
     : quotes (which === 'easy' ? 0.05 : 1.0)
     ;
 
@@ -258,6 +261,8 @@ function onButtonClicked (which)
 
 
 function * quotes (difficulty) {
+  const hards = hardLetters();
+  texts.sort((a, b) => scoreWord(hards, b) - scoreWord(hards, a));
   yield texts[Math.round(Math.random() * texts.length * difficulty)];
   yield * quotes(difficulty);
 }
@@ -271,3 +276,20 @@ function * linear (text) {
   }
 }
 
+function * easyQuotes (difficulty) {
+  const hards = hardLetters();
+  const xs = texts.slice(0);
+  xs.sort((a, b) => scoreWord(hards, a) - scoreWord(hards, b));
+  for (let i = 0; i < 5; i++)
+    yield xs[Math.round(Math.random() * texts.length * difficulty)];
+  yield * easyQuotes(difficulty);
+}
+
+function * hardQuotes (difficulty) {
+  const hards = hardLetters();
+  const xs = texts.slice(0);
+  xs.sort((a, b) => scoreWord(hards, b) - scoreWord(hards, a));
+  for (let i = 0; i < 5; i++)
+    yield xs[Math.round(Math.random() * texts.length * difficulty)];
+  yield * hardQuotes(difficulty);
+}

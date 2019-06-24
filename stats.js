@@ -21,23 +21,16 @@ function saveStats () {
 }
 
 
-function * statistical () {
-  const ws = words ();
-  while (true) {
-    const level = [];
-    const hards = hardLetters();
-
-    ws.sort((a,b) => scoreWord(hards, b) - scoreWord(hards, a));
-    yield ws.slice(0, 20).join(' ');
+function scoreWord (matrix, str) {
+  let tot = 0;
+  for (let word of str.split(/\s+/)) {
+    let sum = 0;
+    for (let i in word) sum += matrix[word.charCodeAt(i)-97];
+    sum /= word.length;
+    if (word in stats) sum *= (1 / stats[word][0]) ** 0.3; // Make a word less likely to appear in the future
+    tot += sum;
   }
-}
-
-function scoreWord (matrix, word) {
-  let sum = 0;
-  for (let i in word) sum += matrix[word.charCodeAt(i)-97];
-  sum /= word.length;
-  if (word in stats) sum *= (1 / stats[word][0]) ** 0.3; // Make a word less likely to appear in the future
-  return sum;
+  return tot;
 }
 
 function hardLetters () {
@@ -56,3 +49,26 @@ function hardLetters () {
 
   return scores
 }
+
+
+function * easyWords () {
+  const ws = words ();
+  while (true) {
+    const level = [];
+    const hards = hardLetters();
+
+    ws.sort((a,b) => scoreWord(hards, a) - scoreWord(hards, b));
+    yield ws.slice(0, 20).join(' ');
+  }
+}
+function * hardWords () {
+  const ws = words ();
+  while (true) {
+    const level = [];
+    const hards = hardLetters();
+
+    ws.sort((a,b) => scoreWord(hards, b) - scoreWord(hards, a));
+    yield ws.slice(0, 20).join(' ');
+  }
+}
+
