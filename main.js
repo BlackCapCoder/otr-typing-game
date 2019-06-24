@@ -82,6 +82,8 @@ let peekTimeout = -1;
 let peekTime    = 400;
 let cursor      = 0;
 let mistake     = 0;
+let timeWord    = undefined;
+let wordMistake = false;
 
 const calcWpm = (dt, len) =>
   1000*60/(dt/(len/5));
@@ -102,8 +104,9 @@ inp.oninput = ev => {
     inp.value = txt.substr(0, cur);
   }
 
-  cursor  = cur;
-  mistake = mis;
+  cursor       = cur;
+  mistake      = mis;
+  wordMistake |= mis < cur;
 
   if (timeBegin === undefined) {
     timeBegin = new Date();
@@ -187,6 +190,7 @@ function beginGame () {
   inp.value = "";
   disp.classList.remove('hidden');
   timeBegin = undefined;
+  currentWord = undefined;
   loadText();
   nextWord();
   diff.classList.remove('hidden');
@@ -202,6 +206,8 @@ function endGame () {
   if (window.levelCount !== undefined)
     currentLevel = (currentLevel + 1) % levelCount;
 
+  saveStats ();
+
   setTimeout(() => {
     beginGame();
   }, 2000);
@@ -210,6 +216,14 @@ function endGame () {
 function nextWord ()
 {
   inp.value = "";
+
+  if (currentWord !== undefined) {
+    const now = new Date ();
+    if (timeWord !== undefined)
+      putStat(currentWord.value, now - timeWord, wordMistake);
+    timeWord    = now;
+    wordMistake = false;
+  }
 
   if (text.length === 0) {
     endGame();
@@ -232,6 +246,8 @@ function onButtonClicked (which)
   window.levels
     = which === 'custom'
     ? linear (document.querySelector('#custom-text').value)
+    : which === 'stats'
+    ? statistical ()
     : quotes (which === 'easy' ? 0.05 : 1.0)
     ;
 
@@ -254,3 +270,4 @@ function * linear (text) {
     yield xs[currentLevel];
   }
 }
+
