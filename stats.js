@@ -53,7 +53,7 @@ function hardLetters () {
 
 
 function * easyWords () {
-  const ws = words ();
+  const ws = Array.from(words ());
   while (true) {
     const level = [];
     const hards = hardLetters();
@@ -63,7 +63,7 @@ function * easyWords () {
   }
 }
 function * hardWords () {
-  const ws = words ();
+  const ws = Array.from(words ());
   while (true) {
     const level = [];
     const hards = hardLetters();
@@ -72,4 +72,5 @@ function * hardWords () {
     yield ws.slice(0, 20).join(' ');
   }
 }
+
 

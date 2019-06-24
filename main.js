@@ -253,6 +253,8 @@ function onButtonClicked (which)
     ? easyQuotes (0.05)
     : which === 'hard-stats'
     ? hardQuotes (0.05)
+    : which === 'sentences'
+    ? commonSentence()
     : quotes (which === 'easy' ? 0.05 : 1.0)
     ;
 

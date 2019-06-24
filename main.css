@@ -186,4 +186,22 @@ input:not(:focus) ~ #display::after {
   color: white;
   background: #222;
   box-shadow: 0 0 10px rgba(189, 121, 245, 0.3);
+  position: relative;
+}
+
+
+#main-menu button[data-tooltip]:focus::after,
+#main-menu button[data-tooltip]:hover::after
+{
+  content: attr(data-tooltip);
+    position: absolute;
+    background: rgba(79, 11, 130,0.8);
+    color: white;
+    width: max-content;
+    font-size: 13px;
+    transform: translate(-50%, 100%);
+    text-align: center;
+    padding: 5px 17px;
+    border-radius: 3px;
+    margin-top: 5px;
 }
