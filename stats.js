@@ -30,7 +30,7 @@ function scoreWord (matrix, word) {
 }
 
 function scoreText (matrix, str) {
-  const ws = str.toLowerCase().replace(/\[^a-z ]/g, '').split(/ +/);
+  const ws = str.toLowerCase().replace(/[^a-z ]/g, '').split(/ +/);
   return ws.reduce((acc, w) => acc + scoreWord(matrix, w), 0) / ws.length;
 }
 

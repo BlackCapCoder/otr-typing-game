@@ -174,10 +174,12 @@ function loadText () {
 
   wordCount = text.length;
 
+
   if (window.levelCount === undefined) {
     // The texts in texts.js is sorted according to this, easiest first
     let score = text.reduce((acc, w) => acc + w.skipAt, 0)
-    diff.querySelector('.value').innerText = Math.round(score / textLength * 100);
+    diff.querySelector('.value').innerText = Math.round(score / textLength * 100)
+        + ', ' + Math.round(scoreText(hardLetters(), pick));
   } else {
     diff.querySelector('.value').innerText = String(Number(currentLevel) + 1) + '/' + levelCount;
   }
