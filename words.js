@@ -22,9 +22,8 @@ const cleanWords = short => new RegExp (''
 
     texts . join(' ')
           . replace(cleanWords(2), '')
-          . toLowerCase()
           . split(' ')
-          . forEach (x => all.add(x));
+          . forEach (x => all.add(x.toLowerCase()));
 
     return wordsCache = Array.from(all).sort();
   }

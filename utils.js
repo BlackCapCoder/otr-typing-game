@@ -61,6 +61,7 @@ function BinaryTree ()
     return q;
   };
 
+  // Volatile
   this.toSortedList = function * () {
     const buf = [this.root];
 
@@ -79,7 +80,6 @@ function BinaryTree ()
       }
     }
   }
-
   this.toSortedListRev = function * () {
     const buf = [this.root];
 
@@ -147,3 +147,48 @@ function maximum (f, n, xs)
 
   return bt;
 }
+
+// single biggest element
+function max (xs) {
+  let m = -Infinity;
+  for (let x of xs) if (x > m) m = x;
+  return m;
+}
+
+// In-place shuffle
+function shuffle (arr) {
+  let j, tmp;
+
+  for (let i = arr.length-1; i > 0; i--) {
+    j      = Math.round(Math.random() * i);
+    tmp    = arr[j];
+    arr[j] = arr[i];
+    arr[i] = tmp;
+  }
+
+  return arr;
+}
+
+const sum = xs => xs.reduce((acc, x) => acc + x, 0);
+
+
+// -------------
+
+
+const TypedArray = Object.getPrototypeOf(Int8Array);
+const Generator  = Object.getPrototypeOf(function*(){});
+
+Generator.prototype.collect = function () { return Array.from(this); };
+
+for (const Arr of [Array, TypedArray])
+{
+  Arr.prototype.shuffle = function () { return shuffle(this); };
+}
+
+for (const Arr of [Array, TypedArray, Generator])
+{
+  Arr.prototype.maximum = function (f, n) { return maximum (f, n, this); };
+  Arr.prototype.sum = function () { return sum(this); };
+  Arr.prototype.max = function () { return max(this); };
+}
+

@@ -289,9 +289,9 @@ function * linear (text) {
 
 function * easyQuotes () {
   const hards = hardLetters();
-  const bt    = maximum(x => -scoreText(hards, x), 20, texts);
+  const bt    = texts.maximum(x => -scoreText(hards, x), 20);
 
-  for (const txt of bt.toSortedList())
+  for (const txt of bt.toSortedListRev())
     yield txt.data
 
   yield * easyQuotes();
@@ -299,9 +299,9 @@ function * easyQuotes () {
 
 function * hardQuotes () {
   const hards = hardLetters();
-  const bt    = maximum(x => scoreText(hards, x), 20, texts);
+  const bt    = texts.maximum(x => scoreText(hards, x), 20);
 
-  for (const txt of bt.toSortedList())
+  for (const txt of bt.toSortedListRev())
     yield txt.data
 
   yield * hardQuotes();
