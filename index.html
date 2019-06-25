@@ -1,21 +1,24 @@
 <link rel="stylesheet" href="main.css" type="text/css" media="all" />
 
 <div id="main-menu" class='active'>
-  <h2>Quotes</h2>
-  <button autofocus onclick='onButtonClicked("random")'>Random</button>
-  <button onclick='onButtonClicked("easy")'>Easy</button>
-  <button onclick='onButtonClicked("easy-stats")'>Easy (S)</button>
-  <button onclick='onButtonClicked("hard-stats")'>Hard (S)</button>
-  <h2>Words</h2>
-  <button onclick='onButtonClicked("easy-words")'>Easy (S)</button>
-  <button onclick='onButtonClicked("hard-words")'>Hard (S)</button>
-  <button data-tooltip="Based on how often one words appears after another" onclick='onButtonClicked("sentences")'>Senteces</button>
-  <h2>Custom text</h2>
-  <textarea id='custom-text'></textarea>
-  <button onclick='onButtonClicked("custom")'>Custom</button>
-  <br>
-  <br>
-  <p>(S) = Statistically - Based on your historical performance</p>
+  <div class='wrapper'>
+    <h2>Quotes</h2>
+    <button autofocus onclick='onButtonClicked("random")'>Random</button>
+    <button onclick='onButtonClicked("easy")'>Easy</button>
+    <button onclick='onButtonClicked("easy-stats")'>Easy (S)</button>
+    <button onclick='onButtonClicked("hard-stats")'>Hard (S)</button>
+    <h2>Words</h2>
+    <button onclick='onButtonClicked("easy-words")'>Easy (S)</button>
+    <button onclick='onButtonClicked("hard-words")'>Hard (S)</button>
+    <button data-tooltip="Based on how often one words appears after another" onclick='onButtonClicked("sentences")'>Senteces</button>
+    <button data-tooltip="Long sequence of unique words, each having the property that the word proceeding it has appeared directly before it in at least one quote" onclick='onButtonClicked("long-sentences")'>Long Senteces</button>
+    <h2>Custom text</h2>
+    <textarea id='custom-text'></textarea>
+    <button onclick='onButtonClicked("custom")'>Custom</button>
+    <br>
+    <br>
+    <p>(S) = Statistically - Based on your historical performance</p>
+  </div>
 </div>
 
 <input autofocus/>
@@ -50,6 +53,7 @@
   <span>WPM</span> <span class='val'>40</span>
 </div>
 
+<script src="utils.js"></script>
 <script src="texts.js"></script>
 <script src="simplewords.js"></script>
 <script src="words.js"></script>

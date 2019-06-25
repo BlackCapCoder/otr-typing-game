@@ -1,7 +1,11 @@
 body {
   margin: 0;
   background: black;
-  overflow: hidden;
+  overflow-x: hidden;
+  overflow-y: scroll;
+}
+::-webkit-scrollbar {
+  display: none;
 }
 #display {
   font-size:   40px;
@@ -140,18 +144,18 @@ input:not(:focus) ~ #display::after {
 #main-menu.active ~ input { display: none; }
 
 #main-menu {
-  width: calc(100vw - 40px);
-  max-width: 500px;
-  position: fixed;
-  left: 50%;
-  top: 50%;
-  transform: translate(-50%, -50%);
   color: purple;
-  padding: 0 15px 15px 15px;
+  padding: 40px 15px 15px 15px;
   font-family: monospace;
   text-align: center;
   border-radius: 10px;
   opacity: 0.85;
+  display: flex;
+  justify-content: center;
+}
+#main-menu > .wrapper {
+  max-width: 500px;
+  width: calc(100vw - 40px);
 }
 #main-menu h2 {
   margin: 0;
@@ -173,6 +177,7 @@ input:not(:focus) ~ #display::after {
 #main-menu button {
   padding: 7px 30px;
   color: #ba76f1;
+  margin-bottom: 10px;
 }
 #main-menu textarea, #main-menu button {
   background: #111;
@@ -194,14 +199,20 @@ input:not(:focus) ~ #display::after {
 #main-menu button[data-tooltip]:hover::after
 {
   content: attr(data-tooltip);
-    position: absolute;
-    background: rgba(79, 11, 130,0.8);
-    color: white;
-    width: max-content;
-    font-size: 13px;
-    transform: translate(-50%, 100%);
-    text-align: center;
-    padding: 5px 17px;
-    border-radius: 3px;
-    margin-top: 5px;
+  position: absolute;
+  background: rgba(79, 11, 130,0.8);
+  color: white;
+  width: max-content;
+  max-width: 350px;
+  font-size: 13px;
+  transform: translateX(-50%);
+  text-align: center;
+  padding: 5px 17px;
+  border-radius: 3px;
+  margin-top: 5px;
+  z-index: 1;
+  display: block;
+  margin-left: 50%;
+  margin-top: 15px;
+  left: 0;
 }

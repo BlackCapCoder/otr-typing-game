@@ -59,6 +59,8 @@ function Display (elem) {
   }
 }
 
+
+
 const curr = new Display (document.querySelector('#current'));
 const next = new Display (document.querySelector('#next'));
 
@@ -70,7 +72,12 @@ const inp  = document.querySelector("input")
     , mainMenu = document.querySelector('#main-menu')
     ;
 
+let lastMenuFocus = mainMenu;
+let isPlaying     = false;
+
 let currentWord = null;
+let currentText = undefined;
+
 let isPeeking   = false;
 let timeBegin   = undefined;
 let textLength  = 0;
@@ -88,6 +95,7 @@ const calcWpm = (dt, len) =>
 
 
 // -------------------
+
 
 inp.oninput = ev => {
   const txt = inp.value;
@@ -156,10 +164,9 @@ function setNext () {
   text.reverse();
 }
 
-function loadText () {
-  const pick = levels.next().value;
-
-  textLength = pick.length;
+function loadText (pick) {
+  currentText = pick;
+  textLength  = pick.length;
 
   text = pick
        . replace (/[\u2018\u2019]/g, "'")
@@ -187,10 +194,9 @@ function loadText () {
 
 function beginGame () {
   inp.value = "";
-  disp.classList.remove('hidden');
   timeBegin = undefined;
   currentWord = undefined;
-  loadText();
+  loadText(currentText || levels.next().value);
   nextWord();
   diff.classList.remove('hidden');
 }
@@ -200,16 +206,19 @@ function endGame () {
   const dt  = (now - timeBegin)
   const x   = calcWpm (dt, textLength);
   wpm.querySelector('.val').innerText = Math.round(x);
-  disp.classList.add('hidden');
 
   if (window.levelCount !== undefined)
     currentLevel = (currentLevel + 1) % levelCount;
 
   saveStats ();
 
+  disp.classList.add('hidden');
   setTimeout(() => {
-    beginGame();
+    disp.classList.remove('hidden');
   }, 2000);
+
+  currentText = undefined;
+  beginGame();
 }
 
 function nextWord ()
@@ -235,32 +244,32 @@ function nextWord ()
   }
 }
 
-inp.onblur = () => beginGame();
+inp.onblur = () => { if (isPlaying) beginGame(); }
 
 
 function onButtonClicked (which)
 {
   window.levelCount = undefined;
 
-  window.levels
-    = which === 'custom'
-    ? linear (document.querySelector('#custom-text').value)
-    : which === 'easy-words'
-    ? easyWords ()
-    : which === 'hard-words'
-    ? hardWords ()
-    : which === 'easy-stats'
-    ? easyQuotes (0.05)
-    : which === 'hard-stats'
-    ? hardQuotes (0.05)
-    : which === 'sentences'
-    ? commonSentence()
-    : quotes (which === 'easy' ? 0.05 : 1.0)
-    ;
+  window.levels = (() => { switch (which) {
+      case ('random'):         return quotes (1.0);
+      case ('easy'):           return quotes (0.5);
+      case ('custom'):         return linear (document.querySelector('#custom-text').value);
+      case ('easy-stats'):     return easyQuotes ();
+      case ('hard-stats'):     return hardQuotes ();
+      case ('easy-words'):     return easyWords  ();
+      case ('hard-words'):     return hardWords  ();
+      case ('sentences'):      return commonSentence ();
+      case ('long-sentences'): return longSentences ();
+    }})();
+
+  isPlaying     = true;
+  lastMenuFocus = document.activeElement;
+  mainMenu.classList.remove('active');
+  currentText = undefined;
+  inp.focus();
 
   beginGame();
-  mainMenu.classList.remove('active');
-  inp.focus();
 }
 
 
@@ -278,20 +287,70 @@ function * linear (text) {
   }
 }
 
-function * easyQuotes (difficulty) {
+function * easyQuotes () {
   const hards = hardLetters();
-  const xs = texts.slice(0);
-  xs.sort((a, b) => scoreText(hards, a) - scoreText(hards, b));
-  for (let i = 0; i < 10; i++)
-    yield xs[Math.round(Math.random() * xs.length * difficulty)];
-  yield * easyQuotes(difficulty);
+  const bt    = maximum(x => -scoreText(hards, x), 20, texts);
+
+  for (const txt of bt.toSortedList())
+    yield txt.data
+
+  yield * easyQuotes();
 }
 
-function * hardQuotes (difficulty) {
+function * hardQuotes () {
   const hards = hardLetters();
-  const xs = texts.slice(0);
-  xs.sort((a, b) => scoreText(hards, b) - scoreText(hards, a));
-  for (let i = 0; i < 10; i++)
-    yield xs[Math.round(Math.random() * xs.length * difficulty)];
-  yield * hardQuotes(difficulty);
+  const bt    = maximum(x => scoreText(hards, x), 20, texts);
+
+  for (const txt of bt.toSortedList())
+    yield txt.data
+
+  yield * hardQuotes();
 }
+
+
+function returnToMenu () {
+  if (!isPlaying) return;
+  isPlaying = false;
+  mainMenu.classList.add('active');
+  lastMenuFocus.focus();
+}
+
+window.onkeydown = ev => {
+  if (!isPlaying) return true;
+
+  if (ev.key === "Escape") {
+    if (timeBegin === undefined)
+      returnToMenu();
+    else
+      beginGame ();
+    return false;
+  }
+
+  if (ev.key === "Tab") {
+    currentText = undefined;
+    beginGame();
+    return false;
+  }
+};
+
+
+
+// ----------------
+
+class HalfZipper
+{
+  constructor (src) {
+    this.right = (function*(){for(const x of src)yield x})();
+    moveRight();
+  }
+
+  moveRight () {
+    if (this.atEnd) return false;
+    const nxt = this.right.next();
+    this.atEnd = nxt.done;
+    this.cursor = nxt.value;
+    return true;
+  }
+}
+
+// TODO: Reset level on timeout
