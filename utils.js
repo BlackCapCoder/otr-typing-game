@@ -109,7 +109,11 @@ function BinaryTree ()
     let x = this.root, r;
     while (x.left) { r = x; x = x.left };
     if (r === undefined) {
-      if (x.right === undefined) return x;
+      if (x.right === undefined) {
+        this.root = undefined;
+        this.size--;
+        return x;
+      }
       r = this.root = x.right;
     } else {
       if (x.right) r.left = x.right; else delete r.left;
@@ -117,6 +121,24 @@ function BinaryTree ()
     this.size--;
     return r;
   }
+
+  this._removeMin = function () {
+    let x = this.root, r;
+    while (x.left) { r = x; x = x.left };
+    if (r === undefined) {
+      if (x.right === undefined) {
+        this.root = undefined;
+        this.size--;
+        return x;
+      };
+      r = this.root = x.right;
+    } else {
+      if (x.right) r.left = x.right; else delete r.left;
+    }
+    this.size--;
+    return x;
+  }
+
 }
 
 

@@ -144,12 +144,11 @@ inp.oninput = ev => {
 
   // If he stops he might have forgot the word
   clearTimeout(peekTimeout);
+  peekTimeout = setTimeout(unpeek, peekTime);
 
   // Mistake?
   if (mis >= currentWord.skipAt && cur === mis && text.length > 0)
     return peek ();
-
-  peekTimeout = setTimeout(unpeek, peekTime);
 
   // Update gui
   curr.setCursor(cur);
@@ -285,6 +284,7 @@ function onButtonClicked (which)
       case ('hard-words'):     return hardWords  ();
       case ('sentences'):      return commonSentence ();
       case ('long-sentences'): return longSentences ();
+      case ('dijkstra'):       return shortestTree ();
     }})();
 
   isPlaying     = true;

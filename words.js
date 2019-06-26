@@ -311,3 +311,84 @@ function * longSentences ()
     yield pth.map(x => s[x]).join(' ');
   }
 }
+
+
+function dijkstra (h,s,g,scores, start = 0)
+{
+  const dist  = new Uint16Array(s.length).fill(-1);
+  const prev  = new Uint16Array(s.length).fill(-1);
+  const len   = new Uint16Array(s.length).fill(1);
+  const vis   = new Uint8Array (s.length).fill(0);
+  const queue = new BinaryTree ();
+
+  queue.insert({val: 0, data: start})
+  dist[start] = 0;
+
+  while (queue.size > 0) {
+    const u = queue._removeMin().data;
+    if (vis[u]) continue;
+    vis[u] = 1;
+
+    for (const v of g[u]) {
+      const alt = dist[u] + scores[v];
+      if (dist[v] === 14225 || alt >= dist[v]) continue;
+      if (!vis[v]) queue.insert({val: alt, data: v});
+      dist[v] = alt;
+      prev[v] = u
+      len[v]  = len[u] + 1;
+    }
+  }
+
+  return [dist, prev, len]
+}
+
+function * shortestTree ()
+{
+  const h      = hardLetters();
+  const s      = unsafeWords();
+  const g      = wordGraph (s);
+  const scores = new Uint16Array(s.length).map((_,i) => Math.round(scoreWord(h,s[i])));
+
+  let sentence = [];
+  let start = Math.floor(Math.random() * s.length);
+
+  while (true) {
+    const [, prev, len] = dijkstra(h,s,g,scores,start);
+
+    let max = 0, ix = 0;
+    for (let i = 0; i < len.length; i++) {
+      if (len[i] < max) continue;
+      max = len[i];
+      ix  = i;
+    }
+
+    if (max <= 1) {
+      if (sentence.length == 0) {
+        start = Math.floor(Math.random() * s.length);
+        continue;
+      }
+      yield sentence.map(i => s[i]).join(' ');
+      sentence = [];
+      start = Math.floor(Math.random() * s.length);
+      continue;
+    }
+
+    let path = [];
+    let cur  = ix;
+
+    while (cur !== 65535) {
+      path.unshift(cur);
+      cur = prev[cur];
+    }
+
+    sentence = sentence.concat(path);
+
+    if (sentence.length >= 20) {
+      yield sentence.map(i => s[i]).join(' ');
+      sentence = [];
+      start = Math.floor(Math.random() * s.length);
+    } else {
+      start = sentence.pop();
+    }
+  }
+}
