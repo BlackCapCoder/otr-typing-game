@@ -390,22 +390,22 @@ function prettyTime (t)
 
   if (t >= d) {
     parts.push(`${x = Math.floor(t / d)} days`);
-    t -= x;
+    t -= x*d;
   }
 
   if (t >= h) {
     parts.push(`${x = Math.floor(t / h)} hours`);
-    t -= x;
+    t -= x*h;
   }
 
   if (t >= m) {
     parts.push(`${x = Math.floor(t / m)} minutes`);
-    t -= x;
+    t -= x*m;
   }
 
   if (t >= s) {
     parts.push(`${x = Math.floor(t / s)} seconds`);
-    t -= x;
+    t -= x*s;
   }
 
   return parts.join`,`;
