@@ -152,6 +152,7 @@ input:not(:focus) ~ #display::after {
   opacity: 0.85;
   display: flex;
   justify-content: center;
+  margin-bottom: 40px;
 }
 #main-menu > .wrapper {
   max-width: 500px;
@@ -215,4 +216,13 @@ input:not(:focus) ~ #display::after {
   margin-left: 50%;
   margin-top: 15px;
   left: 0;
+}
+
+#main-menu table {
+  color: #ba76f1;
+  font-size: 17px;
+  width: 100%;
+}
+#main-menu table td:last-child {
+  text-align: right;
 }

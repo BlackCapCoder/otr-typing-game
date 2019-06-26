@@ -28,6 +28,8 @@ setTimeout ( () => {
     }
   }
 
+  updateStats();
+
 }, 0 );
 
 
@@ -62,8 +64,8 @@ function saveStats () {
 }
 
 function statsWpm () {
-  const ss = Object.entries(stats).map(x => x[1][2] / (x[1][0] * x[0].length));
-  return (60 * 1000) / (ss.sum() * 5 / ss.length);
+  let   lc = 0;
+  return (60 * 1000) / (Object.entries(stats).reduce((acc, x) => { lc += x[0].length * x[1][0]; return acc + x[1][2]; }, 0) / lc * 5);
 }
 
 function statsAcc () {
@@ -86,8 +88,12 @@ function badStats (lim = 1.15) {
 function scoreWord (matrix, word) {
   let sum = 0;
   for (let i = 0; i < word.length; i++) sum += matrix[word.charCodeAt(i)-97];
+  if (word in stats) {
+    const [c, m, t] = stats[word]
+    sum = ((c + m)*(c*sum + t))/(2*c*c);
+    // sum = (sum + (stats[word][2] / stats[word][0])) / (2 - (stats[word][1] / stats[word][0]));
+  } else sum *= 1.1;
   sum /= word.length;
-  if (word in stats) sum *= (1 / stats[word][0]) ** 0.3; // Make a word less likely to appear in the future
   return sum;
 }
 

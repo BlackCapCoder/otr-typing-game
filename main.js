@@ -11,6 +11,9 @@ function Word (str) {
   this.otr = otr + parts[1].length;
 
 
+  this.wordStart = str.search(/\w/);
+  this.wordEnd   = str.search(/[^\w]*$/);
+
   // ------ Determine when to progress to the next work
 
   this.skipAt = parts[1].length + 1;
@@ -86,7 +89,6 @@ let peekTimeout = -1;
 let peekTime    = 400;
 let cursor      = 0;
 let mistake     = 0;
-let timeWord    = undefined;
 let wordMistake = false;
 
 const calcWpm = (dt, len) =>
@@ -96,34 +98,60 @@ const calcWpm = (dt, len) =>
 
 // -------------------
 
+let timeWordBegin, timeWordEnd, wordDone;
 
 inp.oninput = ev => {
   const txt = inp.value;
   let cur = Math.min(currentWord.length, txt.length);
   let mis = 0;
 
+  // Mistakes?
   for (; mis < txt.length && txt[mis] === currentWord.value[mis]; mis++);
 
+  // Global variables for gui and stuff
+  cursor       = cur;
+  mistake      = mis;
+  wordMistake |= mis < cur && cur > currentWord.wordStart;
+
+  // Write stats
+  if (cur === mis && timeWordBegin === undefined && cur >= currentWord.wordStart && cur <= currentWord.wordEnd) {
+    if (currentWord.wordStart === 0 && cur > 0)
+      timeWordBegin = timeWordEnd;
+    else
+      timeWordBegin = ev.timeStamp;
+    timeWordEnd = undefined;
+  }
+  if (cur === mis && cur >= currentWord.wordEnd) {
+    timeWordEnd = ev.timeStamp;
+    if (timeWordBegin !== undefined && !wordDone) {
+      putStat(currentWord.value, timeWordEnd - timeWordBegin, wordMistake);
+      wordDone = true;
+    }
+    timeWordBegin = undefined;
+  }
+
+  // Are we done?
   if (cur === currentWord.length) {
     if (cur === mis) return nextWord ();
     inp.value = txt.substr(0, cur);
   }
 
-  cursor       = cur;
-  mistake      = mis;
-  wordMistake |= mis < cur;
-
+  // User is typing!
   if (timeBegin === undefined) {
     timeBegin = new Date();
     diff.classList.add('hidden');
   }
 
+  // If he stops he might have forgot the word
   clearTimeout(peekTimeout);
-  peekTimeout = setTimeout(unpeek, peekTime);
 
+  // Mistake?
   if (mis >= currentWord.skipAt && cur === mis && text.length > 0)
     return peek ();
 
+  peekTimeout = setTimeout(unpeek, peekTime);
+
+  // Update gui
   curr.setCursor(cur);
   curr.setMistake(cur === mis ? txt.length+1 : mis);
   unpeek();
@@ -193,9 +221,8 @@ function loadText (pick) {
 }
 
 function beginGame () {
+  timeWordBegin = timeWordEnd = timeBegin = currentWord = undefined
   inp.value = "";
-  timeBegin = undefined;
-  currentWord = undefined;
   loadText(currentText || levels.next().value);
   nextWord();
   diff.classList.remove('hidden');
@@ -227,17 +254,14 @@ function nextWord ()
 
   if (currentWord !== undefined) {
     const now = new Date ();
-    if (timeWord !== undefined)
-      putStat(currentWord.value, now - timeWord, wordMistake);
-    timeWord    = now;
     wordMistake = false;
   }
 
   if (text.length === 0) {
     endGame();
   } else {
+    isPeeking   = wordDone = false;
     currentWord = text.pop();
-    isPeeking   = false;
     curr.setWord (currentWord);
     curr.setCursor(0);
     setNext();
@@ -311,6 +335,7 @@ function * hardQuotes () {
 function returnToMenu () {
   if (!isPlaying) return;
   isPlaying = false;
+  updateStats();
   mainMenu.classList.add('active');
   lastMenuFocus.focus();
 }
@@ -333,6 +358,58 @@ window.onkeydown = ev => {
   }
 };
 
+function updateStats () {
+  document.querySelector("#stats-wpm").innerText = Math.round(statsWpm());
+  document.querySelector("#stats-acc").innerText = Math.round(statsAcc()*100) + '%';
+
+  const keys = Array.from(hardLetters()).map((x, i) => [x, String.fromCharCode(97 + i)]).sort().map(x => x[1]);
+  document.querySelector`#stats-good-keys`.innerText = keys.slice(0, 5).join` `;
+  document.querySelector`#stats-bad-keys` .innerText = keys.reverse().slice(0,5).join` `;
+
+  const words = Object.entries(stats).maximum(x => x[1][2] / (x[1][0] * x[0].length), Infinity).toSortedList().collect().map(x=>x.data[0]);
+  document.querySelector`#stats-good-words`.innerText = words.slice(0, 5).join` `;
+  document.querySelector`#stats-bad-words` .innerText = words.reverse().slice(0,5).join` `;
+
+  const sums = Object.entries(stats).reduce(([xa, ya, za], [w, [xb, yb, zb]]) =>
+    [xa+xb, ya+yb, za+zb, xa*w.length], [0,0,0,0]);
+
+  document.querySelector`#stats-num-words`.innerText = sums[0];
+  document.querySelector`#stats-num-keys` .innerText = sums[3];
+  document.querySelector`#stats-num-time` .innerText = prettyTime(sums[2]);
+}
+
+function prettyTime (t)
+{
+  const s = 1000;
+  const m = 60 * s;
+  const h = 60 * m;
+  const d = 24 * h;
+
+  const parts = [];
+  let   x;
+
+  if (t >= d) {
+    parts.push(`${x = Math.floor(t / d)} days`);
+    t -= x;
+  }
+
+  if (t >= h) {
+    parts.push(`${x = Math.floor(t / h)} hours`);
+    t -= x;
+  }
+
+  if (t >= m) {
+    parts.push(`${x = Math.floor(t / m)} minutes`);
+    t -= x;
+  }
+
+  if (t >= s) {
+    parts.push(`${x = Math.floor(t / s)} seconds`);
+    t -= x;
+  }
+
+  return parts.join`,`;
+}
 
 
 // ----------------
