@@ -118,6 +118,7 @@ function * easyWords () {
              . toSortedListRev ()
              . collect ()
              . map (w => w.data)
+             . shuffle ()
              . join ` `;
   }
 }
@@ -148,12 +149,6 @@ function * hardWords (cnt = 20) {
          . collect ()
          . forEach (w => level.push(w.data));
 
-    yield level.join` `;
+    yield level.shuffle().join` `;
   }
-}
-
-function improveStats ()
-{
-  return badStats(1.05).map(x => x.data[0]).join(' ');
-  const bad = badStats();
 }
