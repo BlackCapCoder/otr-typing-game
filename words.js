@@ -12,6 +12,20 @@ const cleanWords = short => new RegExp (''
 {
   let wordsCache = null;
 
+  const abbrivs =
+    { "n't":  ' not'
+    , "'ll":  ' will'
+    , "'ve":  ' have'
+    , "'d":   ' would'
+    , "'m":   ' am'
+    , "'re":  ' are'
+    , "it's": 'it is'
+    };
+
+  const unquote = word => word
+    . replace (/(?<=\w)(n't|'ll|'ve|'d|'m|'re|it's)(?=$|[\.\?!:;\- ])/gi, m => abbrivs[m]);
+
+
   // Returns actual cache object. Safe if we only read
   window.unsafeWords = function () {
     if (wordsCache) return wordsCache;
@@ -32,6 +46,17 @@ const cleanWords = short => new RegExp (''
   window.words = function () {
     return unsafeWords().slice(0);
   }
+
+  window.quoteWords = function () {
+    return texts.flatMap(x => unquote(x).split(/(?<=\w)[\.\?!:;\-]+ +/));
+  }
+}
+
+
+function nouns () {
+  for (const ws of quoteWords()) {
+
+  }
 }
 
 
@@ -43,7 +68,7 @@ function wordUsage (s)
     g[i] = {};
 
   const rx    = cleanWords(0);
-  const _txts = texts.flatMap(x => x.split(/(?<=\w)[\.\?!:;\-]+ +/));
+  const _txts = quoteWords();
 
   _txts.forEach(txt => {
     const ws = txt . replace (rx, '')
@@ -119,9 +144,7 @@ function wordGraph (s) {
 
     const rx = cleanWords(0);
 
-    const _txts = texts.flatMap(x => x.split(/(?<=\w)[\.\?!:;\-]+ +/));
-
-    _txts.forEach(txt => {
+    quoteWords ().forEach(txt => {
       const ws = txt . replace (rx, '')
                      . toLowerCase()
                      . trim()
@@ -349,8 +372,10 @@ function * shortestTree ()
   const g      = wordGraph (s);
   const scores = new Uint16Array(s.length).map((_,i) => Math.round(scoreWord(h,s[i])));
 
+  const inits = Array.from(new Set(quoteWords().map(x => x.slice(0, x.indexOf(' ')).toLowerCase()))).map(w => binarySearch(s, w)).filter(x => x != -1).shuffle();
+
   let sentence = [];
-  let start = Math.floor(Math.random() * s.length);
+  let start = inits.pop();
 
   while (true) {
     const [, prev, len] = dijkstra(h,s,g,scores,start);
@@ -364,12 +389,12 @@ function * shortestTree ()
 
     if (max <= 1) {
       if (sentence.length == 0) {
-        start = Math.floor(Math.random() * s.length);
+        start = inits.pop();
         continue;
       }
       yield sentence.map(i => s[i]).join(' ');
       sentence = [];
-      start = Math.floor(Math.random() * s.length);
+      start = inits.pop();
       continue;
     }
 
@@ -386,7 +411,7 @@ function * shortestTree ()
     if (sentence.length >= 20) {
       yield sentence.map(i => s[i]).join(' ');
       sentence = [];
-      start = Math.floor(Math.random() * s.length);
+      start = inits.pop();
     } else {
       start = sentence.pop();
     }

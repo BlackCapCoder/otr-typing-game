@@ -91,6 +91,12 @@ let cursor      = 0;
 let mistake     = 0;
 let wordMistake = false;
 
+let isRanked       = true;
+let isInstantDeath = false;
+let isEndless      = false;
+let wordsTyped     = 0;
+
+
 const calcWpm = (dt, len) =>
   1000*60/(dt/(len/5));
 
@@ -101,6 +107,8 @@ const calcWpm = (dt, len) =>
 let timeWordBegin, timeWordEnd, wordDone;
 
 inp.oninput = ev => {
+  if (!isPlaying) return;
+
   const txt = inp.value;
   let cur = Math.min(currentWord.length, txt.length);
   let mis = 0;
@@ -124,10 +132,19 @@ inp.oninput = ev => {
   if (cur === mis && cur >= currentWord.wordEnd) {
     timeWordEnd = ev.timeStamp;
     if (timeWordBegin !== undefined && !wordDone) {
-      putStat(currentWord.value, timeWordEnd - timeWordBegin, wordMistake);
+      if (isRanked)
+        putStat(currentWord.value, timeWordEnd - timeWordBegin, wordMistake);
+      if (isEndless)
+        diff.querySelector('.value').innerText = ++wordsTyped;
       wordDone = true;
     }
     timeWordBegin = undefined;
+  }
+
+  // Instant death
+  if (isInstantDeath && cur > mis) {
+    isPlaying = false;
+    setTimeout(lose, 500);
   }
 
   // Are we done?
@@ -139,7 +156,8 @@ inp.oninput = ev => {
   // User is typing!
   if (timeBegin === undefined) {
     timeBegin = new Date();
-    diff.classList.add('hidden');
+    if (!isEndless)
+      diff.classList.add('hidden');
   }
 
   // If he stops he might have forgot the word
@@ -178,8 +196,13 @@ function unpeek () {
 }
 
 function setNext () {
-  if (text.length === 0)
-    return next.elem.classList.add('hidden');
+  if (text.length === 0) {
+    if (isEndless) {
+      loadText(levels.next().value);
+    } else {
+      return next.elem.classList.add('hidden');
+    }
+  }
   else
     next.elem.classList.remove('hidden');
 
@@ -187,11 +210,16 @@ function setNext () {
   text.push(peek);
   next.setWord(peek);
 
-  rest.innerText = text.reverse().slice(1).map(w => w.value).join('');
-  text.reverse();
+  if (!isEndless) {
+    rest.innerText = text.reverse().slice(1).map(w => w.value).join('');
+    text.reverse();
+  }
 }
 
 function loadText (pick) {
+  if (isEndless && pick[pick.length -1] !== ' ')
+    pick += ' ';
+
   currentText = pick;
   textLength  = pick.length;
 
@@ -201,13 +229,16 @@ function loadText (pick) {
        . replace (/[\u2012\u2013\u2014\u2015]/g, '-')
        . replace (/[\u2026]/g, '...')
        . replace (/\s+/g, ' ')
-       . trim()
+       . trimStart()
        . split(/(?=[\.\?,!:;"()]\s+\w)|(?<=\w\s+)/)
        . reverse()
        . map (w => new Word(w));
 
+
+
   wordCount = text.length;
 
+  if (isEndless) return
 
   if (window.levelCount === undefined) {
     // The texts in texts.js is sorted according to this, easiest first
@@ -219,29 +250,51 @@ function loadText (pick) {
   }
 }
 
+function lose () {
+  endGame ();
+}
+
 function beginGame () {
   timeWordBegin = timeWordEnd = timeBegin = currentWord = undefined
+  wordsTyped    = 0;
   inp.value = "";
   loadText(currentText || levels.next().value);
   nextWord();
+
+  if (isEndless)
+    diff.querySelector('.value').innerText = "Endless.."
+
   diff.classList.remove('hidden');
 }
 
 function endGame () {
-  const now = new Date();
-  const dt  = (now - timeBegin)
-  const x   = calcWpm (dt, textLength);
-  wpm.querySelector('.val').innerText = Math.round(x);
+
+  if (isEndless) {
+    wpm.querySelector('.val').innerText = wordsTyped + ' words typed'
+  } else {
+    const now = new Date();
+    const dt  = (now - timeBegin)
+    const x   = calcWpm (dt, textLength);
+    wpm.querySelector('.val').innerText = 'WPM ' + Math.round(x);
+  }
 
   if (window.levelCount !== undefined)
     currentLevel = (currentLevel + 1) % levelCount;
 
-  saveStats ();
+  if (isRanked)
+    saveStats ();
 
+  isPlaying = false;
   disp.classList.add('hidden');
   setTimeout(() => {
+    isPlaying = true;
+    inp.value = "";
+    inp.focus();
     disp.classList.remove('hidden');
   }, 2000);
+
+  if (isInstantDeath)
+    levels = instantDeath();
 
   currentText = undefined;
   beginGame();
@@ -267,7 +320,7 @@ function nextWord ()
   }
 }
 
-inp.onblur = () => { if (isPlaying) beginGame(); }
+inp.onblur = () => { if (isPlaying && !isInstantDeath) beginGame(); }
 
 
 function onButtonClicked (which)
@@ -285,7 +338,18 @@ function onButtonClicked (which)
       case ('sentences'):      return commonSentence ();
       case ('long-sentences'): return longSentences ();
       case ('dijkstra'):       return shortestTree ();
+      case ('accuracy'):       return instantDeath ();
     }})();
+
+  isRanked       = true;
+  isInstantDeath = false;
+  isEndless      = false;
+
+  if (which === 'accuracy') {
+    isRanked       = false;
+    isInstantDeath = true;
+    isEndless      = true;
+  }
 
   isPlaying     = true;
   lastMenuFocus = document.activeElement;

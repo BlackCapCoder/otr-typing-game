@@ -139,6 +139,23 @@ function BinaryTree ()
     return x;
   }
 
+  this._removeMax = function () {
+    let x = this.root, r;
+    while (x.right) { r = x; x = x.right };
+    if (r === undefined) {
+      if (x.left === undefined) {
+        this.root = undefined;
+        this.size--;
+        return x;
+      };
+      r = this.root = x.left;
+    } else {
+      if (x.left) r.right = x.left; else delete r.right;
+    }
+    this.size--;
+    return x;
+  }
+
 }
 
 
@@ -169,6 +186,7 @@ function maximum (f, n, xs)
 
   return bt;
 }
+
 
 // single biggest element
 function max (xs) {

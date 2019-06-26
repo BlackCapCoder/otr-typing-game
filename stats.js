@@ -20,7 +20,7 @@ setTimeout ( () => {
 
   { // Rank letters
     for (const [w, st] of Object.entries(stats)) {
-      const score = st[2] / (st[0] * w.length) + 500 * st[1];
+      const score = st[2] / (st[0] * w.length);
       for (let i = 0; i < w.length; i++) {
         letterStats.count[w.charCodeAt(i)-97]++;
         letterStats.score[w.charCodeAt(i)-97]+=score;
@@ -44,14 +44,14 @@ function putStat (word, time, mistake)
   if (time >= 7000) return;
 
   let   old      = stats[word] || [0, 0, 0]; // count, mistakes, sumTime
-  const oldScore = (old[2] / (old[0] * word.length) + 500 * old[1]) || 0;
+  const oldScore = (old[2] / (old[0] * word.length)) || 0;
 
   old[0]++;
   old[2]+=time
   if (mistake) old[1]++;
 
   stats[word] = old;
-  const dtScore = (old[2] / (old[0] * word.length) + 500 * old[1]) - oldScore;
+  const dtScore = (old[2] / (old[0] * word.length)) - oldScore;
 
   for (let i = 0; i < word.length; i++) {
     letterStats.count[word.charCodeAt(i)-97]++;
@@ -84,6 +84,11 @@ function badStats (lim = 1.15) {
   return hardest;
 }
 
+function rankedStats ()
+{
+  return Object.entries(stats).maximum(x => x[1][2] / (x[1][0] * x[0].length), Infinity).toSortedList().collect();
+}
+
 
 function scoreWord (matrix, word) {
   let sum = 0;
@@ -110,6 +115,35 @@ function hardLetters () {
 }
 
 
+function doubles () {
+  const tim = new Int32Array(26 * 26).fill(0);
+  const cnt = new Int32Array(26 * 26).fill(0);
+
+  for (const [w, [c, m, t]] of Object.entries(stats)) {
+    const s = t / (c * w.length);
+    for (let i = 0; i < w.length - 1; i++) {
+      const ix = (w.charCodeAt(i)-97) * 26 + (w.charCodeAt(i+1)-97);
+      tim[ix]+=s;
+      cnt[ix]++
+    }
+  }
+
+  const final = {};
+
+  for (let i = 0; i < 26; i++) {
+    for (let j = 0; j < 26; j++) {
+      if (cnt[i*26+j])
+        final[String.fromCharCode(97+i) + String.fromCharCode(97+j)]
+          = tim[i*26+j] / cnt[i*26+j];
+    }
+  }
+
+  return final;
+}
+
+
+// --------------------
+
 function * easyWords () {
   const ws = unsafeWords();
   while (true) {
@@ -126,21 +160,8 @@ function * hardWords (cnt = 20) {
   const ws = unsafeWords();
 
   while (true) {
-
-    // Worst words from the stats
-    const hardStats
-      = Object . entries(stats)
-               . maximum(x => x[1][2] / (x[1][0] * x[0].length), cnt)
-               . toSortedListRev();
-
     const letterScore = hardLetters();
-    const worst       = letterScore.max();
     let   level       = [];
-
-    for (const x of hardStats) {
-      if (x.val < worst) break;
-      level.push(x.data[0]);
-    }
 
     // Words based on bad keys
     if (level.length < cnt)

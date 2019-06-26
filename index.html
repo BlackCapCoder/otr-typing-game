@@ -13,6 +13,7 @@
     <button data-tooltip="Based on how often one words appears after another" onclick='onButtonClicked("sentences")'>Senteces</button>
     <button data-tooltip="Long sequence of unique words, each having the property that the word proceeding it has appeared directly before it in at least one quote" onclick='onButtonClicked("long-sentences")'>Long Senteces</button>
     <button onclick='onButtonClicked("dijkstra")'>Dijkstra</button>
+    <button data-tooltip="Does not affect your stats- take your time" onclick='onButtonClicked("accuracy")'>Instant Death</button>
     <p>(S) = Statistically - Based on your historical performance</p>
     <h2>Custom text</h2>
     <textarea id='custom-text'></textarea>
@@ -88,7 +89,7 @@
 </div>
 
 <div id='wpm' tab-index='-1'>
-  <span>WPM</span> <span class='val'>40</span>
+  <span class='val'>40</span>
 </div>
 
 <script src="utils.js"></script>
@@ -96,6 +97,7 @@
 <script src="simplewords.js"></script>
 <script src="words.js"></script>
 <script src="stats.js"></script>
+<script src="instantdeath.js"></script>
+<!-- <script src="suffixtree.js"></script> -->
+<!-- <script src="purs.js"></script> -->
 <script src="main.js"></script>
-
-<script src='http://127.0.0.1:9001/js/socket.js'></script>
