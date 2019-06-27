@@ -14,7 +14,7 @@ function Word (str) {
   this.wordStart = str.search(/\w/);
   this.wordEnd   = str.search(/[^\w]*$/);
 
-  // ------ Determine when to progress to the next work
+  // ------ Determine when to progress to the next word
 
   this.skipAt = parts[1].length + 1;
 
@@ -43,9 +43,12 @@ function Display (elem) {
   this.setFocal  = chr => this.foca.innerText = chr;
   this.setTail   = str => this.tail.innerText = str;
 
-  this.setLength  = len => this.cont.style.setProperty('--len', len);
   this.setMistake = pos => this.cont.style.setProperty('--mis', pos);
-  this.setCursor  = pos => this.cont.style.setProperty('--cur', pos);
+  this.setCursor  = pos => {
+    this.cont.style.setProperty('--cur', pos);
+    this.cont.style.setProperty('--focus', Math.max(pos, this.word.otr));
+    this.cont.style.setProperty('--anim', 1);
+  };
 
   this.word = null;
 
@@ -56,9 +59,9 @@ function Display (elem) {
     this.setInit    (w.value.substr(0, otr));
     this.setFocal   (w.value[otr]);
     this.setTail    (w.value.substr(otr+1));
-    this.setLength  (w.length);
     this.setMistake (w.length+1); this.setCursor  (-1);
     this.cont.style.setProperty('--otr', otr);
+    this.cont.style.setProperty('--anim', 0);
   }
 }
 

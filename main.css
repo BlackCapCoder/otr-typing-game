@@ -8,7 +8,6 @@ body {
   display: none;
 }
 #display {
-  font-size:   40px;
   font-family: monospace;
   color:       white;
   font-weight: lighter;
@@ -25,34 +24,45 @@ body {
 pre {
   display: inline;
 }
+
+
+#current .content { --font-size: 40px; }
+#next    .content { --font-size: 30px; }
+
+.content {
+  font-size: var(--font-size);
+  --unit: calc(var(--font-size) * 0.6);
+}
 .content {
   display: inline-block;
   position: relative;
-  --unit: calc(100% / var(--len));
-  overflow: hidden;
-  transform: translateX(calc(calc(var(--unit) * var(--otr)) * -1));
-  margin-left: calc(calc(50% - 24px));
+  margin-left: calc(calc(50% - calc(var(--unit) * calc(var(--focus, --otr) + 1))));
   margin-bottom: 30px;
+  clip-path: polygon(0 0, 200% 0, 200% 200%, 0 200%);
+  margin-right: 30px;
 }
+#current .content {
+  transition: margin-left calc(0.1s * var(--anim)) ease-out;
+}
+
 .content pre {
   mix-blend-mode: multiply;
   background: black;
-  text-decoration: underline;
-  text-underline-position: under;
-  text-decoration-color: #313131;
+  border-bottom: 2px inset #313131;
+  padding-bottom: 5px;
 }
 .content .focal {
   color: #ba76f1;
-  text-decoration-color: #ba76f1;
-  background: black;
+  border-color: #ba76f1;
+  background: bla:ck;
   font-weight: normal;
-  text-decoration: underline;
 }
 
 
 .mask {
   position: absolute;
-  top: 0; bottom: 0;
+  top: 0;
+  height: 100%;
 }
 
 .cursor {
@@ -77,6 +87,7 @@ pre {
   width: calc(var(--unit) * calc(calc(var(--cur) + 1) - var(--mis)));
   background: red;
   mix-blend-mode: color;
+  height: calc(100% + 7px);
 }
 
 input {
@@ -119,7 +130,6 @@ input:not(:focus) ~ #display::after {
 
 #next {
   opacity: 0.25;
-  font-size: 30;
 }
 
 
