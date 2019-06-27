@@ -423,8 +423,8 @@ window.onkeydown = ev => {
 };
 
 function updateStats () {
-  document.querySelector("#stats-wpm").innerText = Math.round(statsWpm());
-  document.querySelector("#stats-acc").innerText = Math.round(statsAcc()*100) + '%';
+  document.querySelector("#stats-wpm").innerText = Math.round(statsWpm()*10)/10;
+  document.querySelector("#stats-acc").innerText = Math.round(statsAcc()*1000)/10 + '%';
 
   const keys = Array.from(hardLetters()).map((x, i) => [x, String.fromCharCode(97 + i)]).sort().map(x => x[1]);
   document.querySelector`#stats-good-keys`.innerText = keys.slice(0, 5).join` `;

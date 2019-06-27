@@ -69,8 +69,8 @@ function statsWpm () {
 }
 
 function statsAcc () {
-  const as = Object.values(stats).map(x => 1 - x[1] / x[0])
-  return as.sum() / as.length;
+  let   lc = 0;
+  return Object.entries(stats).reduce((acc, x) => { lc += x[0].length * x[1][0]; return acc + x[1][1] * x[0].length; }, 0) / lc * 5;
 }
 
 // Words with strangely bad stats
@@ -99,6 +99,8 @@ function scoreWord (matrix, word) {
     // sum = (sum + (stats[word][2] / stats[word][0])) / (2 - (stats[word][1] / stats[word][0]));
   } else sum *= 1.1;
   sum /= word.length;
+  sum -= wordComfort(word) * (sum / (5*7));
+  sum *= 1 + Math.max(0, word.length - 8)/26
   return sum;
 }
 

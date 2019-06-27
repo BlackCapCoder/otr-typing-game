@@ -1290,7 +1290,6 @@ oval
 oven
 over
 overacting
-overalloverbalancing
 overbearing
 overcoat
 overcome
@@ -1309,7 +1308,6 @@ overshoe
 overstatement
 overtake
 overtaxed
-overtimeoverturned
 overuse
 overvalued
 overweight
