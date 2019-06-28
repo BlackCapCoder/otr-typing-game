@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto+Mono:300,400&display=swap');
+
 body {
   margin: 0;
   background: black;
@@ -8,13 +10,11 @@ body {
   display: none;
 }
 #display {
-  font-family: monospace;
-  color:       white;
-  font-weight: lighter;
+  color:    white;
   position: fixed;
-  top: 33%;
+  top: 15%;
   left: 50%;
-  transform: translate(-50%, -100%);
+  transform: translateX(-50%);
   pointer-events: none;
   height: 70px;
   transition: filter 0.05s ease-out, left 0.8s ease-out;
@@ -23,6 +23,10 @@ body {
 }
 pre {
   display: inline;
+}
+#display, #display .content pre {
+  font-family: 'Roboto Mono', monospace;
+  font-weight: lighter;
 }
 
 
@@ -131,13 +135,14 @@ input:not(:focus) ~ #display::after {
 
 
 #wpm {
-  bottom: 50%;
+  bottom: 75%;
   color: white;
   width: 100vw;
   text-align: center;
-  font-size: 40px;
+  font-size: 45px;
   vertical-align: middle;
-  font-family: monospace;
+  font-family: 'Roboto Mono', monospace;
+  font-weight: lighter;
   position: relative;
   transform: translateY(-50%);
 }
@@ -179,7 +184,8 @@ input:not(:focus) ~ #display::after {
 #main-menu {
   color: purple;
   padding: 40px 15px 15px 15px;
-  font-family: monospace;
+  font-family: 'Roboto Mono', monospace;
+  font-weight: lighter;
   text-align: center;
   border-radius: 10px;
   opacity: 0.85;
@@ -193,11 +199,12 @@ input:not(:focus) ~ #display::after {
 }
 #main-menu h2 {
   margin: 0;
-  padding: 40px 0 20px 0;
+  padding: 20px 0 7px 0;
   border-bottom: 1px solid;
-  margin-bottom: 20px;
+  margin-bottom: 22px;
   font-size: 32px;
   text-transform: uppercase;
+  font-weight: lighter;
 }
 #main-menu textarea {
   display: block;
@@ -212,6 +219,7 @@ input:not(:focus) ~ #display::after {
   padding: 7px 30px;
   color: #ba76f1;
   margin-bottom: 10px;
+  font-weight: normal;
 }
 #main-menu textarea, #main-menu button {
   background: #111;
@@ -226,6 +234,10 @@ input:not(:focus) ~ #display::after {
   background: #222;
   box-shadow: 0 0 10px rgba(189, 121, 245, 0.3);
   position: relative;
+}
+#main-menu p {
+  font-family: monospace;
+  font-size: 12px;
 }
 
 
@@ -255,6 +267,7 @@ input:not(:focus) ~ #display::after {
   color: #ba76f1;
   font-size: 17px;
   width: 100%;
+  font-weight: lighter !important;
 }
 #main-menu table td:last-child {
   text-align: right;
