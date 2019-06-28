@@ -42,8 +42,9 @@ pre {
   clip-path: polygon(0 0, 200% 0, 200% 200%, 0 200%);
   margin-right: 30px;
 
-  /* Red color visible at beginning of word, in spite of clip-path */
+  /* Red color visible at edges, in spite of clip-path */
   border-left: 2px solid black;
+  border-top : 1px solid black;
 }
 #current .content {
   transition: margin-left calc(0.08s * var(--anim)) ease-out;
