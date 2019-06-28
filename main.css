@@ -12,7 +12,7 @@ body {
 #display {
   color:    white;
   position: fixed;
-  top: 15%;
+  top: 15vh;
   left: 50%;
   transform: translateX(-50%);
   pointer-events: none;
@@ -20,6 +20,7 @@ body {
   transition: filter 0.05s ease-out, left 0.8s ease-out;
   max-width: 500px;
   width: calc(100vw - 40px);
+  --size: 40px;
 }
 pre {
   display: inline;
@@ -30,8 +31,8 @@ pre {
 }
 
 
-#current .content { --font-size: 40px; }
-#next    .content { --font-size: 30px; }
+#current .content { --font-size: var(--size); }
+#next    .content { --font-size: calc(var(--size) * 0.75); }
 
 .content {
   font-size: var(--font-size);
@@ -41,7 +42,7 @@ pre {
 .content {
   display: inline-block;
   position: relative;
-  margin-left: calc(calc(50% - calc(var(--unit) * calc(var(--focus) + 1))));
+  margin-left: calc(calc(50% - calc(var(--unit) * calc(var(--focus) + 0.5))));
   margin-bottom: 30px;
   clip-path: polygon(0 0, 200% 0, 200% 200%, 0 200%);
   margin-right: 30px;
@@ -135,7 +136,7 @@ input:not(:focus) ~ #display::after {
 
 
 #wpm {
-  bottom: 75%;
+  bottom: 75vh;
   color: white;
   width: 100vw;
   text-align: center;
@@ -158,6 +159,7 @@ input:not(:focus) ~ #display::after {
 
 #next {
   opacity: 0.25;
+  max-height: calc(75vh - calc(calc(var(--size) * 2.325) + 60px));
 }
 
 
@@ -168,6 +170,14 @@ input:not(:focus) ~ #display::after {
   word-spacing: 0.1em;
   opacity: 0.8;
   text-align: center;
+}
+#rest::before {
+  content: '';
+  position: absolute;
+  left: 0; right: 0;
+  height: 60vh;
+  background: linear-gradient(transparent 50%, black);
+  border-bottom: 40vh solid black;
 }
 
 #difficulty {

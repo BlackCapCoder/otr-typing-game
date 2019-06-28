@@ -218,7 +218,7 @@ function setNext ()
   next.setWord(peek);
 
   if (!isEndless) {
-    rest.innerText = text.reverse().slice(1).map(w => w.value).join('');
+    rest.innerHTML = text.reverse().slice(1).map(w => w.value).join('');
     text.reverse();
   }
 }
@@ -427,8 +427,10 @@ window.onkeydown = ev =>
   if (ev.key === "Escape") {
     if (timeBegin === undefined)
       returnToMenu();
-    else
+    else {
       beginGame ();
+      inp.focus ();
+    }
     return false;
   }
 
