@@ -31,63 +31,85 @@ pre {
 
 .content {
   font-size: var(--font-size);
-  --unit: calc(var(--font-size) * 0.6);
+  --unit:  calc(var(--font-size) * 0.6);
+  --wrong: calc(var(--unit) * calc(var(--cur) - var(--mis)));
 }
 .content {
   display: inline-block;
   position: relative;
-  margin-left: calc(calc(50% - calc(var(--unit) * calc(var(--focus, --otr) + 1))));
+  margin-left: calc(calc(50% - calc(var(--unit) * calc(var(--focus) + 1))));
   margin-bottom: 30px;
   clip-path: polygon(0 0, 200% 0, 200% 200%, 0 200%);
   margin-right: 30px;
+
+  /* Red color visible at beginning of word, in spite of clip-path */
+  border-left: 2px solid black;
 }
 #current .content {
-  transition: margin-left calc(0.1s * var(--anim)) ease-out;
+  transition: margin-left calc(0.08s * var(--anim)) ease-out;
 }
 
 .content pre {
-  mix-blend-mode: multiply;
   background: black;
-  border-bottom: 2px inset #313131;
+  border-bottom: 2px inset #ffffff4a;
   padding-bottom: 5px;
 }
-.content .focal {
-  color: #ba76f1;
-  border-color: #ba76f1;
-  background: bla:ck;
-  font-weight: normal;
+.content .tail::before /* focus */
+{
+  content: '';
+  position: absolute;
+  width: var(--unit);
+  height: calc(100% + 5px);
+  border-bottom: 2px solid rgba(255, 0, 255);
+  background: #ba76f1;
+  mix-blend-mode: multiply;
 }
-
+.content .tail::after /* red color visible */
+{
+  content: '';
+  position: absolute;
+  width: 2px;
+  height: calc(100% + 7px);
+  background: black;
+}
 
 .mask {
   position: absolute;
   top: 0;
+}
+
+.color {
+  left:   0;
+  height: calc(100% + 7px);
+
+  width:     calc(var(--unit) * var(--cur));
+  max-width: calc(var(--unit) * var(--mis));
+
+  background: rgba(0,0,0,0.8);
+  border-right: calc(var(--wrong) + 0.5px) solid red;
+  /* + 0.5px so the entire underline gets covered */
+
+  mix-blend-mode: multiply;
+}
+.color::after { /* color bug */
+  content: '';
+  position: absolute;
+  width: 1px;
   height: 100%;
+  background: black;
+  right: -1px;
 }
 
 .cursor {
   left: calc(var(--unit) * var(--cur));
-  width: var(--unit);
-  background: white;
-  mix-blend-mode: difference;
-  opacity: 0.11;
-}
+  height: 100%;
 
-.correct {
-  left: 0;
-  width: calc(var(--unit) * var(--cur));
-  background: black;
-  opacity: 0.6;
-  z-index: -1;
-  mix-blend-mode: screen;
-}
+  width:       var(--unit);
+  background:  rgba(255,255,255,0.11);
+  border-left: var(--wrong) solid rgba(255,0,0,0.22);
 
-.wrong {
-  left: calc(var(--unit) * var(--mis));
-  width: calc(var(--unit) * calc(calc(var(--cur) + 1) - var(--mis)));
-  background: red;
-  mix-blend-mode: color;
-  height: calc(100% + 7px);
+  clip-path: polygon(0 0, var(--unit) 0, var(--unit) 100%, 0 100%);
+  background-blend-mode: difference;
 }
 
 input {
@@ -96,7 +118,7 @@ input {
   opacity: 0.0;
 }
 input:not(:focus) ~ #display > * {
-  filter: blur(2px);
+  /* filter: blur(2px); */
 }
 input:not(:focus) ~ #display::after {
   /* content: 'Focus lost'; */

@@ -2,7 +2,8 @@
 const calcOtr = len =>
   Math.min (4, Math.floor((len + 2) / 4));
 
-function Word (str) {
+function Word (str)
+{
   this.value  = str;
   this.length = str.length;
 
@@ -32,18 +33,19 @@ function Word (str) {
     this.skipAt = Math.max(str.length - otr, this.skipAt);
 }
 
-function Display (elem) {
+function Display (elem)
+{
   this.elem = elem;
   this.cont = elem.querySelector(".content")
   this.init = this.cont.querySelector(".init")
-  this.foca = this.cont.querySelector(".focal")
   this.tail = this.cont.querySelector(".tail")
 
   this.setInit   = str => this.init.innerText = str;
-  this.setFocal  = chr => this.foca.innerText = chr;
   this.setTail   = str => this.tail.innerText = str;
 
-  this.setMistake = pos => this.cont.style.setProperty('--mis', pos);
+  this.setMistake = pos => {
+    this.cont.style.setProperty('--mis', pos);
+  };
   this.setCursor  = pos => {
     this.cont.style.setProperty('--cur', pos);
     this.cont.style.setProperty('--focus', Math.max(pos, this.word.otr));
@@ -57,10 +59,9 @@ function Display (elem) {
     const otr = w.otr;
 
     this.setInit    (w.value.substr(0, otr));
-    this.setFocal   (w.value[otr]);
-    this.setTail    (w.value.substr(otr+1));
-    this.setMistake (w.length+1); this.setCursor  (-1);
-    this.cont.style.setProperty('--otr', otr);
+    this.setTail    (w.value.substr(otr));
+    this.setMistake (w.length);
+    this.setCursor  (-2);
     this.cont.style.setProperty('--anim', 0);
   }
 }
@@ -177,7 +178,8 @@ inp.oninput = ev => {
   unpeek();
 }
 
-function peek () {
+function peek ()
+{
   if (isPeeking) return;
   if (text.length === 0) return;
   isPeeking = true;
@@ -188,17 +190,19 @@ function peek () {
   curr.setWord (w);
 }
 
-function unpeek () {
+function unpeek ()
+{
   if (!isPeeking) return;
   currentWord.skipAt = cursor + 4;
   isPeeking = false;
   curr.setWord(currentWord);
   curr.setCursor(cursor);
-  curr.setMistake(cursor === mistake ? currentWord.length+1 : mistake);
+  curr.setMistake(cursor === mistake ? mistake+1 : mistake);
   setNext();
 }
 
-function setNext () {
+function setNext ()
+{
   if (text.length === 0) {
     if (isEndless) {
       loadText(levels.next().value);
@@ -219,7 +223,8 @@ function setNext () {
   }
 }
 
-function loadText (pick) {
+function loadText (pick)
+{
   if (isEndless && pick[pick.length -1] !== ' ')
     pick += ' ';
 
@@ -253,11 +258,13 @@ function loadText (pick) {
   }
 }
 
-function lose () {
+function lose ()
+{
   endGame ();
 }
 
-function beginGame () {
+function beginGame ()
+{
   timeWordBegin = timeWordEnd = timeBegin = currentWord = undefined
   wordsTyped    = 0;
   inp.value = "";
@@ -270,7 +277,8 @@ function beginGame () {
   diff.classList.remove('hidden');
 }
 
-function endGame () {
+function endGame ()
+{
 
   if (isEndless) {
     wpm.querySelector('.val').innerText = wordsTyped + ' words typed'
@@ -323,7 +331,7 @@ function nextWord ()
   }
 }
 
-inp.onblur = () => { if (isPlaying && !isInstantDeath) beginGame(); }
+// inp.onblur = () => { if (isPlaying && !isInstantDeath) beginGame(); }
 
 
 function onButtonClicked (which)
@@ -364,12 +372,14 @@ function onButtonClicked (which)
 }
 
 
-function * quotes (difficulty) {
+function * quotes (difficulty)
+{
   yield texts[Math.round(Math.random() * texts.length * difficulty)];
   yield * quotes(difficulty);
 }
 
-function * linear (text) {
+function * linear (text)
+{
   const xs = text.split(/\s*?\n+\s*/);
   levelCount   = xs.length;
   currentLevel = 0;
@@ -378,7 +388,8 @@ function * linear (text) {
   }
 }
 
-function * easyQuotes () {
+function * easyQuotes ()
+{
   const hards = hardLetters();
   const bt    = texts.maximum(x => -scoreText(hards, x), 20);
 
@@ -388,7 +399,8 @@ function * easyQuotes () {
   yield * easyQuotes();
 }
 
-function * hardQuotes () {
+function * hardQuotes ()
+{
   const hards = hardLetters();
   const bt    = texts.maximum(x => scoreText(hards, x), 20);
 
@@ -399,7 +411,8 @@ function * hardQuotes () {
 }
 
 
-function returnToMenu () {
+function returnToMenu ()
+{
   if (!isPlaying) return;
   isPlaying = false;
   updateStats();
@@ -407,7 +420,8 @@ function returnToMenu () {
   lastMenuFocus.focus();
 }
 
-window.onkeydown = ev => {
+window.onkeydown = ev =>
+{
   if (!isPlaying) return true;
 
   if (ev.key === "Escape") {
@@ -425,7 +439,8 @@ window.onkeydown = ev => {
   }
 };
 
-function updateStats () {
+function updateStats ()
+{
   document.querySelector("#stats-wpm").innerText = Math.round(statsWpm()*10)/10;
   document.querySelector("#stats-acc").innerText = Math.round(statsAcc()*1000)/10 + '%';
 
