@@ -11,8 +11,16 @@ setTimeout ( () => {
 
   { // Load statistics
     try {
-      if ('stats' in localStorage)
-        stats = JSON.parse(localStorage.stats);
+
+      if ('stats2' in localStorage)
+        stats = decompressStats(localStorage.stats2);
+      else if ('stats' in localStorage) {
+        stats = JSON.parse(stats);
+        for (const [k, [,,s]] of Object.entries(stats)) stats[k][2] = Math.floor(s);
+        localStorage.stats2 = compressStats(stats);
+        // delete localStorage.stats
+      } else
+        stats = {};
     } catch (ex) {
       return;
     }
@@ -35,13 +43,16 @@ setTimeout ( () => {
 
 function putStat (word, time, mistake)
 {
-  word = word.trim().toLowerCase().replace(/^[^a-z]+|[^a-z]+$/g, '');
-
-  // Ignore bad words
-  if (word.length > 1 && word.search(/[^a-z]/) !== -1) return;
+  time = Math.floor (time);
 
   // Upperbound on 7 seconds
   if (time >= 7000) return;
+
+  word = word.trim().toLowerCase().replace(/^[^a-z]+|[^a-z]+$/g, '');
+
+  // Ignore bad words
+  if (word.length < 1 || word.search(/[^a-z]/) !== -1) return;
+
 
   let   old      = stats[word] || [0, 0, 0]; // count, mistakes, sumTime
   const oldScore = (old[2] / (old[0] * word.length)) || 0;
@@ -60,8 +71,57 @@ function putStat (word, time, mistake)
 }
 
 function saveStats () {
-  localStorage.stats = JSON.stringify(stats);
+  localStorage.stats2 = compressStats(stats);
 }
+
+function compressStats (stats)
+{
+  const st   = Object.entries(stats);
+  const buf  = new ArrayBuffer(st.length * 8 + st.length * 12);
+  const view = new DataView(buf);
+
+  let off = 0;
+  for (const [k, [n, m, s]] of st) {
+    for (let i = 0; i < k.length; i++)
+      view.setUint8 (off++, k.charCodeAt(i));
+
+    off++; // Zero terminate
+    view.setUint16(off + 0, n);
+    view.setUint16(off + 2, m);
+    view.setUint32(off + 4, s);
+    off+=8;
+  }
+
+  return String.fromCharCode.apply(null, new Uint8Array(buf, 0, off));
+}
+
+function decompressStats (st)
+{
+  const buf  = new ArrayBuffer(st.length);
+  const view = new DataView(buf);
+
+  for (var i=0; i < buf.byteLength; i++)
+    view.setUint8(i, st.charCodeAt(i));
+
+  const obj = {};
+  let off   = 0, key, char, n, m, s;
+  while (off < buf.byteLength) {
+    key = "";
+    while (char = view.getUint8(off++)) key += String.fromCharCode(char);
+    obj[key] =
+      [ view.getUint16(off + 0)
+      , view.getUint16(off + 2)
+      , view.getUint32(off + 4)
+      ];
+    off += 8;
+  }
+
+  return obj;
+}
+
+
+// --------------------
+
 
 function statsWpm () {
   let   lc = 0;
@@ -90,13 +150,15 @@ function rankedStats ()
 }
 
 
+
+
+
 function scoreWord (matrix, word) {
   let sum = 0;
   for (let i = 0; i < word.length; i++) sum += matrix[word.charCodeAt(i)-97];
   if (word in stats) {
     const [c, m, t] = stats[word]
     sum = ((c + m)*(c*sum + t))/(2*c*c);
-    // sum = (sum + (stats[word][2] / stats[word][0])) / (2 - (stats[word][1] / stats[word][0]));
   } else sum *= 1.1;
   sum /= word.length;
   sum -= wordComfort(word) * (sum / (5*7));

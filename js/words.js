@@ -7,23 +7,23 @@ const cleanWords = short => new RegExp (''
   + ')(?= |$)'
 , 'gi');
 
+const abbrivs =
+  { "n't":  ' not'
+  , "'ll":  ' will'
+  , "'ve":  ' have'
+  , "'d":   ' would'
+  , "'m":   ' am'
+  , "'re":  ' are'
+  , "it's": 'it is'
+  };
+
+const unquote = word => word
+  . replace (/(?<=\w)(n't|'ll|'ve|'d|'m|'re|it's)(?=$|[\.\?!:;\- ])/gi, m => abbrivs[m]);
+
 
 // Collect words from texts
 {
   let wordsCache = null;
-
-  const abbrivs =
-    { "n't":  ' not'
-    , "'ll":  ' will'
-    , "'ve":  ' have'
-    , "'d":   ' would'
-    , "'m":   ' am'
-    , "'re":  ' are'
-    , "it's": 'it is'
-    };
-
-  const unquote = word => word
-    . replace (/(?<=\w)(n't|'ll|'ve|'d|'m|'re|it's)(?=$|[\.\?!:;\- ])/gi, m => abbrivs[m]);
 
 
   // Returns actual cache object. Safe if we only read
@@ -49,13 +49,6 @@ const cleanWords = short => new RegExp (''
 
   window.quoteWords = function () {
     return texts.flatMap(x => unquote(x).split(/(?<=\w)[\.\?!:;\-]+ +/));
-  }
-}
-
-
-function nouns () {
-  for (const ws of quoteWords()) {
-
   }
 }
 
@@ -340,7 +333,7 @@ function dijkstra (h,s,g,scores, start = 0)
 {
   const dist  = new Uint16Array(s.length).fill(-1);
   const prev  = new Uint16Array(s.length).fill(-1);
-  const len   = new Uint16Array(s.length).fill(1);
+  const len   = new Uint16Array(s.length).fill(0);
   const vis   = new Uint8Array (s.length).fill(0);
   const queue = new BinaryTree ();
 
@@ -354,15 +347,24 @@ function dijkstra (h,s,g,scores, start = 0)
 
     for (const v of g[u]) {
       const alt = dist[u] + scores[v];
-      if (dist[v] === 14225 || alt >= dist[v]) continue;
+      if (alt >= dist[v]) continue;
       if (!vis[v]) queue.insert({val: alt, data: v});
       dist[v] = alt;
       prev[v] = u
-      len[v]  = len[u] + 1;
+      len [v] = len[u] + 1;
     }
   }
 
   return [dist, prev, len]
+}
+
+function test (start, end) {
+  const h      = hardLetters();
+  const s      = unsafeWords();
+  const g      = wordGraph (s);
+  const scores = new Uint16Array(s.length).map((_,i) => Math.round(scoreWord(h,s[i])));
+  const q = dijkstra(h, s, g, scores);
+  return q;
 }
 
 function * shortestTree ()
@@ -417,3 +419,96 @@ function * shortestTree ()
     }
   }
 }
+
+function * djikLevel (_h, _s, _g, _scores)
+{
+  const h      = _h      || hardLetters();
+  const s      = _s      || unsafeWords();
+  const g      = _g      || wordGraph (s);
+  const scores = _scores || new Uint16Array(s.length).map((_,i) => Math.round(scoreWord(h,s[i])));
+
+  const qt    = range(s.length) . maximum (i => scoreWord(h, s[i]));
+  const tried = [];
+  let   begin;
+
+  while (begin = qt._removeMin())
+  {
+    const sentence = [s[begin.data]];
+    let [,prev,] = dijkstra(h,s,g,scores,begin.data);
+
+    for (let i = 0; i < 10; i++)
+    {
+      const level = [];
+      let   end;
+
+      while (qt.size > 0 && prev[(end = qt._removeMin()).data] === 65535)
+        tried.push(end);
+
+      if (end === undefined) {
+        console.log('undef')
+        return;
+      }
+
+      begin = end;
+
+      while (end = tried.pop())
+        qt.insert(end);
+
+      prev = dijkstra(h,s,g,scores,begin.data)[1];
+
+      for (let cur = begin.data; cur < 65535; cur = prev[cur])
+        level.unshift(s[cur]);
+
+      console.log(qt.size)
+      sentence.push(level.join(' '));
+    }
+
+    yield sentence.join(' ');
+  }
+}
+
+function * djikLevel2 ()
+{
+  const h      = hardLetters();
+  const s      = unsafeWords();
+  const g      = wordGraph (s);
+  const scores = new Uint16Array(s.length).map((_,i) => Math.round(scoreWord(h,s[i])));
+
+  const backlog = maximum
+  ( x => { const [a,b] = x.split(',');
+           return (scoreWord(h, x[0]) + scoreWord(h, x[1])) / 2 }
+  , Infinity
+    , new Set( quoteWords()
+      . reduce((acc, l) => {
+        const m = l.toLowerCase().match(/^(\w+).* (\w+)[\.\?!]*$/);
+        if (m !== null && m[1] !== m[2]) acc.push(m[1] + ',' + m[2]);
+        return acc;
+      }, []))
+    ) . toSortedListRev () ;
+
+  const level = [];
+  let   cnt   = 0;
+
+  for (const p of backlog)
+  {
+    const [begin,end] = p.data.split(',').map(x => binarySearch(s, x));
+    if (begin == -1 || end == -1) continue;
+
+    const [,prev,] = dijkstra(h,s,g,scores,begin);
+    const sentence = [];
+
+    for (let cur = end; cur < 65535; cur = prev[cur], cnt++)
+      sentence.unshift(s[cur]);
+
+    if (sentence.length < 2) continue;
+
+    level.push(sentence.join(' '));
+
+    if (cnt >= 20) {
+      cnt = 0;
+      yield level.splice(0).join(', ');
+    }
+  }
+}
+
+// TODO Word classes: nouns, adjectives, adverbs ..

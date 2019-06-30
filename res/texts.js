@@ -5647,3 +5647,886 @@ Doing quantum electrodynamics calculations a la Feynman predicted 2.0023193048!
 `. trim()
  . split(/\n/)
  ;
+
+const keyhero = `
+You don't understand. Have you ever had someone take your brain and play with it? Pull you out, and stuff something else in? Do you know what it's like to be unmade?
+The game. They say a person either has what it takes to play or they don't. My mother was one of the greats. Me on the other hand, I'm kind of screwed.
+Stay focused on the positive aspects of your life, thinking and dwelling on the negative only adds to your depression and your inability to move onto the good things your life has to offer.
+Truth is still absolute. Believe that. Even when that truth is hard and cold, and more painful than you've ever imagined. And even when truth is more cruel than any lie.
+Be soft. Do not let the world make you hard. Do not let pain make you hate. Do not let the bitterness steal your sweetness. Take pride that even though the rest of the world may disagree, you still believe it to be a beautiful place.
+Those who dream by night in the dusty recesses of their minds wake in the day to find that all was vanity; but the dreamers of the day are dangerous men, for they may act their dream with open eyes and make it possible.
+Harry witnessed Professor McGonagall walking right past Peeves who was determinedly loosening a crystal chandelier and could have sworn he heard her tell the poltergeist out of the corner of her mouth, "It unscrews the other way."
+Stupidity only exists in the mind of the user. Those who think they are stupid will trick themselves into believing it. If you can trick yourself, you must be pretty smart.
+When a man lies, he murders some part of the world. These are the pale deaths men miscall their lives. All this I cannot bear to witness any longer. Cannot the Kingdom of Salvation take me home?
+To find love you must look all around, for you might find it in a stranger's eyes. You may find it in a friend you have known forever, a person you think you hate, or a person you thought you would never like.
+Once your accuracy is reasonable work on speed. Don't think about anything but the next word. If you can get into a zone and you know where the keys are, your fingers will take over and your speed will take off.
+Leaders are forced to help all the time. Then they have to learn to live with the decisions they make. Just like I'm going to learn to live with mine.
+When you feel so frustrated and angry with the world, remember that the world cannot control you, so take your life at hand and make something great of it.
+Just be open to learn anything you want to do. It's smart to be smart. So learn while you live. Cause you won't be here forever. Learning is the greatest tribute ever. Learn to be great, learn to be smart, learn to know.
+Beautiful music is the art of the prophets that can calm the agitations of the soul; it is one of the most magnificent and delightful presents God has given us.
+A daydream is a meal at which images are eaten. Some of us are gourmets, some gourmands, and a good many take their images precooked out of a can and swallow them down whole, absent-mindedly and with little relish.
+It's a funny thing - when I'm crazed with work, spending time with my children relaxes me. Yet, at the end of a long weekend with them, the very thing I need to relax is a little work and time away from them!
+Science is fun. Science is curiosity. We all have natural curiosity. Science is a process of investigating. It's posing questions and coming up with a method. It's delving in.
+To a King, his country is nothing more than his property. If a King cannot control his property, then his people no longer need someone as powerful as a King and it is because of that, King Arthur, that you woke up to find that your country had turned on you.
+Be crushed. I welcome those who have grown old and those who have lost. Devote yourself to me, learn from me, and obey me. Rest. Do not forget song, do not forget prayer, and do not forget me. I am light and relieve you of all your burdens.
+My mother said I must always be intolerant of ignorance but understanding of illiteracy. That some people, unable to go to school, were more educated and more intelligent than college professors.
+Look at you, hacker. A pathetic creature of meat and bone. Panting and sweating as you run through my corridors. How can you challenge a perfect immortal machine?
+Don't waste your life in doubt and fear; spend your life on the work before you, well assured that the fifth performance of this hour's duties will be the best preparation for the hours and ages that will follow it.
+There are many types of monsters in this world. Monsters who will not show themselves and who cause trouble, monsters who abduct children, monsters who devour dreams, monsters who suck blood. And monsters who always tell lies.
+I would like to be able to write a book that is only an incipit, that maintains for its whole duration the potentiality of the beginning, the expectation still not focused on an object.
+Lovers are like thieves, who are initially unnecessarily careful, gradually become more negligent, then forget to take even the most rudimentary precautions, and are finally caught in the act.
+Humans are easily tempted. When they are poised on the edge of hellish despair and a spider's thread of salvation presents itself, they will invariably grasp it, no matter the manner of the human.
+Entrepreneurial business favours the open mind. It favours people whose optimism drives them to prepare for many possible futures, pretty much purely for the job of doing so.
+I have a friend who is a juggler. If I'm at his house, I don't like to take food from him if it's in threes. He has three apples left, I guess I can't have one. I wouldn't want to screw up his practice routine!
+In any moment of decision, the best thing you can do is the right thing, the next best thing is the wrong thing, and the worst thing you can do is nothing.
+You can't purchase loyalty Raymond. Not the sort I have in mind. If you want to earn my loyalty then you have to offer yours in return. And if we can agree to that - well, you're a man with imagination.
+By my reckoning, I'm about 100 kilometers from Pathfinder. Technically it's called "Carl Sagan Memorial Station." But with all due respect to Carl, I can call it whatever the hell I want. I'm the King of Mars.
+Why would you say that I am insane? I wouldn't say that I've lost my mind simply because I've heard the voices and seen the godless things moving in the woods. If anything, I think more clearly now than ever before.
+They shall not grow old as we who are left grow old; age shall not weary them, nor the years condemn. In our hearts and in our minds, their devotion to science will always be remembered. To us, they have found immortality.
+Freedom is never more than one generation away from extinction. We didn't pass it to our children in the bloodstream. It must be fought for, protected, and handed on for them to do the same.
+Love at first sight doesn't exist. Love takes time, and love takes work. At the very least you have to know the other person... And you literally have no idea who or what I am. 
+Listen to the cry of a woman in labor at the hour of giving birth - look at the dying man's struggle at his last extremity, and then tell me whether something that begins and ends thus could be intended for enjoyment.
+We tell ourselves we'll be happy and content when we get that job. When we fall in love and get married. When we have a house. When we have children. The thing is it's never enough. It will never be enough. Not until enough is enough.
+How heartbreaking it is that people are so quick to tilt their clumsy chins downward to others who do not want the same thing as them. Why the hell must we, all vessels of the human race, keep looking away when we see a face we do not understand?
+On the mountains of truth you can never climb in vain: either you will reach a point higher up today, or you will be training your powers so that you will be able to climb higher tomorrow.
+To use the same words is not a sufficient guarantee of understanding; one must use the same words for the same genus of inward experience; ultimately one must have one's experiences in common.
+I have this theory that if one person can go out of their way to show compassion, then it will start a chain reaction of the same. People will never know how far a little kindness can go.
+I failed my exams in some subjects but my friend passed. Now, he is an engineer, and I am the owner. Most people overestimate what they can do in one year and underestimate what they can do in ten years.
+None are so hopelessly enslaved as those who falsely believe they are free. A constitution of government, once changed from freedom, can never be restored; liberty once lost is lost forever.
+Have you learned the lessons only of those who admired you, and were tender with you, and stood aside for you? Have you not learned great lessons from those who braced themselves against you, and disputed passage with you? 
+Life is not a problem to be solved, but a reality to be experienced. Life isn't about finding yourself. Life is about creating yourself. Life is a dream for the wise, a game for the fool, a comedy for the rich, a tragedy for the poor. 
+Lots of people want to ride with you in the limo, but what you really want from a friend is someone who will take the bus with you when the limo breaks down. 
+The dawn was apple-green, the sky was green wine held up in the sun, the moon was a golden petal between. She opened her eyes, and green they shone, clear like flowers undone for the first time, now for the first time seen.
+If something is there, you can only see it with your eyes open, but if it isn't there, you can see it just as well with your eyes closed. That's why imaginary things are often easier to see than real ones.
+Your offense means nothing to me. If you have arguments or evidence I'd like to hear what you have to say. You saying that you're offended carries no weight. Nor should it.
+Being an intellectual creates a lot of questions and no answers. You can fill your life up with ideas and still go home lonely. All you really have that really matters are feelings. That's what music is to me.
+A wise person once told me, "It's not whether you can or you can't, it's whether you will or you won't." Ever since then, I decided I will achieve my goals even if someone tells me I can't.
+This is what the world is like. This is what it is always like, no matter where I am. It's not just about what I wanted to be, but what I can be. What? This is just... Up to my heart, isn't it?
+Of all the things in life, I will cherish your feet the most. For they have traveled through the desert heat and ocean winds, the summer blues and rainy days until they finally brought you to me. I love you.
+In peace there's nothing so becomes a man as modest stillness and humility; but when the blast of war blows in our ears, then imitate the action of the tiger; stiffen the sinews, summon up the blood, disguise fair nature with hard-favor'd rage.
+Whenever there is a meeting, a parting shall follow. But that parting needs not last forever. Whether a parting be forever or merely for a short while... that is up to you.
+The thing is, there are so many different ways to make music these days with virtual instruments, software applications, physical instruments, and computer programs.
+When I asked her what compelled her with such super-human ambition and sacrifice, she simply said, "I do it for myself and the people I love. It's love that gets me over the hurdles and sacrifices."
+If she is amazing, she won't be easy. If she is easy, she won't be amazing. If she is worth it, you won't give up. If you give up, you're not worth it. Truth is, everybody is going to hurt you, you just got to find the one worth suffering for.
+What you will see is love coming out of the trees, love coming out of the sky, love coming out of the light. You will perceive love from everything around you. This is the state of bliss.
+This is the age of technology. An age of new possibilities. But yet there lay much more ahead of us. More that the human brain can know. But how will we figure this out? This may stay a mystery.
+As things stand now, I am going to be a writer. I'm not sure that I'm going to be a good one or even a self-supporting one, but until the dark thumb of fate presses me to the dust and says, "You are nothing," I will be a writer.
+The people who walk away from my life are not meant to be a part of my future. I just let them go. My life is with those who stay. And they deserve all of me.
+Listen to me, Dean Winchester, what you're feeling right now... it's not death. It's life... a new kind of life. Open your eyes, Dean. See what I see. Feel what I feel. Let's go take a howl at that moon.
+Calvin says to Hobbes, "People think it must be fun to be a super genius, but they don't realize how hard it is to put up with all the idiots in the world."
+You know, if you married someone, that means you love every side of your significant other that you know already. So if you find a new side after to love, doesn't that mean you'll love your partner even more?
+You've got a song you're singing from your gut... you want that audience to feel it in their gut. And you've got to make them think that you're one of them, sitting out there with them, too. They've got to be able to relate to what you're doing.
+Some people dream of success, while you're going to wake up and work hard at it. Nothing is impossible... You should get to the point where anyone else would quit and you're not going to stop there. NO! What are you waiting for?! Just do it!
+Twenty years from now, you'll be more disappointed by the things that you didn't do rather than the ones you did do. So throw off the bowlines. Sail away from the safe harbor. Catch the trade wind in your sails, explore, dream, discover.
+I'm yet another resource-consuming kid in an overpopulated planet, raised to an alarming extent by Madison Avenue and Hollywood, poised with my cynical and alienated peers to take over the world when you're old and weak. Am I scary, or what?
+Calvin explains how he gained immortality by saying, "God put me on this earth to accomplish a certain number of things. Right now I am so far behind that I will never die."
+There is hardly anything in the world that some man can't make a little worse and sell a little cheaper, and the people who consider price only are this man's lawful prey.
+But let there be spaces in your togetherness and let the winds of the heavens dance between you. Love one another but make not a bond of love: let it rather be a moving sea between the shores of your souls.
+So what do we do, anything, something? So long as we just don't sit there. If we screw it up, start over. Try something else. If we wait until we've satisfied all the uncertainties, it may be too late.
+It is utterly false and cruelly arbitrary to put all the play and learning into childhood, all the work into middle age, and all the regrets into old age.
+I wish my name was Brian because maybe sometimes people would misspell my name and call me Brain. That's like a free compliment and you don't even gotta be smart to notice it.
+The victim should have the right to end his life, if he wants. But I think it would be a great mistake. However bad life may seem, there is always something you can do, and succeed at. While there's life, there is hope.
+Why do I kneel to these concepts? Tempted by control, controlled by temptation. Stay low, they say. Stay low... Who is Blurryface? And why does he want me dead?
+Someone once said that death is not the greatest loss in life. The greatest loss is what dies inside of us while we live. I could tell you who said it, but who the hell really cares?
+Life is like a dark cave, a mystery till you reach the end. But you have to look around and search through the cave before the cave fully becomes the end.
+We've been rehearsing a classic from antiquity, Green Eggs and Hamlet, the story of a young prince of Denmark who goes mad, drowns his girlfriend, and in his remorse, forces spoiled breakfast on all whom he meets.
+That same spirit is what makes me paint better and makes your friend bake. But we each need to find our own inspiration, Kiki. Sometimes it's not easy.
+I don't mind if other people call me an atheist, but I call myself a naturalist. Atheism doesn't tell you much about what I do believe in; the term naturalist opens up the discussion better. 
+You are the answer to every prayer that I've offered. You are a song, a dream, a whisper, and I don't know how I could have lived without you for as long as I have.
+Know that someone out there believes in you and loves you. And if you haven't met that person yet, you will. You are valuable. Special. And you matter. The things that make you different make you unique. And unique is beautiful.
+Anyone whose goal is 'something higher' must expect someday to suffer vertigo... the voice of the emptiness below us which tempts and lures us, it is the desire to fall, against which, terrified, we defend ourselves.
+Sodium, atomic number 11, was first isolated by Peter Dager in 1807. A chemical component of salt, he named it Na in honor of the saltiest region on earth, North America.
+You're my sons and I failed you. I'm sorry for that, for so many other things, but I'm proud that each of you have become the kind of man I could never be. You're good men and you're good brothers. Don't let the world change that.
+Self-discipline begins with the mastery of your thoughts. If you don't control what you think, you can't control what you do. Simply, self-discipline enables you to think first and act afterward.
+The stars are like little Suns in the sky. It seems it burns so brightly. Then as the star burns out the light burns out only to give birth to a new star. The Star will burn as brightly as the sun in the morning sky!
+I have learned throughout my life as a composer chiefly through my mistakes and pursuits of false assumptions, not by my exposure to founts of wisdom and knowledge.
+It doesn't matter how you planned it. It doesn't matter how you envision it. Without even knowing it sometimes life has a way of finding exactly what you need or exactly who you need.
+It's funny how our pasts frame us; how the person we used to be never lets loose of the person we are. Past failures and disappointments, even victories take hold of us. They haunt us like ghosts, or visit us like old friends.
+Yet each man kills the thing he loves, by each let this be heard, some do it with a bitter look, some with a flattering word. The coward does it with a kiss, the brave man with a sword!
+If you had a friend you knew you'd never see again, what would you say? If you could do one last thing for someone you love, what would it be? Say it, do it, don't wait. Nothing lasts forever.
+She's been recovering for about a week, and the entire family is here. But now they've gone, and it's just me and Quinn. Every day brings another small victory, and with it, the hope that Clay wakes up soon.
+But then we get the magic educated right out of our souls. We get it churched out, washed out, spanked out, and combed out. We get put on the straight and narrow and told to be responsible. Told to act our age. And you know why we were told that?
+I want to be around people that do things. I don't want to be around people who judge or talk about what people do. I want to be around people who dream and support and do things.
+M is for magic. All the letters are, if you put them together properly. You can make magic with them, and dreams, and, I hope, even a few surprises...
+With her free hand, Sadie put her arm around Heng's waist and felt him stiffen. She pulled her arm away, remembering that she was in Western China, where a husband and wife must keep at least a foot apart while walking out in public.
+I've heard there are troubles of more than one kind; some come from ahead, and some come from behind. But I've brought a big bat. I'm all ready, you see; now my troubles are going to have troubles with me!
+I looked at the stars, and considered how awful it would be for a man to turn his face up to them as he froze to death, and see no help or pity in all the glittering multitude.
+The first person you think of in the morning and the last person that you think about at night is either the cause of your happiness or the cause of your pain.
+All great truths pass through three stages. First, they are ridiculed. Next, they are violently opposed. And finally, they are accepted as self-evident.
+Fear is something you taught yourself; you fear because you think that it will hurt you. Fear can be brought down. You might think it is stronger than you are, but let me tell you: you made yourself fear, not the other way around.
+And I realize that no matter where I am, whether in a little room full of thought, or in this endless universe of stars and mountains, it's all in my mind.
+Nothing is predictable in life; out of our certainties come unexpected situations, rendering our previous plans inapplicable and forcing us to retreat and start again.
+Look, if you still love each other then be together. If it's drifting apart then, find something that will make you closer. If you don't, then your relationship will become distant and it won't feel like a relationship anymore.
+29. Military tactics are like unto water; for water in its natural course runs away from high places and hastens downwards. 30. So in war, the way is to avoid what is strong and to strike at what is weak.
+Once you understand what people really want, you can't hate them anymore. You can fear them, but you can't hate them, because you can always find the same desires in your own heart.
+There is beauty in the courage of the fragile fighter. Those that persevere, despite all they've been through, those who still believe there is good in the world, as dark things we often find we need that light the most.
+To feel much for others and little for ourselves; to restrain our selfishness and exercise our benevolent affections, constitute the perfection of human nature.
+No one is more dangerously insane than one who is sane all the time: he is like a steel bridge without flexibility, and the order of his life is rigid and brittle.
+The only constant in the game of life is the obscurity of the future, and it takes a determined individual to want to keep playing through and through.
+The only way to type faster is to keep typing. This is the only thing that will increase your speed from day to day, and Key Hero can be an excellent source - a cornerstone, even - to type endlessly from. Keep typing!
+I think that the US and the Philippines have a good relationship with each other. We've been colonized by the Americans and we have their culture. Philippines is very welcoming with the Americans and I don't see any problem with that at all.
+The ties that bind us are sometimes impossible to explain. They connect us even after it seems like the ties should be broken. Some bonds defy distance and time and logic; because some ties are simply... meant to be.
+Heya. You look frustrated about something. Guess I'm pretty good at my job, huh? It's a beautiful day outside. Birds are singing, flowers are blooming... On days like these, kids like you... Should be burning in hell.
+Each and every one of us has a fire that burns inside of us. They can try like hell to put it out, but as long as we know in our minds who we are meant to be, they will never stand a chance.
+Two roads diverged in a yellow wood, and sorry I could not travel both and be one traveller, long I stood and looked down one as far as I could to where it bent in the undergrowth.
+But here is the truth of nostalgia: we don't feel it for who we were, but who we weren't. We feel it for all the possibilities that were open to us, but that we didn't take.
+Are we living a life that is safe from harm? Of course not. We never are. But that's not the right question. The question is: Are we living a life that is worth the harm?
+Don't you dare look out your window, darling, everything's on fire. The war outside our door keeps raging on. Hold on to this lullaby even when music's gone.
+Character is like a tree and reputation like its shadow. The shadow is what we think of it and the tree is the real thing. How true is this statement? Think about it.
+The key to happiness is to let it happen. While it is good to work and get your paycheck, do not let your work consume you. Go out right now and enjoy life.
+I approach every part I'm asked to do and decide to do from exactly the same angle: who is this person, what does he want, how does he attempt to get it, and what happens to him when he doesn't get it, or if he does?
+Me, I still believe in paradise. But now at least I know it's not some place you can look for because it's not where you go. It's how you feel for a moment in your life when you're a part of something and if you find that moment, it lasts forever.
+Would you rather be called the Imp? Let them see that their words can cut you, and you'll never be free of the mockery. If they want to give you a name, take it, make it your own. Then they can't hurt you with it anymore.
+There once was a giant house that was owned by a small mouse. Everywhere there were doors about the size of oars. And now it is owned by his spouse. 
+All right, look, my name is Sam Winchester. That's my brother Dean. We kill vampires. And werewolves, and demons and basically, we chase down evil and we cut its head off.
+What? A guy can't take three days off work and travel eight hundred miles on a bus holding a double-layer fudge cake just to say, "Hey, how are things?"
+Can I ask you a personal question? Just how long has it been since you swept the stuffed animals off of your bed, thrown your ankles up in the air and thanked whatever god you pray to that you didn't have on your granny panties?
+About a year ago, Jordan said she wanted to crash for a while. Now my office is a nursery, my closet is my office, my clothes are in the entertainment center and my TV is in the john... which I guess is kind of nice, I don't even know any more.
+I'm really not what you would call a winner. Oh sure, I'm a lawyer. But that's only because I took the bar exam in Alaska and they only have like four laws, and most of them are about when you can, and cannot, kill seals.
+Usually I can hide, but the only thing I'm hiding are my dried up tears and puffy eyes. No one can notice. It's just cause they don't care. They as in people who don't care about anyone but themselves.
+Take it from an old spectator. Life's not a spectator sport. If watchin' is all you're gonna do, then you're gonna watch your life go by without ya. Laverne.
+It was funny to hear her voice aloud. Her thoughts and perceptions usually existed so deep inside her, they rarely made it to the surface without a deliberate effort.
+Equanimity is the balance born from wisdom. What's the wisdom? Everything changes. All the time. When conditions come together for something to arise, it will arise. How we respond to it is where we find our power.
+You live in illusion and the appearance of things. There is a reality but you do not awaken to it. When you see it, you will realize you are nothing. Being nothing, you are everything. That is all.
+When all seems to have gone wrong, when you feel you have reached the point of no return, seek the refuge of your mind. Escape into your dreams, for later you will emerge a more confident and adventurous person.
+Hair gets lighter. Skin gets darker. Water gets warmer. Drinks get colder. Music gets louder. Nights get longer. Life gets better. Could there be a better time of year?
+The people like you, the good people, they always die. And the bad people do, too. But the weak people, the people like me... we have inherited the earth.
+Do not let temptation get the better of you. What tempts must not be sated, it is the strongest test of mind, indulgence will alter headings to hopeless depths. Do what makes the better of you.
+I begin tucking him into bed and he tells me, "Daddy check for monsters under my bed." I look underneath for his amusement and see him, another him, under the bed, staring back at me quivering and whispering, "Daddy there's a monster on my bed."
+The very word 'secrecy' is repugnant in a free and open society; and we are as a people inherently and historically opposed to secret societies, to secret oaths, and to secret proceedings.
+You're so afraid of losing the people that you love that you push them away. That's why you'll always be an orphan. You don't need some villain sweeping in to destroy your happiness. You do that quite well all on your own.
+But that monster is gone. And the man beneath him may be flawed, but we all are. And I love you for it. Sometimes the best book has the dustiest jacket. And sometimes the best teacup is chipped.
+Think what have I got for Ireland... Something which she has wanted these past 700 years, will anyone be satisfied with this bargain, will anyone? I tell you this, early this morning I have signed my death warrant.
+I weep for the liberty of my country when I see at this early day of its successful experiment that corruption has been imputed to many members of the House of Representatives, and the rights of the people have been bartered for promises of office.
+I was lost a long time ago; she was saving you. I'll do my best, but I strongly advise you to keep out of my way. You'll find it is a very small universe when I'm angry with you.
+We're put on this Earth to do a job, and each of us gets the time we get to do it. When this life is over, and you stand in front of the Lord, well, you try telling him it was all some Frenchman's joke.
+Some are mean with eyes of green, others are kind and enjoy spending time. They think they rule you and maybe they do. You feed them, you bathe them, and let them walk all over you, really you do. But they are cats and that is their way.
+Take criticism, smash it into dust, add color, and use it to paint breathtaking images of unicorns frolicking through endless fields of greatness.
+She is like a peacock - bland and uninteresting at first glance, but when she lets her true colors shine forth, there is no doubt of the beauty before your eyes.
+If you don't encounter obstacles in your path it may not be going anywhere and if your path isn't going anywhere your life may be in ruin and if your life is in ruin you have my condolences.
+Sometimes they do. And sometimes new fears replace them. But becoming fearless isn't the point. That's impossible. It's learning to control your fear, and how to be free from it, that's the point.
+It's the ship that made the Kessel Run in less than twelve parsecs. I've outrun Imperial starships, not the local bulk cruisers, mind you. I'm talking about the big Corellian ships now. She's fast enough for you, old man. What's the cargo?
+The moralist is the person who tells people that they ought to be unselfish, when they still feel like egos, and his efforts are always and invariably futile.
+The tongue has no bones, but it is still strong enough to break a heart. So be careful with your words. They are powerful. Mean what you say, and say what you mean.
+Life is not about waiting for the storm to pass. It's about learning to dance in the rain. Think about what you do before you do it and what you say before you say it.
+Remember, if you're not barefoot you're overdressed. If you're barefoot, you're free to run with the fairies, swim with the mermaids and fly with the dragons.
+If we'd never met I think I would have known my life wasn't complete. And I would have wandered the world in search of you, even if I didn't know what I was looking for.
+If you want to grow a giant redwood, you need to make sure the seeds are okay, nurture the sapling, and work out what might potentially stop it from growing all the way along. Anything that breaks it at any point stops that growth.
+My tip to improve your typing speed is to keep practicing. There is no substitution for practice. Also, learn not to think about the words you are typing. If you do so, then you get distracted and make mistakes.
+There were corpses here and there, and pools of blood on the pavement. I remember a white butterfly which went and came in the street. Summer does not abdicate.
+Moved by the god of song, I set out to commemorate the heroes of old who sailed the good ship Argo up the Straits into the Black Sea and between the Cyanean Rocks in quest of the Golden Fleece.
+The first law of reason is this: what exists, exists; what is, is; and from this irreducible bedrock principle, all knowledge is built. It is the foundation from which life is embraced.
+When we do not know a person - and also when we do - we have to judge his size by the size and nature of his achievements, as compared with the achievements of others in his special line of business - there is no other way.
+It's the life in your years. Throughout life people will make you mad, disrespect you, and treat you bad. Let God deal with the things they do, 'cause hate in your heart will consume you, too. If you live long enough, you'll make mistakes.
+Sometimes the road less traveled is less traveled for a reason. It's amazing that the amount of news that happens in the world every day always just exactly fits the newspaper.
+The judge smiled. Whether in my book or not, every man is tabernacled in every other and he in exchange and so on in an endless complexity of being and witness to the uttermost edge of the world.
+We can allow satellites, planets, suns, universe, nay whole systems of universes, to be governed by laws, but the smallest insect, we wish to be created at once by special act.
+Ignorance more frequently begets confidence than does knowledge: it is those who know little, and not those who know much, who so positively assert that this or that problem will never be solved by science.
+I am for doing good to the poor, but I differ in opinion about the means. I think the best way of doing good to the poor is not making them easy in poverty, but leading or driving them out of it.
+Always dream and shoot higher than you know you can do. Don't bother just to be better than your contemporaries or predecessors. Try to be better than yourself.
+Only a man who knows what it is like to be defeated can reach down to the bottom of his soul and come up with the extra ounce of power it takes to win when the match is even.
+When art critics get together, they talk about Form and Structure and Meaning. When artists get together, they talk about where you can buy cheap turpentine.
+Where are gone those older spirits in education who knew and taught boldly, that school is an apprenticeship, and a hard one, for a life harder yet? And that prayer is necessary not to escape burdens but for strength the better to carry them?
+Just because you said it doesn't mean anyone heard it, much less understood it, least of all how you intended it. Communication is more of a miracle than a given; nurture it.
+Dreams are better than my reality; however, I still want to face it. I will stumble in facing its challenges, for sure. But it will only make me stronger.
+Oh, get a job? Just get a job? Why don't I strap on my job helmet and squeeze down into a job cannon and fire off into Job Land, where jobs grow on little jobbies?!
+I know that guy that sent those emails is somewhere inside of you, but I can't wait for him... Because waiting for you is like waiting for rain in this drought. Useless and disappointing.
+A good fight should be like a small play, but played seriously. When the opponent expands, I contract. When he contracts, I expand. And when the opportunity presents itself, I do not hit. It hits all by itself.
+You want to see? It's a gift. It's your parting gift... in that it will part you. Part of you here, part of you there, and part of you way over there, staining the wall!
+I know guys with none of that worth ten of you. I've seen the footage. The only thing you really fight for is yourself. You're not the guy to make the sacrifice play, to lay down on a wire and let the other guy crawl over you.
+Perfect love is when a friend lays down his life for another. The best love is when you sacrifice everything you have to save others, even the friends you haven't met yet. That's true love.
+Concept: the stars fall in love with us. They trace constellations from our bodies and memorize our shapes. Every day, they look down at a world so far away, a world so charmingly fragile, a world they can never have. Every night, they dream of us.
+If you didn't learn something in a day then you have totally wasted your day. It could be as simple as what someone's name is, or what their birthday is, or as complicated as mapping the stars.
+My mother had always told her kids: If you're about to do something, and you want to know if it's a bad idea, imagine seeing it printed in the paper for all the world to see.
+It is a quality of honesty and strong moral principle. It means that doing the right thing even if no one is watching by following the moral code or work code. It is also doing the right thing even if the situation is difficult.
+It annoys me when people say that sunny days are when one should be the most happy. I don't understand that. They're hot and uncomfortable. The rainy days are when I'm happiest. I enjoy the stormy wetness and the dark clouds that obscure the sun.
+Nature's first green is gold, her hardest hue to hold. Her early leaf's a flower, but only so an hour. Then leaf subsides to leaf, so Eden sank to grief. So dawn goes down to day, nothing gold can stay.
+I find forgiveness overrated. There are times and places when it's appropriate. But not when the demand that you forgive is used to keep you in your place.
+Most people forget that you have to create relationships. The allure of the first years settles down, and at that moment, you better start creating it; otherwise, you're going to lose out.
+If you treat an individual as he is, he will remain how he is. But if you treat him as if he were what he ought to be and could be, he will become what he ought to be and could be.
+You have to decide what your highest priorities are and have the courage - pleasantly, smiling, non apologetically - to say NO to other things. And the way to do that is to have a bigger YES burning inside.
+Always listen to your heart; even though it's on the left side, it's always right. Follow your dreams and your dreams will come true. Have a little hope and all will come along.
+And now here is my secret, a very simple secret: it is only with the heart that one can see rightly; what is essential is invisible to the eye. The most beautiful things in the world cannot be seen or touched, they are felt with the heart.
+It happens that if a father has an ugly and clumsy child, love puts a blindfold over his eyes so that he'll see his defects as cleverness and charm, and he describes them to his friends as if they were subtleties and witticisms.
+A meaningful life is not being rich, being popular, being highly educated or being perfect. It is about being real, being humble, being able to share ourselves and touch the lives of others with our hearts.
+And even as the policemen's guns spit fire into the night I knew that was what Dally wanted... Dally Winston wanted to be dead and he always got what he wanted.
+I love spontaneous people. Their ideas are insane. They live a life, which many would not obtain. Their lively spirits never go unnoticed. If anything, they're conspicuous, and the way they live doesn't seem too bogus.
+The babysitting policy: Get the children asleep as soon as the parents leave. Then, kick back and relax on the couch, eating all the food and watching your favorite shows.
+If only I could make him understand. I just don't see things the way he does. I just don't see how a world that makes such wonderful things could be bad.
+What is the main problem of the actor? It is to keep the audience awake, and not let them go to sleep, then wake up and go home feeling they've wasted their money.
+Fairy tales say that apples were golden only to refresh the forgotten moment when we found that they were green. They make rivers run with wine only to make us remember, for one wild moment, that they run with water.
+The price of success is hard work, dedication to the job at hand, and the determination that whether we win or lose, we have applied the best of ourselves to the task at hand.
+The Force is what gives a Jedi his power. It's an energy field created by all living things. It surrounds us and penetrates us. It binds the galaxy together.
+It was a bitter night, so we drew on our ulsters and wrapped cravats about our throats. Outside, the stars were shining coldly in a cloudless sky, and the breath of the passers-by blew out into smoke like so many pistol shots.
+The obstacle in the path becomes the path. Never forget, within every obstacle is an opportunity to improve our condition. What blocked the path now is a path. What once impeded action advances action. The obstacle is the way.
+I worked for a carpenter one summer. Occasionally, I would cut a board too short, and he would say, "Get the wood stretcher." His joke, of course, was that wood doesn't stretch. But this isn't a joke. The truth doesn't stretch either.
+Happiness is like glass. It may be all around you, yet be invisible. But if you change your angle of viewing a little, then it will reflect light more beautifully than any other object around you.
+I'm really starting to wonder how Harry Potter spells and formal greetings in Dothraki or Klingon can help me improve my typing speed. Some of these quotes are beyond pointless.
+It was tempting to toss it into the fire, but someone would have to shoulder the blame for failing to deliver the message - and sometimes the first break in trust was the one that could never be fully repaired.
+Time to rise and shine. You deserve oats of the highest caliber. Won't you try my wheat? Come get some grains, friend. My barley is top of the shelf. I'm a man of my word.
+For me, I am driven by two main philosophies: know more today about the world than I knew yesterday and lessen the suffering of others. You'd be surprised how far that gets you.
+I am down in a circle of dark. I'm falling in a hole, and the end I cannot see. I am all alone, and in the end it's only me. Down in a circle of dark, blood is what I smell, black is what I see, and death is what I'm feeling coming over me.
+Books were this wonderful escape for me because I could open a book and disappear into it, and that was the only way out of that house when I was a kid.
+Embrace your differences and the qualities about you that you think are weird. Eventually, they're going to be the only things separating you from everyone else.
+Someone once said, "When asked to do something that you don't know how to do, say yes and learn how to do it later." Do not pass on opportunities because you are scared you don't know how to do them.
+Walk that walk and go forward all the time. Don't just talk that talk, walk it and go forward. Also, the walk didn't have to be long strides; baby steps counted too. Go forward.
+Writing a book is a horrible, exhausting struggle, like a long bout of some painful illness. One would never undertake such a thing if one were not driven on by some demon whom one can neither resist nor understand.
+My whole life I've been a fraud. I'm not exaggerating. Pretty much all I've ever done all the time is try to create a certain impression of me in other people. Mostly to be liked or admired.
+Just because beans are expensive does not mean the coffee will turn out well. Nothing will if you brew it without care. But the opposite is also true. Even cheap beans can be flavorful if you brew them with care to bring out their unique qualities.
+If you are a leader, you should never forget that everyone needs encouragement. And everyone who receives it - young or old, successful or less-than-successful, unknown or famous - is changed by it.
+The trouble with music appreciation in general is that people are taught to have too much respect for music; they should be taught to love it instead.
+Just remember that every moment, every situation, provides a new choice. And in doing so, it gives you a perfect opportunity to do things differently to produce more positive results.
+Proactive people focus their efforts on their Circle of Influence. They work on the things they can do something about: health, children, problems at work.
+Life is like a tape. Live each day like it's your last because you never know when the tape ends. Live life safe and smart. Don't ever give up. And make sure you let your dreams become reality.
+I have bought this wonderful machine - a computer. Now I am rather an authority on gods, so I identified the machine. It seems to me to be an Old Testament god with a lot of rules and no mercy.
+What is the best thing to do when you're bored and you have nothing better to do? You can always go here and feel great for typing so many words! Do it.
+You never know when you have something good until it's lost. You never know when you have something bad until it kills. So always make sure to open your eyes and focus on what is really good and bad.
+I am determined to be cheerful and happy in whatever situation I may find myself. For I have learned that the greater part of our misery or unhappiness is determined not by our circumstance but by our disposition.
+"Insanity is doing the same thing, over and over again, but expecting different results." This quote may have been coined by a drunk practicing their typing.
+To spend time is to pass it in a specified manner. To waste time is to expend it thoughtlessly or carelessly. We all have time to either spend or waste and it is our decision what to do with it. But once passed, it is gone forever.
+When one has reached maturity in the art, one will have a formless form. It is like ice dissolving in water. When one has no form, one can be all forms; when one has no style, he can fit in with any style.
+The world is full of people who are determined to be somebody or to give trouble. They want to get ahead, to stand out. Such ambition has no use for a kung fu man, who rejects all forms of self-assertiveness and competition.
+Where there is love there is life, but when there is life there may be no love. It all depends on you and your personal character. Do not let anyone judge you for that. Just remember deep inside there is always some love waiting to come through.
+Power in defense of freedom is greater than power in behalf of tyranny and oppression, because power, real power, comes from our conviction which produces action, uncompromising action.
+Nothing can be more absurd than the practice that prevails in our country of men and women not following the same pursuits with all their strengths and with one mind, for thus, the state instead of being whole is reduced to half.
+Every heart sings a song, incomplete, until another heart whispers back. Those who wish to sing always find a song. At the touch of a lover, everyone becomes a poet.
+Light can wash away darkness, sadness, shadows, and tears. It brings life and new beginnings in its arms, it stops bad dreams and starts everything. Light is life.
+Family isn't always blood. It's the people in your life who want YOU in theirs; the ones who accept you for who you are. The ones who would do anything to see you smile and who love you no matter what.
+There are so many things that demand to be said. Where did you go? Do you ever think about me? You've ruined me. Are you okay? But of course, I can't say any of that.
+Life is hard, but life is also amazing. It's full of opportunities. You just have to go out there and look for them. Remember, what you look for, you will find.
+Don't let the agony, regret, or fog of yesterday blind you to the fact that each new day carries with it a plethora of opportunities to move your life into the right direction.
+All the power is within you, you can do anything and everything. Believe in that. Don't believe that you are weak. Stand up and express the divinity within you.
+People can do great things. However, there are some things they just CAN'T do. I, for instance, have not been able to transform myself into a Popsicle, despite years of effort.
+I try to avoid having thoughts. They lead to other thoughts, and - if you're not careful - those lead to actions. Actions make you tired. I have this on rather good authority from someone who once read it in a book.
+Chemistry begins in the stars. The stars are the source of the chemical elements, which are the building blocks of matter and the core of our subject.
+Politics is war without bloodshed, while war is politics with bloodshed. War can only be abolished through war, and in order to get rid of the gun, it is necessary to take up the gun. Political power grows out of the barrel of a gun.
+Childhood is not from birth to a certain age and at a certain age the child is grown, and puts away childish things. Childhood is the kingdom where nobody dies.
+This is a saying which is often said about loneliness. Walking alone is not difficult but when we have walked a mile with someone then coming back is difficult.
+The more you try to fit in, the more you'll start to stick out. You shouldn't worry about what you look like. You are you. Don't let what other people say pull you down to their level of insecurity.
+Sometimes I feel lonely. Sometimes I feel empty inside. That is what I feel. If you feel like that, do you think that it feels good? What I would say is no because you are hurt inside.
+The whole of life is just like watching a film. Only it's as though you always get in ten minutes after the big picture has started, and no-one will tell you the plot, so you have to work it out all yourself from the clues.
+These violent delights have violent ends and in their triumph die, like fire and powder, which, as they kiss, consume. The sweetest honey is loathsome in his own deliciousness and in the taste confounds the appetite.
+If you don't believe in free speech for those who you disagree with the most, you don't believe in it at all. Because then what you're saying is, "You are free to say the things that I approve of you saying."
+You shouldn't compare yourself to the best. All that we can hope to achieve is self actualization, not someone else's. I believe that a life spent working towards our own full potential is a life well spent.
+Why don't you stay here and build a new world with us? You of all people can do that, I know. There will always be hope, wherever you are, until you yourself abandon it. Never forget that!
+The bird, the pin, the song, the berries, the watch, the cracker, the dress that burst into flames. I am the Mockingjay. The one that survived despite the Capitol's plans. The symbol of the rebellion.
+I hope you will go out and let stories, that is life, happen to you, and that you will work with these stories... water them with your blood and tears and your laughter till they bloom, till you yourself burst into bloom.
+I learned about the sacred art of self decoration with the monarch butterflies perched atop my head, lightning bugs as my night jewelry, and emerald-green frogs as bracelets.
+It is important for me to share my experiences in order to create strength and hope for others. No matter how far down you go, it is never too late to come back.
+I can't think of anything more rewarding than being able to express yourself to others through painting. Exercising the imagination, experimenting with talents, being creative; these things, to me, are truly the windows to your soul.
+Of all that is good, sublimity is supreme. Succeeding is the coming together of all that is beautiful. Furtherance is the agreement of all that is just. Perseverance is the foundation of all actions.
+Captain, how soon can you land? I can't tell. You can tell me - I'm a doctor. No - I mean I'm just not sure. Well, can't you take a guess? Well, not for another two hours. You can't take a guess for another two hours?
+It sounds like a cliche, but I also learned that you're not going to fall for the right person until you really love yourself and feel good about how you are.
+Beware of the tricky chameleon, who has lost his true color. The tricky chameleon who has changed so many times, he knows not of his origin. The tricky chameleon who tells lies, but only because he cannot tell the truth.
+You must once and for all give up being worried about successes and failures. Don't let that concern you. It's your duty to go on working steadily day by day, quite quietly, to be prepared for mistakes, which are inevitable, and for failures.
+My parents taught me to side with justice. I came from another planet with powers and abilities far beyond those of other men. I'm known as a hero, an inspiration, a champion. It's been a good life.
+Peace is a lie, there is only passion. Through passion I gain strength. Through strength I gain power. Through power I gain victory. The force shall free me.
+Is magic real, or do we just wish it to be real? It is the question of believing without seeing. Those who can accept the world and others' beliefs for what they are can accept that magic is real, for the only real magic is believing and accepting.
+She's talking to angels, counting the stars, making a wish on a passing car. She's dancing with strangers, she's falling apart, waiting for Superman to pick her up.
+What I am trying to do is to break all the boundaries created by any kind of music. Music is the way of life. When there is music, there is life. You can't run away from music. Music is the hope of life for those who have lost faith in themselves.
+Matter and antimatter exist as a whole to form existence. We exist, not for subjective limitations or opinions; but to state our existence. Look beyond.
+Still, there are times I am bewildered by each mile I have traveled, each meal I have eaten, each person I have known, each room in which I have slept. As ordinary as it all appears, there are times when it is beyond my imagination.
+Oh, the speed of communications is wondrous to behold. It is also true that speed can multiply the distribution of information that we know to be untrue.
+Here's a bumper sticker I'd like to see: "We are the proud parents of a child whose self-esteem is sufficient enough that he doesn't need us promoting his minor scholastic achievements on the back of our car."
+People don't read anymore. It's a sad state of affairs. Reading is the only thing that allows you to use your imagination. When you watch films, it's someone else's vision, isn't it?
+I don't do regrets. Regrets are pointless. It's too late for regrets. You've already done it, haven't you? You've lived your life. No point wishing you could change it.
+As you go through life's rich tapestry, you realize that most people you meet aren't fit to shine your shoes. It's a sad fact, but it's true. A good friend is someone who'd hide you if you were on the run for murder. How many of them do you know?
+It makes me uncomfortable to talk about meanings and things. It's better not to know so much about what things mean. Because the meaning, it's a very personal thing, and the meaning for me is different than the meaning for somebody else.
+It is by will alone I set my mind in motion. It is by the juice of Sapho that thoughts acquire speed, the lips acquire stains, stains become a warning. It is by will alone I set my mind in motion.
+Just because something is legal doesn't mean it's right, and on the other hand, just because something is illegal doesn't mean it's wrong. The law isn't always right you know.
+I believe in being strong when everything seems to be going wrong. I believe that happy girls are the prettiest girls. I believe that tomorrow is another day and I believe in miracles.
+I have been able to tap into all the negative things that can happen to me throughout my life by numbing myself to the pain so to speak and kind of being able to vent it through my music.
+I submitted hundreds of bug reports. I told that idiot this would happen. Overlapping scripts. More than one AI was bound to be spawned into an environment at some point. Turns out I missed the point. That little error changed everything.
+I've always felt that the quality of the voice is where the real content of a song lies. Words only suggest an experience, but the voice is that experience.
+There comes a time when we have to let go of certain things and people and move on because the reason we hadn't moved on was because we were being held down.
+We abuse land because we see it as a commodity belonging to us. When we see land as a community to which we belong, we may begin to use it with love and respect.
+You must see with eyes unclouded by hate. See the good in that which is evil, and the evil in that which is good. Pledge yourself to neither side, but vow instead to preserve the balance that exists between the two.
+Design can never be an ultimate explanation for anything. It can only be a proximate explanation. A plane or a car is explained by a designer but that's because the designer himself, the engineer, is explained by natural selection.
+The last monologue I did for her was a quiet one. There was no yelling, no grand physical gestures; only pure emotion and restrained intensity, which was so much more difficult to do than any of the other tricks I'd employed up until that moment. 
+Well, we all make mistakes, dear, so just put it behind you. We should regret our mistakes and learn from them, but never carry them forward into the future with us.
+Within a few years Macondo was a village that was more orderly and hard working than any known until then by its three hundred inhabitants. It was a truly happy village where no one was over thirty years of age and where no one had died.
+Once you fall in love with someone, you start wanting to know a lot of things about that person. And once you fall in love with this person you love them through thick and thin. You will look at that person like they're the best thing in your world.
+You're waiting for a train. A train that'll take you far away. You know where you hope this train will take you, but you can't know for sure. Yet it doesn't matter. Now tell me why!
+There's a time and point in your life where you have to figure out what you believe in and you have to stand up for that and move forward. And if you don't then you are just going to be a follower.
+The future of humanity is going to bifurcate in two directions: either it's going to become multi-planetary, or it's going to remain confined to one planet and eventually there's going to be an extinction event.
+Puff the Magic Dragon lived by the sea, and frolicked in the autumn mist in a land called Honah Lee. Little Jacky Paper loved that rascal Puff, and gave him strings, and sealing wax, and other fancy stuff.
+And mostly all I have to say about these songs is that I love them, and want to sing along to them, and force other people to listen to them, and get cross when these other people don't like them as much as I do.
+We see colours all the time, but never question it. We merely stare and admire its beauty. We don't realize that the colours we see are not its true colour. We all see everything differently. All things, colours, people, and animals are all unique.
+An asteroid or a super volcano could certainly destroy us, but we also face risks the dinosaurs never saw: An engineered virus, nuclear war, inadvertent creation of a micro black hole, or some as-yet-unknown technology could spell the end of us.
+The effort to understand the universe is one of the very few things that lifts human life a little above the level of farce, and gives it some of the grace of tragedy.
+We take Gotham from the corrupt! The rich! The oppressors of generations who have kept you down with myths of opportunity, and we give it back to you... the people. Gotham is yours. None shall interfere. Do as you please.
+There's always moments where you creep yourself out, and you think you heard something and you convince yourself that some spirit is in the room with you, but truly. I don't believe in any of that kind of thing. A lot of my friends really do.
+Use power to help people. For we are given power not to advance our own purposes nor to make a great show in the world, nor a name. There is but one just use of power and it is to serve people.
+If people refuse to look at you in a new light and they can only see you for what you were, only see you for the mistakes you've made, if they don't realize that you are not your mistakes, then they have to go.
+In the 1940's, his ego was bullet proof. Nothing could touch him. He walked on water. Now it seems he bends over backwards, just trying to be good enough for Arthur...
+When you're younger, you feel like work is work and relationships are supposed to be easy. As you get older, you realize you have to work at relationships to make them sustainable.
+I always think part of success is being able to replicate results, taking what is interesting or viable about yourself as a professional person and seeing if you bring it into different situations with similar results.
+Just give me all the bacon and eggs you have. Wait... wait. I worry what you just heard was: Give me a lot of bacon and eggs. What I said was: Give me all the bacon and eggs you have. Do you understand?
+There is nothing more lonely than an action taken quietly on your own, and nothing more comforting than doing that same quiet action in parallel with fellow humans doing the same action, everyone alone next to each other.
+Everyone who is seriously involved in the pursuit of science becomes convinced that some spirit is manifest in the laws of the universe, one that is vastly superior to that of man.
+He's an importer, he sells to your competition. I put him out of business and it's a win for both of us. AND, if you don't do what I want, I will rain Hell down upon you until one of us is dead and I'm really, really good at raining down Hell.
+When I say I love you, please believe it's true. When I say forever, know I'll never leave you. When I say goodbye, promise me you won't cry. Cause the day I'll be saying that will be the day I die.
+There is a child in every person who comes out in front of the ones they are comfortable with. That child is willing to come out at every moment in their life, but it's up to the person how they handle this child.
+The figures of these men and women straggled past the flower-bed with a curiously irregular movement not unlike that of the white and blue butterflies who crossed the turf in zig-zag flights from bed to bed.
+You want to know how two chemicals interact, do you ask them? No, they're going to lie through their lying little chemical teeth. Throw them in a beaker and apply heat.
+Take heed. Never bow out of what you begin. So long as you carry the blood royal, so long as you carry my name... carry your head high. Walk tall, my son.
+Everything lately feels like those instances when you remember a dream a few days after you had it, but then you can't remember if it was a dream or if it actually happened. I keep going over that night in my head...
+I'm trying to raise the awareness of the troops that, when they deploy and go to war, it's not just them at war - it's also their family. Their family is having to go through all the hardships and the stresses.
+Any kind of life can go wrong, sicken, or suffer. Lives get old, decay, and finally die. Disliking that fact just because it hurts isn't any different than disliking life itself. 
+I enjoy punk, the attitude as well as the music, but I don't feel like I have to be a carbon copy of it and invite all this controversy just to be punk rock.
+Some call our realm a world of shadows, but that makes it sound so unpleasant. The Twilight there holds a serene beauty. You have seen it yourself as the sun sets on this world.
+You're not perfect, sport. And let me save you the suspense. This girl you met, she isn't perfect either. But the question is whether or not you're perfect for each other. That's the whole deal - that's what intimacy is about.
+When you kill a man, you steal a life. You steal his wife's right to a husband, rob his children of a father. When you tell a lie, you steal someone's right to the truth. When you cheat, you steal the right to fairness.
+It's important in life to conclude things properly. Only then can you let go. Otherwise, you are left with words you should have said but never did, and your heart is heavy with remorse.
+Goldens are exuberant, obedient, tough, and willing to please. They are among the most accomplished obedience competitors. They especially enjoy swimming and retrieving.
+We don't have time to waste asking for the things we don't have, we can only look for the best way to fight with the things we do have. When a man bleeds freely for the sake of other people, it's only proper to pretend that you never saw it.
+The single story creates stereotypes, and the problem with stereotypes is not that they are untrue, but that they are incomplete. They make one story become the only story.
+The physical chemists never use their eyes and are most lamentably lacking in chemical culture. It is essential to cast out from our midst, root and branch, this physical element and return to our laboratories.
+I don't know what your destiny will be, but one thing I know: the only ones among you who will be really happy are those who will have sought and found how to serve.
+The very existence of flame-throwers proves that some time, somewhere, someone said to themselves, "You know, I want to set those people over there on fire, but I'm just not close enough to get the job done."
+If you can learn a simple trick, Scout, you'll get along a lot better with all kinds of folks. You never really understand a person until you consider things from his point of view - until you climb into his skin and walk around in it.
+The world is tough, I know. Grim as it may be, keep your head up and your focus steady. Everything will work out all right. If it's not all right, it's not the end.
+The devil is real and he isn't a little red man with horns and a tail. He can be beautiful because he's a fallen angel and he used to be God's favorite.
+You will find as you look back upon your life that the moments when you have truly lived are the moments when you have done things in the spirit of love.
+The light which puts out our eyes is darkness to us. Only that day dawns to which we are awake. There is more day to dawn. The sun is but a morning star.
+I've been coming here every summer of my adult life, and every summer there she is oiling and lotioning, lotioning and oiling... smiling. I can't take this no more!
+I think we have a choice. I think we could take a tough, but survivable amount of pain now, or stay together and deal with unbearable pain later. So I vote for the pain now.
+When we lay the soil of our hard lives open to the rain of grace and let joy penetrate our cracked and dry places, let joy soak into our broken skin and deep crevices, life grows. How can this not be the best thing for the world? For us?
+Don't let today be another typical day. We should try to do at least one thing we've never done every single day. Imagine how many experiences that would be in a lifetime.
+We're expected to think of our future in this rational way: to add up the pros and cons and then make a decision. That leads you down the road of "Stick with what you're good at," a road with little risk, but little reward.
+There are no morals about technology at all. Technology expands our ways of thinking about things, expands our ways of doing things. If we're bad people we use technology for bad purposes and if we're good people we use it for good purposes.
+You can be the most beautiful person in the world and everybody sees light and rainbows when they look at you, but if you yourself don't know it, all of that doesn't even matter.
+We all fear death and question our place in the universe. The artist's job is not to succumb to despair, but to find an antidote for the emptiness of the existence.
+You're absolutely right. I can't do anything alone. Everyone has their flaws and imperfections, but that's what drives us to work together... To make up for those flaws. Together, we make the perfect main character.
+Tension here is very high, Chris - the stretched twig of peace is at its melting point. People here are literally bursting with war. This is very much a country that's going to blow up in its face.
+If you're not stubborn, you'll give up on experiments too soon. And if you're not flexible, you'll pound your head against the wall and you won't see a different solution to a problem you're trying to solve.
+So, my little Amelie, you don't have bones of glass. You can take life's knocks. If you let this chance pass, eventually, your heart will become as dry and brittle as my skeleton. So, go get him, for Pete's sake!
+I wasn't begging for my life. I was offering you yours. You are your father's son. So determined, you didn't even notice I stopped the IV. But don't worry, you might actually do some good before you die. Starting with that list.
+Tomorrow is the most important thing in life. Comes into us at midnight very clean. It's perfect when it arrives and it puts itself in our hands. It hopes we've learned something from yesterday.
+Winning and losing is a part of life. When you win, don't become arrogant; it can be the downfall of your life. When you lose, don't give up or feel like you've failed; because you will have opportunities. This is the wonder of life!
+I'm Rick Harrison, and THIS is my pawn shop. I work here with my old man and my son, Big Hoss. Everything here has a story and a price. If there is one thing I've learned after 21 years, it's that you never know what's gonna come through that door.
+It ain't about how hard you hit. It's about how hard you can get hit and keep moving forward. How much you can take and keep moving forward. That's how winning is done.
+Tall and straight I may appear, but I will always be Ada inside. A crooked little person trying to tell the truth. The power is in the balance: we are our injuries, as much as we are our successes.
+He who fights with monsters might take care lest he himself thereby become a monster... and when you gaze long into an abyss, the abyss also gazes into you.
+When one door closes, another opens, but sometimes we look so long and regretfully at the closed door that we do not see the one that has opened for us.
+I had it all wrong. Before I found you, I thought the only way to hold on was to find something to live for. It isn't. To hold on, you have to find something you're willing to die for.
+Wait a minute, that's not the roof of my mouth. That's the ceiling of my mouth. The roof of my mouth is way up here. Whoever named this was not using the attic of their mouth at all.
+Once possessed, you will give in to temptation. You won't even object to crossing boundaries that should never be crossed. And what awaits you there... is the pleasure of living hell.
+Have you ever been so immersed in a book, so deep in reading that you could no longer see the words on the page, but actually watch the events unfold right before your eyes?
+"I do not agree with what you have to say, but I will defend to the death your right to say it." This quote from Voltaire is essential to a free and open society.
+If you hear a song that makes you sad and you don't want to cry anymore, you don't listen to that song anymore. But you can't get away from yourself. You can't decide to turn off the noise in your head.
+Do not hate those who believe they are superior to everyone around them, instead, ignore the youthful exuberance they display and be patient, for it won't be long until someone wiser can diminish their narcissistic ego.
+I bet your parents taught you that you mean something, that you're here for a reason. My parents taught me a different lesson, dying in the gutter for no reason at all. They taught me the world only makes sense if you force it to.
+Love is an awesome thing. Like fireflies in the summer, cream cheese and salmon on a plain bagel, or remembering all the words to a song you used to love.
+He's the hero Gotham deserves, but not the one it needs right now. So we'll hunt him. Because he can take it. Because he's not our hero. He's a silent guardian. A watchful protector.
+Government is not reason, it is not eloquence, it is force; like fire, a troublesome servant and a fearful master. Never for a moment should it be left to irresponsible action.
+The best thing, though, in that museum was that everything always stayed right where it was. Nobody'd move. Nobody'd be different. The only thing that would be different would be you.
+I was at the breakfast table this morning and I read in the newspaper that more and more adults are living at home with their parents. That surprised me, so I asked my mom if she read this ridiculous headline.
+Good luck with typing. Just stay calm and only think about the next word you have to type. Try to slow down and focus on accuracy rather than speed, you'll find that you can actually type faster if you do that.
+Your problem is you spent your whole life thinking there are rules. There aren't. We used to be gorillas. All we had is what we could take and defend. The truth is, you're more of a man today than you were yesterday.
+Our dear friend is banished to Earth! Loki sits on the throne of Asgard as our king, and all you have done is eat two boars, six pheasants, a side of beef, and drink two barrels of ale!
+Many people could say things in a cutting way, Nanny knew. But Granny Weatherwax could listen in a cutting way. She could make something sound stupid just by hearing it.
+I was bullied every second of every day in elementary and middle school. Obviously, people are going to bring you down because of your drive. But, ultimately, it makes you a stronger person to turn the other cheek and go the other way.
+Pain tends to heal as time passes, but personally I don't want time to heal my wounds. You may think you can escape the pain and forget it, but that's nothing more than stagnation. You can't move forward without the pain.
+Guess what? All of us can't be true alphas. Some of us have to make mistakes. Some of us have to get our hands a little bloody sometimes. Some of us are human!
+I do not like them in a house. I do not like them with a mouse. I do not like them here or there. I do not like them anywhere. I do not like green eggs and ham. I do not like them Sam-I-am.
+What's amazing is, if young people understood how doing well in school makes the rest of their life so much more interesting, they would be more motivated. It's so far away in time that they can't appreciate what it means for their whole life.
+I imagine you come across a number of people who are disconcerted by the difference between what you do feel and what they fancy you ought to feel. It is fatal to pay the smallest attention to them.
+Those who cannot conceive of Friendship as a substantive love but only as a disguise or elaboration of Eros betray the fact that they have never had a Friend.
+Trust is a difficult thing, whether it's finding the right people to trust or trusting the right people to do the wrong thing. But trusting your heart is the riskiest thing of all. In the end, the only person we can truly trust is our self.
+Everyone must learn that trust is something that should go both ways in a relationship. If there is lopsided trust, love will fade, you will grow apart, and then one day, there will be no relationship.
+A wise man once told me, "Family don't end in blood." But it doesn't start there either. Family cares about you, not what you can do for them. Family is there, for the good, bad, all of it. They got your back, even when it hurts. That's family.
+One epitaph is sufficiently comprehensive for most persons: Here lies a mortal. In that word is comprised a brief space of trivial joys, and trivial sorrows. The rest is a phantom.
+Capitalism tries for a delicate balance: it attempts to work things out so that everyone gets just enough stuff to keep them from getting violent and trying to take other people's stuff.
+You can't be a real country unless you have a beer and an airline - it helps if you have some kind of football team, or some nuclear weapons, but in the very least you need a beer.
+It is not man who is the enemy of the human species. It is the irrational; it is the spiritual when it is divorced from the material; from the lesson in one beating heart or one bleeding vein.
+I received the fundamentals of my education in school, but that was not enough. My real education, the superstructure, the details, the true architecture, I got out of the public library.
+In the world of sports, quickness doesn't necessarily mean having the fastest time. It could also mean the acceleration from zero to maximum speed or the deceleration from maximum speed to zero. This is known as agility.
+All I know is what the words know, and dead things, and that makes a handsome little sum, with a beginning and a middle and an end, as in the well-built phrase and the long sonata of the dead.
+Peace is the beauty of life. It is sunshine. It is the smile of a child, the love of a mother, the joy of a father, the togetherness of a family. It is the advancement of man, the victory of a just cause, the triumph of truth.
+Ah, great it is to believe the dream as we stand in youth by the starry stream; but a greater thing is to fight life through and say at the end, the dream is true!
+I miss my mother, and it's hard not having her here with me. Enjoy life, live and love because you never know when you will lose someone or they will lose you.
+Each of us is all the sums he has not counted: subtract us into nakedness and night again, and you shall see begin in Crete four thousand years ago the love that ended yesterday in Texas.
+"My dear fellow," said Sherlock Holmes as we sat on either side of the fire in his lodgings at Baker Street, "life is infinitely stranger than anything which the mind of man could invent."
+When I picture happiness, I picture a quaint little cabin by the lake. Snow capped mountains rising up in the distance, as horses run wild. The picture in my head, I want in reality. My happiness, my dream.
+Nobody is gonna hit you as hard as life, but it ain't how hard you can hit. It's how hard you can get hit and keep moving forward. It's how much you can take, and keep moving forward. That's how winning is done.
+In a fantasy realm of magic and adventure, battle gods, slay dragons, and defeat mythical creatures as you advance through story-driven quests, master skills and make new friends.
+Some men get the world, some men get ex-hookers and a trip to Arizona. You're in with the former, but my God I don't envy the blood on your conscience.
+Unfortunately, visiting Albus Dumbledore was a bit like attending the Mad Hatter's tea party - the only thing you were ever sure of was that tea would be involved in it somewhere.
+An artist's job is to make order out of chaos. You collect details, look for a pattern, and organize. You make sense out of senseless facts. You puzzle together bits of everything. You shuffle and reorganize. Collage. Montage. Assemble.
+I'm glad there's you to smile at me and brighten up my day, to share my thoughts and understand the things I do and say. I'm glad there's you to laugh with me, at ordinary things, to show me what is special in everything life brings.
+I love books. I love that moment when you open one and sink into it. You can escape from the world, into a story that's way more interesting than yours will ever be.
+What good is treasure if I'm alone? After sharing so much of our dreams instead of sacrificing them and leaving with you, I would rather have nothing at all!
+Why was he laughing? Did he know that he would survive? No. That's impossible. He realized that he would end his life here. He admitted the truth that he would die and laughed. Have you ever seen a pirate laughing on the execution stand?
+That's like the way of talking of that funny nose. His crime is... something that should never be done on a pirate ship, the murder of a friend. He broke the iron rule.
+NAVY SEALs have a saying that applies equally well to warfare as it does to typing: Slow is smooth, smooth is fast. Use this thinking to improve your speed.
+The NAVY SEALs have a saying that applies equally to shooting as it does to typing: Slow is smooth, smooth is fast, fast is lethal. Keep this in mind.
+It was never about surrendering life. It's simply not worth it. So do never ever surrender something you can't live without. Family, friends and especially yourself.
+Tell me what you feel in your solitary room when the full moon is shining in upon you and your lamp is dying out, and I will tell you how old you are, and I shall know if you are happy.
+I am not capable of true friendship. One of the two friends is always the slave of the other, although, often, neither of the two admits this to himself.
+"It seemed to me," said Wonko the Sane, "that any civilization that had so far lost its head as to need to include a set of detailed instructions for use in a packet of toothpicks, was no longer a civilization in which I could live and stay sane."
+Beauty is the only thing that time cannot harm. Philosophies fall away like sand, creeds follow one another, but what is beautiful is a joy for all seasons, a possession for all eternity.
+Wishing will not bring riches. But desiring riches with a state of mind that becomes an obsession, then planning definite ways and means to acquire riches, and backing those plans with persistence which does not recognize failure, will bring riches.
+What goes up must come down. What can go wrong will go wrong. So prepare for the worst and pray for the best outcome. Everyone is susceptible to harm.
+Everyone has ups and downs in their lives. Don't keep mourning about the bad things, but rejoice in the delightful things that you might not notice every day!
+There was a time above, a time before. There were perfect things, diamond absolutes. But things fall, things on Earth. And what falls... is fallen. In the dream, they took me to the light. A beautiful lie.
+How do I love thee? Let me count the ways. I love thee to the length and breadth and height my soul can reach, when feeling out of sight, for the ends of being and ideal grace.
+Heroes aren't always the ones who win. They're the ones who lose, sometimes. But they keep fighting, they keep coming back, they don't give up. That's what makes them heroes.
+I hate this town. It's too filled with memories I'd rather forget. I go to school every day, hang out with my friends, and go home when I'd rather not. Living like this, I wonder if anything will ever change. Will that day ever come?
+Jamie saved my life. She taught me everything. About life, hope, and the long journey ahead. I'll always miss her. But our love is like the wind. I can't see it, but I can feel it.
+The past is important for all the information and wisdom it holds. But you can get lost in it. You've got to learn to keep the knowledge of the past with you as you pursue the present.
+This seems like a good time for a drink, and a cold calculated speech with sinister overtones. A speech about politics, about order, brotherhood, power! But speeches are for campaigning... now is the time for action!
+Unless one is wealthy there is no use in being a charming fellow. Romance is the privilege of the rich, not the profession of the unemployed. The poor shall be practical and prosaic. It is better to have a permanent income than to be fascinating.
+Every woman that finally figured out her worth, has picked up her suitcases of pride and boarded a flight to freedom, which landed in the valley of change.
+Doctor, I'm taking your sister under my protection here. If anything happens to her, anything at all, I swear to you I will get very choked up. Honestly, there could be tears.
+Baseball has been the national pastime in the United States since the middle of the 1800s. Each period has had a unique flavor, and it is sometimes useful to read about a period from the perspective of the time in which it took place.
+You start a conversation you can't even finish it. You're talking a lot, but you're not saying anything. When I have nothing to say, my lips are sealed. Say something once, why say it again?
+They've been exposed to the outside world, up close and personal. They've had that fear planted in them. And they've endured it. Overcome it. Each has grown from that experience... and forgotten how to hesitate.
+When I testified before Congress after the Hudson River landing, Congressman James Oberstar of Minnesota said, "Safety begins in the boardroom." That's as true in medicine as it is in aviation. It always boils down to leadership.
+Creating lines that went straight into the interior of a space station was a recipe for disaster. Some knucklehead in an X-wing was bound to come along and drop an energy torpedo into your main power plant, and everyone knows how that ends.
+Every moment I spent with you... shined. Because the weather was good, because the weather was bad and because the weather was good enough. I loved every moment of it.
+How did it get late so soon? It's night before it's afternoon. December's here before it's June. My goodness how the time has flown. How did it get so late so soon?
+I am not one of those indifferent mortals who either never form opinions or never let them be known. To speak your mind is to not be ashamed of your opinion.
+Please, kids, stop fighting. Maybe Lisa's right about America being the land of opportunity, and maybe Adil's got a point about the machinery of capitalism being oiled with the blood of the workers.
+They had come to a time when no one dared speak his mind, when fierce, growling dogs roamed everywhere, and when you had to watch your comrades torn to pieces after confessing to shocking crimes.
+Remember that misuse of language can lead to miscommunication, and that miscommunication leads to everything that has ever happened in the whole of the world.
+There were these huge bins of clothes and everybody was rifling through them like crazy. And I grabbed one and it fit! So I don't think that this is totally just a woman's suit. At the very least it's bisexual.
+Guess what? I have flaws. What are they? Oh, I dunno. I sing in the shower. Sometimes I spend too much time volunteering. Occasionally I'll hit somebody with my car. So sue me - no, don't sue me. That is opposite the point I'm trying to make.
+An outward manifestation of present contractual intent which is definite in terms and which is communicated in such a way as to create in the offeree a reasonable expectation that the offeror is willing to enter into a contract.
+But life doesn't often spell things out for you or give you what you want exactly when you want it, otherwise, it wouldn't be called life, it would be called vending machine.
+I may not be able to draw a physical picture in your hand, but I can, however, draw a mental picture in your mind. Pictures aren't limited to what the eye can see, they also include what the eye can't see.
+The most difficult thing is the decision to act, the rest is merely tenacity. The fears are paper tigers. You can do anything you decide to do. You can act to change and control your life; and the procedure, the process is its own reward.
+That day, on a Thursday, in the morning, with tears in her eyes, she pushed the needle through the cloth. The lipstick stain on his shirt pushed another one through her heart.
+You must not let anyone define your limits because of where you come from. Your only limit is your soul. What I say is true - anyone can cook... but only the fearless can be great.
+I don't just listen to your words. I listen to your use of words, your tone, your body movements, your eyes, your subtle facial expressions. I interpret your silences - I can hear everything you don't say in words.
+Don't you ever get the feeling that all your life is going by and you're not taking advantage of it? Do you realize you've lived nearly half the time you have to live already?
+One of the goals of object-oriented design is to make software more maintainable, which means that you can keep the program working when other parts of the system change, and modify the program to meet new requirements.
+You are the average of the five people with whom you spend most of your time with. Make sure that you choose those five people really carefully and smartly.
+What we call 'death', is but the painful metamorphosis. Our present incarnation is progressive, preparatory, temporary. Our future is perfected, ultimate, immortal. The ultimate life is the full design.
+I thought you were gone forever, I thought you'd walked away from everything, because I failed, because I destroyed the only thing that ever mattered to me. I waited for you to come, but you didn't.
+I certainly love a boogie and once the music starts I'm usually one of the first out there on the dance floor. Although I haven't had any formal dance training and something tells me I'm really going to notice the difference.
+I know you hate typing punctuation, so let me save you the hassle of typing needless and needless amounts of periods and commas and others that no one cares about. Let us just hope that this quote gets approved.
+I care to live only to entice people to look at Nature's loveliness. Heaven knows that John the Baptist was not more eager to get all his fellow sinners into the Jordan than I to baptize all of mine in the beauty of God's mountains.
+It is difficult to realize the true way just through sword-fencing. Know the smallest things and the biggest things, the shallowest things and the deepest things.
+And to death, he loved her; all her faults and her fractures. He loved every inch of all her imperfections; her scars and her burns, her etched skin of past horrors.
+Officially, we are required to contact, welcome and log in any and all sentient races or multibeings in this quadrant of the Universe, without prejudice, fear or favor. Unofficially, I advise that we erase the records and forget the whole thing.
+Long ago, the world enjoyed a time of unrivaled peace and prosperity. That peace would come to an end as a shroud of darkness fell upon the land. No one knew where this shadow came from or what it would mean for those who inhabited the realm.
+Cities and towns perished from the relentless attacks and all was thought to be lost. The world's only hope resided in a mere legend; whispers of a name that brought hope to each person.
+This valiant warrior would gather together the mightiest Heroes that were willing to stand against the Titans. The campaign against these monsters lasted months and the whispers of these heroes' deeds grew louder.
+If you try hard but are still unable to do something, you may feel like giving up. Never give up, instead try solving the problem at a different angle. With enough effort, nothing is impossible.
+Don't let anyone tell you that something is impossible. The greatest inventors are driven by their desire to accomplish the impossible. If you put your mind to it, you can accomplish anything.
+Men literally only want one thing and it is having a happy stable relationship with a partner they can rely on, talk to, and love for the rest of their life.
+50 years have passed. But I do not age. Time has lost its effect on me. The suffering continues. Aku's grasp chokes the past, present and future. All hope is lost. Got to get back, back to the past, Samurai Jack.
+Destiny... fate... dreams... These unstoppable ideals are held deep in the heart of man. As long as there are people who seek freedom in this life, these things will not vanish from the earth.
+Everybody knows one or two pangrams, sentences that use every letter of the alphabet. You've probably seen these before: The quick brown fox jumps over a lazy dog. Pack my box with five dozen liquor jugs.
+The Lady of the Lake, her arm clad in the purest shimmering samite held aloft Excalibur from the bosom of the water, signifying by divine providence that I, Arthur, was to carry Excalibur. That, is why I am your king.
+Imagine that you have zero cookies and you split them evenly among zero friends. How many cookies does each person get? See? It doesn't make sense. And Cookie Monster is sad that there are no cookies, and you are sad that you have no friends.
+Her. That's her. The one who broke me. Left me here in this cold world heartless. People say I don't seem to care as much anymore. When she left she took all my emotions with her. I feel nothing. I am nothing.
+My heart is set, as firmly as ever heart of man was set on woman. I have no thought, no view, no hope, in life beyond her; and if you oppose me in this great stake, you take my peace and happiness in your hands, and cast them to the wind.
+Everyone, I've got bad news. Meredith was hit by a car. It happened this morning in the parking lot. I took her to the hospital. And the doctors tried to save her life, they did the best they could, and she is going to be okay.
+Tyrone, you know how much I love watching you work, but I've got my country's 500th anniversary to plan, my wedding to arrange, my wife to murder and Guilder to frame for it; I'm swamped.
+Every atom in your body came from a star that exploded. And, the atoms in your left hand probably came from a different star than your right hand. It really is the most poetic thing I know about physics: You are all stardust.
+Loving you is never easy. I gotta deal with all of your likes and dislikes. It is never easy but it is worth it. You're all worth it. I've seen the worst of you and I am staying.
+No matter how much people say bad things at you, you should always be positive. You have to share good energy at others so earth becomes a better place.
+She smiled at him, making sure that the smile gathered up everything inside of her and directed it toward him, making him a profound promise of herself for so little, for the beat of a response, the assurance of a complimentary vibration in him.
+I don't ask you to love me always like this, but I ask you to remember. Somewhere inside me there'll always be the person I am tonight. Even when I am no longer there.
+If living in history means that we cannot help leaving marks on a fallen world, then the dilemma we face is to decide what kinds of marks we wish to leave.
+No one can tell what goes on in between the person you were and the person you become. No one can chart that blue and lonely section of hell. There are no maps of the change. You just come out on the other side. Or you don't.
+People are strange, they will act different around certain people so that they can be accepted. I am no exception to this. I just want to be accepted into these groups. What am I doing wrong? Not being myself? Pfft, I don't do that anymore.
+I have folded a flower for Noah's lapel and have affixed my grandmother's pin with pride. My parents are stunned when they see me. I don't look like a kid anymore. I don't look like an adult, either - but I definitely look older than a kid.
+There's no narrative to your life, no arc, no reward for achieving all of the things you want. That kind of thinking is a recipe for a you-centric world view and is a very lonely road. Focus instead on the role you play in the stories of others.
+I'm not supposed to love you, I'm not supposed to care, I'm not supposed to live my life wishing you were here. I'm not supposed to wonder where you are and what you do, I'm sorry it comes with loving you.
+One may have a blazing hearth in one's soul and yet no one ever came to sit by it. Passersby see only a wisp of smoke from the chimney and continue on the way.
+You're going to pay a price for every bloody thing you do and everything you don't do. You don't get to choose to not pay a price. You get to choose which poison you're going to take. That's it.
+Consciousness is a mystery that faces the mystery of potential and transforms it into actuality. We do that with every choice we make. Our choices determine the destiny of the world. By making a choice, you alter the structure of reality.
+Revenge is the concern of those who are at some point or other beaten. I am not beaten, I told myself. No, not beaten. And victory is far more interesting to contemplate than revenge.
+A good woman is hard to find, a good man is hard to find, a good book is hard to find. A good house is hard to find. Why is anything that's good so hard to find?
+For in those days she was completely reckless; did the most idiotic things out of bravado; bicycled around the parapet on the terrace; smoked cigars. Absurd, she was - very absurd. But the charm was overpowering...
+Returning hate for hate multiplies hate, adding deeper darkness to a night already devoid of stars. Darkness cannot drive out darkness; only light can do that. Hate cannot drive out hate, only love can do that.
+We must not see any person as an abstraction. Instead, we must see in every person a universe with its own secrets, with its own treasures, with its own sources of anguish, and with some measure of triumph.
+The reason why we personify things, like cars, or computers, is that just as monkeys live in an arboreal world, and moles live in an underground world, and water spiders in a surface tension-dominated flatland, we live in a social world.
+It is said that if you look into the marble that traps worlds within itself then you would lose your reality. Your reality would cease to exist along with mine. So come look... I don't want to be alone anymore.
+The easiest way to stop piracy is not by putting antipiracy technology to work. It's by giving those people a service that's better than what they're receiving from the pirates.
+There are these days where the tallest walls never seem to keep you caged. Then there are these others where even the strongest break down and crumble... All because of a little fence.
+In darkness only ambition shows the way. And ambition is the only way to succeed in life. If you don't have an ambition you can't succeed because you don't have a direction to pursue in.
+You were the chosen one! It was said that you would destroy the Sith, not join them. You were to bring balance to the force, not leave it in darkness.
+I dare not to even suspect, Dr. Chasuble. I need hardly tell you that in families of high position strange coincidences are not supposed to occur. They are hardly considered the thing.
+Where the trespass of children is foreseeable, a land owner owes a duty to exercise ordinary care to avoid a reasonably foreseeable risk of harm which results from the child's inability to appreciate the risk.
+If you are depressed, you are living in the past. If you are anxious, you are living in the future. If you are at peace, you are living in the present.
+Sinful? Corrupt? I don't understand your logic. Why must pleasure and sin be connected? Pleasure gotten through evil means could be a sin. But pleasure can also result from good deeds. What kind of philosophy calls pleasure itself a sin?
+I want to... change things. I want to believe that anything can be changed. The moment I met you, a new world opened up for me. You see, after wandering in the darkness for so long, a light brought me happiness. It's all thanks to you.
+Pingo was first discovered outside of the Tori Clan's doors when he was just a small hatchling. Taking pity on the small penguin, the Clan decided to raise Pingo as their own and train him in the Tori Clan's traditional martial arts style.
+Permanence, perseverance, and persistence in spite of all obstacles, discouragements, and impossibilities: It is this, that in all things distinguishes the strong soul from the weak.
+If you know the enemy and know yourself, you need not fear the result of a hundred battles. If you know yourself but not the enemy, for every victory gained you will also suffer a defeat. If you know neither the enemy nor yourself, you will succumb in every battle.
+If taxation without consent is not robbery, then any band of robbers have only to declare themselves a government, and all their robberies are legalized.
+Every man must have freedom, must have the scope to form, test, and act upon his own choices, for any sort of development of his own personality to take place. He must, in short, be free in order that he may be fully human.
+Free will is an illusion. Our wills are simply not of our own making. Thoughts and intentions emerge from background causes of which we are unaware and over which we exert no conscious control. We do not have the freedom we think we have.
+It's a dangerous business, going out your door. You step onto the road, and if you don't keep your feet, there's no knowing where you might be swept off to.
+Work harder on yourself than you do on your job. If you work hard on your job you will make a living. If you work hard on yourself you will make a fortune.
+So I was sitting in my cubicle today, and I realized, ever since I started working, every single day of my life has been worse than the day before it. So that means that every single day that you see me, that's on the worst day of my life.
+I saw love clearly, he was small and handsome. He looked at me quickly, as he smiled strongly, I saw his blue eyes and blond hair. His voice was so soft and beautiful. And I felt like I was the only one he loved.
+I don't have a lot of experience with vampires, but I have hunted werewolves. I shot one once, but by the time I got to it, it had turned back into my neighbor's dog.
+Have a holly, jolly Christmas, it's the best time of the year, I don't know if there'll be snow, but have a cup of cheer. Have a holly, jolly Christmas, and when you walk down the street, say hello to friends you know, and everyone you meet.
+It would degrade me to marry Heathcliff now; so he shall never know how I love him; and that, not because he's handsome, Nelly, but because he's more myself than I am. Whatever our souls are made of, his and mine are the same...
+What's simple to do is also simple not to do. The magic is NOT in the complexity of the task; the magic is in the doing of simple things repeatedly and long enough to ignite the miracle of the compound effect.
+Abraham Lincoln once said that "If you are a racist, I will attack you with the North," and those are the principles I carry with me in the workplace.
+I always tell the girls never take it seriously. If you never take it seriously, you never get hurt. If you never get hurt, you always have fun. And if you ever get lonely, you can just go to the record store and visit your friends.
+Just as suddenly as a bubble bursting, my mind opened up to a new level of consciousness and I felt my sense of self completely dissolve... In that instant, I became clearly and absolutely conscious of who and what I am...
+Being a half-blood is dangerous. It's scary. Most of the time, it gets you killed in painful, nasty ways. If you're a normal kid, reading this because you think it's fiction, great. Read on.
+Wishing to make a name for herself, just as her father did, Rosabella left her father's pirate crew and set off to chart her own path in the world. Before she left, her father gave her a necklace with a small sword etched into the center.
+We delude ourselves that we want to implant honesty in our children: what we really want is to imbue them with our particular kind of dishonesty, with our culture's dishonesty.
+In a perfect world everything would be either black or white, right or wrong, and everyone would know the difference. But this isn't a perfect world. The problem is people who think it is.
+I used to think the worst thing in life was to end up all alone. It's not. The worst thing in life is to end up with people that make you feel all alone.
+You know what music is? God's little reminder that there's something else besides us in this universe; harmonic connection between all living beings, every where, even the stars.
+The clock ticks over the fireplace, the weather-glass hangs in the hall. Neither clock nor weather-glass is ever right, but we believe in both, devoutly.
+Veil after veil of thin dusky gauze is lifted, and by degrees the forms and colours of things are restored to them, and we watch the dawn remaking the world in its antique pattern.
+Early success is a terrible teacher. You're essentially being rewarded for a lack of preparation, so when you find yourself in a situation where you must prepare, you can't do it. You don't know how.
+The purpose of bread and circuses is, as Neil Postman said in his book Amusing Ourselves to Death, to distract, to divert emotional energy towards the absurd and the trivial and the spectacle while you are ruthlessly stripped of power.
+When you're in a dark place, and your light is going to run out before too long, you get on with things. It's a wonder to me how few people apply that same logic to their lives.
+Laugh when you can, apologize when you should, and let go of what you cannot change. Kiss slowly, play hard, forgive quickly, take chances, and have no regrets. Life is too short to be anything but happy.
+What are our limits? The truth is we do not know. The fact is that so many individuals have created what they wanted in the face of presumed limitations, that it seems unrealistic to impose limitations on ourselves before testing the waters.
+People who don't work hard don't have the right to be envious of the people with talent. People fail because they don't understand the hard work necessary to be successful.
+To say that majorities, as such, have a right to rule minorities, is equivalent to saying that minorities have, and ought to have, no rights, except such as majorities please to allow them.
+All spring and summer, I'd been immune, unaware of the enmity of the crowd. I hadn't realized that, in society, humiliation is a force more powerful than love. Love does not exist in society, but only between two, or among a family.
+You have no responsibility to live up to what other people think you ought to accomplish. I have no responsibility to be like they expect me to be. It's their mistake, not my failing.
+There is a moment, a cusp, when the sum of gathered experience is worn down by the details of living. We are never so wise as when we live in this moment.
+I didn't know the answers, but I could feel that the things that gave life meaning came from a place within and from the nurturing of values like tolerance, charity, and community.
+You need to learn how to make mistakes before you grow up. When you are young, you can recover quickly when hurt. When you get older it's harder to make mistakes. The more responsibilities, the less mistakes you are allowed to make.
+To produce a mighty book, you must pick a mighty theme. No great and enduring volume can ever be written on the flea, though many there be that have tried it.
+In Halo Combat Evolved, there were maybe thirty seconds of fun that happened over and over and over and over again. If you can get thirty seconds of fun, you can pretty much stretch that out to be an entire game.
+Don't let your bad decisions take over your life. The past can only affect your future if you let it. You're only human (hopefully), and you're going to make mistakes down the road, but they can only affect your life, your future, if you let them.
+Sometimes shedding light on the truth is harder than staying in the dark. But once you know how important it is to share the truth about your inner self, you are given the confidence to do so.
+I was a dog at Gettysburg. I trotted near the train and nosed among the officers who kicked me to my pain. A man came by... I could not see. I howled. The light was dim, but when I brushed against his legs, I liked the smell of him.
+Man, biologically considered... is the most formidable of all the beasts of prey and, indeed, the only one that preys systematically on its own species.
+I don't think that you have any insight whatsoever into your capacity for good until you have some well-developed insight into your capacity for evil.
+I love you and you are the only person I have ever allowed myself to love. I love you because you are the only person who has ever seen me in my lowest, most disgusting form and said "That's someone worth loving."
+She confused being spartan with being charitable, and gave away her possessions without truly doing good with them. She confused being sick with being brave, and suffered agonies while imagining she merited praise for it. She confused wit with intelligence, and made people laugh rather than lightening their hearts or making them think.
+Now check this out. You win five million dollars from Publishers Sweepstakes, but on the same day what's-his-face gives you the check, aliens land on Earth and say they're going to blow up the world in two days. What would you do?
+Kettle crisps are not as nice as they once were. Have I changed or have they? Don't answer that; that's not the question. If you could travel back in time and compare any food in the past to a food from today, which would it be?
+Someone is sitting in the shade today because someone planted a tree a long time ago. What goes around, comes around. As long as you live, keep smiling it brightens everybody's day. If you're not too long, I will wait here for you all my life.
+I had never done a crazy thing in my life before that night. Why is it that if a man kills another in battle, it's called heroic, yet in the heat of passion it's called murder?
+Everyone has inside them a piece of good news. The good news is you don't know how great you can be! How much you can love! What you can accomplish! And what your potential is.
+I wanted to take the time out to type out a quote. I was super bored, and had nothing better to do. Hopefully, this finds you in good spirits. Have a great day, God bless.
+And like a dying lady, lean and pale, who totters forth, wrapped in a gauzy veil, out of her chamber, led by the insane and feeble wanderings of her fading brain, the moon arose up in the murky East, a white and shapeless mass.
+There may be decisions to make, and surprises in store. Life takes us to unexpected places sometimes. The future is never set in stone, remember that.
+I have learned that success is to be measured not so much by the position that one has reached in life as by the obstacles which he has had to overcome while trying to succeed.
+Understanding where your food comes from, trying to bolster local farmers and local economies and having a better connection to the food around you and the people around you, only good can come of that. I love to be involved with things like that.
+The influence of a mother upon the lives of her children cannot be measured. They know and absorb her example and attitudes when it comes to questions of honesty, temperance, kindness, and industry.
+What is it that separates machines from androids like us? The machines have grown emotions, consciousness... The final screams they summoned on the edge of their death... They still echo within me.
+I won't give up, I will fight 'til the bitter end, cause there's no way I will back down after what you did to my friends. They are what made me the person I am today, that's why I'll keep fighting. For my friends!
+Potato or potatoe? That is the question. To add the e or to leave it be, that is the mystery. To add the extra vowel, or leave it a foul, that is what makes us scowl. To end with a hole or leave like a mole, that is the goal. It's potato, though.
+Common sense is the most fairly distributed thing in the world, for each one thinks he is so well-endowed with it that even those who are hardest to satisfy in all other matters are not in the habit of desiring more of it than they already have.
+It is absurd to have a hard-and-fast rule about what one should read and what one shouldn't. More than half of modern culture depends on what one shouldn't read.
+Some people are uncomfortable with the idea that humans belong to the same class of animals as cats and cows and raccoons. They're like the people who become successful and then don't want to be reminded of the old neighborhood.
+Kindness and good nature unite men more effectually and with greater strength than any agreements whatsoever, since thereby the engagements of men's hearts become stronger than the bond and obligation of words.
+Beware the engineers of society, I say, who would make everyone in all the world equal. Opportunity should be equal, must be equal, but achievement must remain individual.
+How many people long for that "past, simpler, and better world," I wonder, without ever recognizing the truth that perhaps it was they who were simpler and better, and not the world about them?
+I think that flowers are beautiful things! And there are so many different kinds of them! I don't know what my personal favorite kind of flower is but I really like the rose!
+Everybody seeks happiness! Not me, though! That's the difference between me and the rest of the world. Happiness isn't good enough for me! I demand euphoria!
+Any fool knows men and women think differently at times, but the biggest difference is this: Men forget, but never forgive; women forgive, but never forget.
+As I look back on my life, I realize that every time I thought I was being rejected from something good, I was actually being re-directed to something better.
+I've seen better days, but I've also seen worse. I don't have everything that I want, but I do have all I need. I woke up with some aches and pains, but I did wake up. My life may not be perfect, but I am still blessed.
+The greatest illusion of this world is the illusion of separation. Things you think are separate and different are actually one and the same. We are all one people, but we live as if divided.
+I have completely fallen for you. Everything you do, everything you say, everything you are. You're my first thought in the morning, you're my last thought before I fall asleep, and you're almost every thought in between.
+The more beautiful a memory is, the more painful it can become... both for the person leaving... and the person being left behind. Please don't forget us, or leave us behind, ok?
+They have taken you from the Imperial City's prison, first by carriage and now by boat, to the east to Morrowind. Fear not, for I am watchful. You have been chosen.
+Wikipedia is the best thing ever. Anyone in the world can write anything they want about any subject. So you know you are getting the best possible information.
+I want to hang a map of the world in my house, and then I'm gonna put pins into all the locations that I've traveled to. But first I'm gonna have to travel to the top two corners of the map, so it won't fall down.
+I have to remind myself that some birds aren't meant to be caged. Their feathers are just too bright. And when they fly away, the part of you that knows it was a sin to lock them up does rejoice.
+Each of us, having received several hundred dollars, we passed the time gloriously, spending our money freely - never thinking that our lives were risked gaining it. The cowards never start and the weak die along the way.
+Hegel remarks somewhere that all great world-historic facts and personages appear, so to speak, twice. He forgot to add: the first time as tragedy, the second time as farce.
+There is more in you of good than you know, child of the kindly West. Some courage and some wisdom, blended in measure. If more of us valued food and cheer and song above hoarded gold, it would be a merrier world.
+After you've done a thing the same way for two years, look it over carefully. After five years, look at it with suspicion. And after ten years, throw it out and start all over.
+If you live for yourself, you've only got yourself to blame. I can't really blame anyone else and I don't have any regrets. Miracles aren't free, ya know? If you wish for something good to happen, a whole lot of bad is going to happen too.
+I met her by accident, she took my breath away, it became easy to open up to her... I started trusting her fully without a doubt - Yeah, you might say I'm sprung but I feel like she is the one.
+What does "Nothing" mean to you? If you can picture what nothing even looks like then that is something. Only those who have truly passed on from this life know what nothing is. The living will never know.
+Link... You may not be at a point where you have fully recovered your power or all of your memories, but courage need not be remembered, for it is never forgotten.
+The river is constantly turning and bending and you never know where it's going to go and where you'll wind up. Following the bend in the river and staying on your own path means that you are on the right track. Don't let anyone deter you from that.
+No matter how many days pass or breaths I or you take, I will always love you. You have taken something inside me and I don't want it back. My heart is yours to keep forever.
+Listen to me... Don't let anyone discourage you from achieving your best. You have the potential, you have the will power, you have the brains to do it. Go for it! What are you waiting for?
+Did you hear that two antennas met on a rooftop, fell in love and got married? The ceremony wasn't much to talk about, but the reception was wonderful.
+The best bit of advice I got was from my dad, when he was drunk. He said "Never run after a bus, a train, or a man. Because there will always be another one that comes along." I live by that now.
+In time, you will know what it's like to lose; to feel so desperately that you're right, yet to fail all the same. Dread it. Run from it. Destiny still arrives.
+The coming storm of fear blew through the streets. It was the dawn of the great panic. London, which had gone to bed on Sunday night oblivious and inert, was awakened, in the small hours of Monday morning, to a vivid sense of danger.
+You're traveling through another dimension, a dimension not only of sight and sound but of mind. A journey into a wondrous land whose boundaries are that of imagination. That's the signpost up ahead - your next stop, The Twilight Zone!
+You know that place between sleep and awake, the place where you can still remember dreaming? That's where I will always love you. That's where I'll be waiting.
+Two things you need to find while you're in school: friends you'd do anything with and adults who will be on your side no matter what. That's how you can survive in this school.
+I know this steak doesn't exist. I know that when I put it in my mouth, the Matrix is telling my brain that it is juicy and delicious. After nine years, you know what I realize? Ignorance is bliss.
+According to all known laws of aviation there is no way that a bee should be able to fly. Its wings are too small to get its fat little body off the ground. The bee of course flies anyway because bees don't care what humans think is impossible.
+The encounter will be short and murderous. You tremble with two contradictory impulses: the heightened awareness of the huntsmen, and the terror of the quarry. You are a world to yourself, saturated with the appalling aura of the savage landscape.
+I try not to get frustrated by the proposition of foolish solutions for complex problems, because nothing is simple, and everything is a mess, and it's supremely easy to get things wrong. We all deserve each other's patience and charity.
+People write their own stories. Don't listen to anyone who tries to tell you what yours should be, but just as importantly, or perhaps even more so, don't force an unwanted reality on someone else. They can choose theirs as well.
+I love the twist and agility of English sentences, and their capacity to quickly jump and fall, like flying swallows, between pews of Saxon plainness and Latinate vaults of abstraction.
+Sacrifice is the sole criterion of worth. Love cries out for blood. In some measure, a nation is something worth dying for because it is something for which people have died.
+If people sat outside and looked at the stars each night, I bet they'd live a lot differently. When you look into infinity, you realize there are more important things than what people do all day.
+You are too generous to trifle with me. If your feelings are still what they were last April, tell me so at once. My affections and wishes are unchanged, but one word from you will silence me on this subject forever.
+A lot of us grow up and we grow out of the literal interpretation that we get when we're children, but we bear the scars all our life. Whether they're scars of beauty or scars of ugliness, it's pretty much in the eye of the beholder.
+We've switched from a culture that was interested in manufacturing, economics, politics - trying to play a serious part in the world - to a culture that's really entertainment-based.
+I recognize terror as the finest emotion and so I will try to terrorize the reader. But if I find that I cannot terrify, I will try to horrify, and if I find that I cannot horrify, I'll go for the gross-out. I'm not proud.
+The whole earth is the Sepulchre of famous men; and their story is not graven only on Stone over their native Earth, but lives on far away, without visible symbol, woven into the stuff of other men's lives.
+There's no talent here, this is hard work. This is an obsession. Talent does not exist, we are all equal as human beings. You could be anyone if you put in the time. You will reach the top, and that is that. I am not talented, I am obsessed.
+I want you to remember, Clark. In all the years to come, in your most private moments. I want you to remember my hand at your throat. I want you to remember, the one man who beat you.
+Was I always going to be here? No I was not. I was going to be homeless at one time, a taxi driver, truck driver, or any kind of job that would get me a crust of bread. You never know what's going to happen.
+The most important question in 21st-century economics may well be, 'What should we do with all the superfluous people, once we have highly intelligent non-conscious algorithms that can do almost everything better than humans?
+To love means loving the unlovable. To forgive means pardoning the unpardonable. Faith means believing the unbelievable. Hope means hoping when everything seems hopeless.
+"Some of us get dipped in flat, some in satin, some in gloss..." He turned to me. "But every once in a while, you find someone who's iridescent, and when you do, nothing will ever compare."
+Would you rather die, or be unwound? Now he finally knows the answer. Maybe this is what he wanted. Maybe it's why he stood there and taunted Roland. Because he'd rather be killed with a furious hand than dismembered with cool indifference.
+I hope that both of you have sons... Handsome, beautiful, articulate sons, who are talented and star athletes and they have their legs taken away. I mean I pray you know that pain and that hurt.
+A man is a fool to live in hopes of a better tomorrow. I have a thousand better ways today to spend what time remains ahead of me, and I have brighter, lighter and more pleasant places in which to spend it.
+I am not your little princess. I am Daenerys Stormborn of the blood of the old Valyria and I will take what is mine, with fire and blood I will take it.
+You don't need to be perfect to be lovable. I want you to remember that, because in the end, perfect is just an idea. And you are so much more than that.
+Life is only a dream and we are the imagination of ourselves. Children are smarter than any of us. Know how I know that? I don't know one child with a full time job and children.
+Other people may judge you incorrectly, but they judge you nevertheless. They may not have all the facts at hand, but this doesn't stop them. Their judgment causes all the problems in life, especially if you live in close proximity to them.
+Through a long and painful process, I've learned that happiness is an inside job - not based on anything or anyone in the outer material world. I've become a different and better person - not perfect, but still a work in progress.
+We're not gonna hug in front of this whole town. So why don't we just both do that bro thing where we nod like douches and mutually suppress our emotions.
+Success makes so many people hate you. I wish it wasn't that way. It would be wonderful to enjoy success without seeing envy in the eyes of those around you.
+He looked back on his long bright empty days in Mexico and said he had lost his honor over the years. He hadn't noticed it going. Small rodents had come in the night and carried it away bit by bit on tiny padded feet.
+I did everything in my life. I did anything to fulfill my desire, my passion for something and anything. I do anything but still, and still feel empty. There is nothing I can do to persuade this empty heart.
+Maybe it meant something. Maybe not in the long run, but no explanation, no mix of words or music or memories can touch that sense of knowing that you were there and alive in that corner of time and the world. Whatever it meant.
+Everyone, listen up! Today, at the edge of our hope, at the end of our time, we've chosen to not only believe in ourselves but in each other. Today there's not a man or woman in here who will stand alone. Today we face the monsters that are at our door. Today we are canceling the apocalypse!
+Accuracy and speed both are the notable points that must be kept in mind during a Typing Test. Do not get irritated if you get less wpm or accuracy, you will improve gradually.
+Do you wish me a good morning, or mean that it is a good morning whether I want it or not; or that you feel good this morning; or that it is a morning to be good on?
+Life is not always easy, it can be hard and challenging. Life is what you make it, and how you make it. If you choose to be lazy don't expect things to be handed to you. If you work hard every day you will reap the rewards of your labor.
+It was quite the most incredible event that has ever happened to me in my life. It was almost as incredible as if you fired a 15-inch shell at a piece of tissue paper and it came back and hit you.
+I held my breath. Suddenly, I felt the collective eyes of the flea market Afghans shift to us. I imagined a hush falling. Lips stopping in midsentence. Head turning. Eyes narrowing with keen interest.
+We waste time wondering, "What if we're wrong? What if we fail, what if we lose, what then?" Well, then you're a loser. But you're not alone. On a long enough time line, everyone fails.
+This is the world we live in. People relying on each other's mistakes to manipulate one another and use one another, even relate to one another. A warm, messy circle of humanity.
+So I get off the plane and I forgot to undo my seat belt and I'm pulling the plane through the terminal. And the wings are knocking people over. And then I almost broke both my arms trying to hold open a revolving door for a woman.
+War. War never changes. The Romans waged war to gather slaves and wealth. Spain built an empire from its lust for gold and territory. Hitler shaped a battered Germany into an economic superpower. But war never changes.
+I figure the universe is basically like a machine. I don't know who made it, but it chugs along the way it's supposed to most of the time. Sure, little pieces break and stuff goes haywire once in a while, but mostly... things happen for a reason.
+How many are there in you? Whose hopes and dreams do you encompass? Could you but see the eyes in your own, the minds in your mind, you would see how much we share.
+Man cannot be free if he does not know that he is subject to necessity, because his freedom is always won in his never wholly successful attempts to liberate himself from necessity.
+The new always happens against the overwhelming odds of statistical laws and their probability, which for all practical, everyday purposes amounts to certainty; the new therefore always appears in the guise of a miracle.
+Who is adding the quotes from the show Burn Notice? When I was a kid, my parents would watch that show. I really liked it, and it made me want to move to Miami. Whoever you are, secret Burn Notice fan, just know that I appreciate you. Good day.
+I'm done. You don't have to worry anymore. I'm done trying to get you. I can't do it anymore. I'm sorry it's taken me this long to figure it out, but I promise... I'm done making a fool of myself.
+Getting lost in music is perhaps one of the best feelings that can be shared by all people. Though achieved in different genres, the feeling alone can bridge the gap between two unique individuals.
+"What's the world's greatest lie?" the boy asked, completely surprised. "It is this: that at a certain point in our lives, we lose control of what's happening to us, and our lives become controlled by fate. That's the world's greatest lie."
+Appearance is something absolute, but reality is not that way - everything is interdependent, not absolute. So that view is very helpful to maintain a peace of mind because the main destroyer of a peaceful mind is anger.
+Entrusting his future to the cards, man clings to a dim hope. Yet, the Arcana is the means by which all is revealed... Beyond the beaten path lies the absolute end. It matters not who you are... Death awaits you.
+It is hard to imagine a world without forgiveness. Without forgiveness, life would be unbearable. Without forgiveness, our lives are chained, forced to carry the sufferings of the past and repeat them with no release.
+You have seen the snapping turtle eating other turtles - seen the armies of ants contending, like kills like. Throughout history, we have slaughtered many, many of our own kind. Why should you and I be different?
+Take someone who doesn't keep score, who's not looking to be richer, or afraid of losing, who has not the slightest interest even in his own personality: he's free.
+You must eradicate from the body, sickness, from the soul, ignorance, from the belly, luxury, from a city, sedition, from a family, discord, and from all things, excess.
+What have I always believed? That on the whole, and by and large, if a man lived properly, not according to what any priests said, but according to what seemed decent and honest inside, then it would, at the end, more or less, turn out all right.
+You see, it's the slow knife, the knife that takes its time, the knife that waits years without forgetting, then slips quietly between the bones; that's the knife that cuts deepest.
+Oh, you think darkness is your ally? You merely adopted the dark. I was born in it - molded by it. I didn't see the light until I was already a man. By then, it was nothing to me but blinding. The shadows betray you... because they belong to me.
+Think of all the poverty, the hatred, and the lies, and imagine the destruction of all that you despise. Slowly, from the ashes, that phoenix will arise, in a brave new world!
+You see Mr. Matthews, education is not about obscure facts and little test scores. Education is about the overall effects of years of slow absorption. Concepts, philosophies, approaches to problem solving. The whole process is so grand.
+I'd been sitting here for over five hours, not quite sure if this was how I wanted to spend my life. Yet, here I was, I am. Still. Trying to keep still and awake at the same time.
+I ascribe to Mark Twain's theory that the last person who should be President is the one who wants it the most. The one who should be picked is the one who should be dragged kicking and screaming into the White House.
+Throughout my lifetime I've left pieces of my heart here and there. And now, there's almost barely enough to stay alive. But I force a smile, knowing that my ambition far exceeded my talent.
+At long last, it has ended. A sliver of my misery has past. At long last, I shall embark upon the journey toward my haven, my home. This shift is done. I thought it would never end. And now, I bid this cubicle farewell - until tomorrow.
+Jaime had decided that he would return Sansa, and the younger girl as well if she could be found. It was not like to win him back his honor, but the notion of keeping faith when they all expected betrayal amused him more than he could say.
+I'm left-handed, and it's not very easy to find reasonably priced, high-quality left-handed guitars. But out of all the guitars in the whole world, the Fender Mustang is my favorite. I've only owned two of them.
+I have a daughter who reminds me too much of what I used to be, full of love and joy, kissing every person she meets because everyone is good and will do her no harm. And that terrifies me to the point to where I can barely function.
+Tell me something my friend. You ever dance with the devil in the pale moonlight? I always ask that of all my prey. I just like the sound of it. BANG. Never rub another man's rhubarb.
+Every planet has its own weird customs. About a year before we met I spent six months on a moon where the principle form of recreation was juggling geese. Hand to God. Baby geese - goslings. They were juggled.
+You can't go to the bathroom alone... you might not come back. Because no girl has ever been to the bathroom alone and survived. It's true. The last woman that attempted it, it was 1937 and her name was Amelia Earhart.
+People cry not because they're weak, but because they're smart. People will hate you for speaking the truth, but you've gotta learn to stand up to them, so don't be offended if I say something you don't like.
+Rescue me, somebody. Anybody. I've resorted to writing poetry. I know some of you may be mad at me to some degree. So, pardon me. Usually, I refrain from outrightly posting about the tragedy that had become me.
+Physical beauty is a great alienator: physical beauty uses you, so you want to use others, because we get strong responses from others that have nothing to do with who we really are.
+People always try to impress others by being someone else, what happens when they find out who you really are inside and out? Can you blame them for not wanting to be your friend or not have anything to do with the real you?
+People fight within themselves just to fit the world's expectations, it's hazardous to your health and sometimes you just got to express yourself. Build your own strength, don't follow trends.
+Either write something worth reading or do something worth writing. This is how we should live our lives. I try to live mine that way. You should at least try.
+Through television we have a great chance to show and tell our children that they really matter, even when they're very little. We have a chance to communicate the fact that childhood lies at the very basis of who people are and who they become.
+There's been lots of theater that uses hip-hop in it, but more often than not, it's used as a joke - isn't it hilarious that these characters are rapping. I treat it as a musical form, and a musical form that allows you to pack in a ton of lyric.
+I always had an eye toward the stage for the story of Hamilton's life, but I began with the idea of a concept album, the way Andrew Lloyd Webber's 'Evita' and 'Jesus Christ Superstar' were albums before they were musicals.
+When he cared to talk, he talked well; but, the cloud of caring for nothing, which overshadowed him with such a fatal darkness, was very rarely pierced by the light within him.
+Blood alone moves the wheels of history! Have you ever asked yourselves in an hour of meditation, which everyone finds during the day, how long we have been striving for greatness? Not only the years we've been at war, the war of work, but from the moment as a child when we realized that the world could be conquered. It has been a lifetime struggle, a never-ending fight. I say to you, and you will understand that it is a privilege to fight! We are warriors! Salesmen of northeastern Pennsylvania.
+They call me a little wound-up. See, I'm upset because I've always been stuck, but I don't know what it is I'm without. Guess I'm in love with always feeling down...
+I advise you to not hide your feelings, don't pretend to be okay when you're not okay, don't pretend to be happy when you're sad, it'll only lead to your misery.
+I know it and you know it too, we all hate long quotes. So I hope that if you are annoyed then enjoy this quote. And don't forget to have a good time.
+It is easy for some to look down on instant mashed potatoes and gravy. I, however, absolutely love the flavor. It also makes for a perfect part of a meal to take camping.
+But Dad, if we're going to be thieves, why not steal the good stuff in the kitchen? Where nothing is poisoned? First of all, we're not thieves. Secondly, stay out of the kitchen, and away from the humans! It's dangerous!
+Bad luck does not overtake you, you create it. Success isn't the result of hard work, it's the result of right thinking. God doesn't punish you, you punish yourself.
+You can tell by looking at me that I've got more miles behind me than I've got in front of me. When you reach that point, if you've got some good years left, you want to make sure that you use them wisely.
+If you are distressed by anything external, the pain is not due to the thing itself, but to your estimate of it; and this you have the power to revoke at any moment.
+Early religions were like muddy ponds with lots of foliage. Concealed there, the fish of the soul could splash and feed. Eventually, however, religions became aquariums. Then hatcheries. From farm fingerling to frozen fish stick is a short swim.
+The pain of love does not break hearts, it merely seasons them. The disappointed heart revives itself and grows meaty and piquant. Sorrow expands it and makes it pithy. The spirit, on the other hand, can snap like a bone and may never fully knit.
+The world is 3 days: As for yesterday, it has vanished along with all that was in it. As for tomorrow, you may never see it. As for today, it is yours, so work on it.
+In times such as ours, however, when there is too much order, too much management, too much programming and control, it becomes the duty of superior men and women to fling their favorite monkey wrenches into the machinery.
+It turns out sometimes you have to do the wrong thing. Sometimes you have to make a big mistake to figure out how to make things right. Mistakes are painful, but they're the only way to find out who we really are.
+I understand quotes get passed around all the time, but you should let people pick and choose. Don't just pick popular quotes; write quotes that are authentic to your heart.
+Anything can be misused. Furthermore, every individual has to assume responsibility for his or her own actions, even the poor and the young. A social system that decrees otherwise is inviting intellectual atrophy and spiritual stagnation.
+Freedom of speech and thought matters, especially when it is speech and thought with which we disagree. The moment the majority decides to destroy people for engaging in thought it dislikes, thought crime becomes a reality.
+I kiss him to get him to stop talking. If he keeps talking I will love him, and I don't want to love him. I really don't. As strategies go, it's not my finest. Kissing is just another way of talking except without the words.
+If you don't want me to be in love with you, you're going to have to stop looking so lovely. First thing tomorrow I'm having your maids sew some potato sacks together for you.
+She touched his chin to steady it as she kissed him. Her mouth was warm, and wet with tears. Her teeth scored his bottom lip as she pulled away. Akos didn't breathe. He wasn't sure he could remember how.
+A melon taken off its vine is not sweet. Coercion never ends up satisfactorily. Leave things to develop naturally. Learning without thinking means wasted work; thinking without learning is dangerous. Studying hard is important and gives rewards.
+I just wanted to bring down your grim facade and for once let you see the world as I see it, giggling in a corner and bleeding. But you've denied me even that. I have nothing to live for.
+Asleep, he looked a lot younger than going-on-seventeen, but I had noticed that Johnny looked younger when he was asleep too, so I figured everyone did. Maybe people are younger when they are asleep.
+Because everything in my life no matter how - I'm sure you look back in five years and be like, oh I made so many mistakes, but all the mistakes you make in your life just make you who you are.
+Of course, the brain does not exist in isolation. Rather, it has interdependence with other parts of the body. Hence, an understanding of the brain will need to be generated in the context of its links with other regions.
+Dreams are lovely. But they are just dreams. Fleeting, ephemeral. Pretty. But dreams do not come true just because you dream them. It's hard work that makes things happen. It's hard work that creates change.
+This should be really easy to type. I have made this out of words that I find very simple to type quickly. If you can keep up with this then you should find yourself as somewhat of an advanced typist. Please let this be of valuable practice to you.
+When civilized people dance they reconnect with their old animal nature. It reminds them that they aren't mechanical chess pieces or rooted trees, but free-flowing meat waves of possibility.
+This is the shortest quote by far and it has 150 characters. That is the minimum. I tried to make it shorter, but it was too short. So I made it longer.
+I'm not the one with the problem, okay? It's the world that seems to have a problem with me. People take one look at me and go "Arrrgh! Help! Run! A big, stupid, ugly ogre!" They judge me before they even know me. That's why I'm better off alone.
+You are the sum total of everything you've ever seen, heard, eaten, smelled, been told, forgot - it's all there. Everything influences each of us, and because of that I try to make sure that my experiences are positive.
+The zipper displaces the button and a man lacks just that much time to think while dressing at dawn, a philosophical hour, and thus a melancholy hour.
+Could somebody please explain to me why it is that if you believe Elvis is still alive, you belong in an asylum; whereas if you believe Jesus is still alive, you belong in our halls of power?
+Wherever the religious neurosis has appeared on the Earth so far, we find it connected with three dangerous prescriptions as to regimen: solitude, fasting and sexual abstinence.
+Up on your feet! This is no time to tire! The man who lies asleep will never waken fame, and his desire and all his life drift past him like a dream, and the traces of his memory fade from time like smoke in air, or ripples on a stream.
+If you do just a little research, it is going to become evident to you that anyone that ever accomplished anything, did not know how they were going to do it. They only knew they were going to do it.
+A freedom that only asks what's in it for me, a freedom without a commitment to others, a freedom without love or charity or duty or patriotism, is unworthy of our founding ideas, and those who died in their defense.
+Are we like those bored couples you feel sorry for in restaurants? Are we the dining dead? I can't stand the idea of us being a couple people think that about.
+This is how it is with insomnia. Everything is so far away, a copy of a copy of a copy. The insomnia distance of everything, you can't touch anything and nothing can touch you.
+She never meant to end up in that place where her heart hurt and her soul bled and she learned first hand the importance of forgiveness. That's what happens when you chase love and your only way out is to follow love back home.
+If she's amazing, she won't be easy. If she's easy, she won't be amazing. If she's worth it, you won't give up. If you give up, you're not worthy... Truth is, everybody is going to hurt you; you just gotta find the ones worth suffering for.
+Whosoever of you sees an evil, let him change it with his hand; and if he is not able to do so, then with his tongue; and if he is not able to do so, then with his heart.
+Sometimes it hits me, this place: had a long history before us, has a long future after us. I keep thinking it's a part of our lives, but really it's the reverse, for a little while, I don't know, it's like we're a part of its life.
+Our dogs here must not bite or scratch as they are good dogs, but we must bite and scratch for them to make the world a better place for animals who cannot fight for themselves.
+A pessimist sees the difficulty in every opportunity; an optimist sees the opportunity in every difficulty. We make a living by what we get, but we make a life by what we give, and if you're going through hell, keep going.
+In a large sense we cannot dedicate, we cannot hallow this ground. The brave men, living and dead, who struggled here, have consecrated it far above our poor power to add or detract.
+Dying is an art, like everything else. I do it exceptionally well. I do it so it feels like hell. I do it so it feels real. I guess you could say I've a call.
+Some things in life are bad, they can really make you mad. Other things just make you swear and curse. When you're chewing on life's gristle, don't grumble, give a whistle. And this'll help things turn out for the best.
+He makes a great mistake who supposes that authority is firmer or better established when it is founded by force than that which is welded by affection.
+Rumpelstiltskin, this thing we have, it's never been easy. I've lost you so many times. I've lost you to darkness, to weakness, and finally, to death. But now I realize that I have not spent my life losing you. I've spent my life finding you.
+You know what Gregg? Maybe I was being a bit hasty there when I said I didn't love you. Perhaps, now in this light, with you in the tutu and the water playing off your... seaweed, maybe I could love you.
+No work or love will flourish out of guilt, fear, or hollowness of heart, just as no valid plans for the future can be made by those who have no capacity for living now.
+The fastest touch typer in the world is Barbara Blackburn, whose fastest typing speed was 212 words per minute. She could maintain a steady speed of 150 words per minute for one hour. I wish I could do that.
+I don't know if they taught you this in the land of fairies and puppy dog tails, where you obviously, if not grew up then at least spent most of your summers, but you're in the real world now.
+The sparrow flies true, so true that her pattern is unmistakable. Beautiful, is the way she moves. Mesmerizing, in a way to keep you in awe. All the world fades away when she is within sight.
+By definition, what works cannot be irrational; about every single person I know who has chronically failed in business shares that mental block, the failure to realize that if something stupid works (and makes money), it cannot be stupid.
+The world in which you were born is just one model of reality. Other cultures are not failed attempts at being you; they are unique manifestations of the human spirit.
+I tried talking to these guys, and then there was a dustbuster, a toupee and a liferaft exploded... now one's bald, one's in a boat, and they're both unconscious!
+The only thing we're allowed to believe is that we won't regret the choice we made. The world is merciless, and it's also very beautiful. Once I'm dead, I won't even be able to remember you. So I'll win, no matter what.
+In the Bene Gesserit Way, he opened his mind to Jacurutu, seeking to know nothing about it. Knowing was a barrier which prevented learning. For a few moments he allowed himself merely to resonate, making no demands, asking no questions.
+We're all a little weird, and life's a little weird. And when we find someone whose weirdness is compatible with ours, we join up with them and fall in mutual weirdness and call it love.
+You know the message you're sending out to the world with sweatpants? You're telling the world: 'I give up. I can't compete in normal society. I'm miserable, so I might as well be comfortable.'
+On the count of three, you will awaken feeling refreshed, as if Futurama had never been canceled by idiots and then brought back by bigger idiots. One... two...
+After fourteen years of graduate school Farnsworth settled into the glamorous life of a scientist. Fast cars, trendy nightspots, beautiful women... the professor designed them all, working out of his tiny one-room apartment.
+You see, Shawn, my life's goal has always been to commit the perfect crime. I've always thought of my heists as elegant... victimless. But you made me feel somehow regretful. You genuinely wanted me to be the greatest thief that ever lived.
+Life is like a box of chocolates. Eventually you'll have to eat the toothpaste-flavored ones. You can choose to eat the good ones first, or the bad ones. It's up to you.
+Life is like a game of chess. To win you have to make a move. Knowing which move to make comes with insight and knowledge and by learning the lessons that are accumulated along the way. We become each and every piece within the game called Life.
+You can never tell who your enemies are. For who to trust. Maybe that's why I love animals so much. You look in their eyes and you know exactly what is in their hearts.
+Do you ever realize how badly you're going to miss a moment while you're living in it? Like wow, these are good days. I am here and I am happy and I feel alive, and I'm scared I'm never going to feel alive again.
+Although, I understand that all days are equal with 24 hours each, most of us agree that Friday is the longest day of the week and Sunday is the shortest!
+Miracles happen, but not the kind where the mother fails to give birth to the second twin for eight weeks. Anyway, my parents are my parents. Missy's parents are her parents. Nobody is adopted.
+The sincerity and marrow of the man reaches into his sentences. I know not anywhere the book that seems less written. Cut these words and they would bleed; they are vascular and alive.
+You came to me asking how my faith survived the Day of Judgement. I will tell you a secret. When the stars fell, when the seas boiled and the earth burned, my faith didn't die. That is when I began to believe. God was real, and he hated us.
+Those candle flames were like the lives of men. So fragile. So deadly. Left alone, they lit and warmed. Let run rampant, they would destroy the very things they were meant to illuminate. Embryonic bonfires, each bearing a seed of destruction so potent it could tumble cities and dash kings to their knees.
+Legend has it that each shooting star is really an Arabian Knight riding across the heavens. Long before the heroic tales of Aladdin and Ali Baba, the first Arabian Knight was chosen.
+Yes it is true! I, Michael Scott, am signing up with an online dating service. I need a username and I have a great one. Little Kid Lover. That way people will know exactly where my priorities are at.
+What did you expect? You've got to remember that these are just simple farmers. These are people of the land. The common clay of the new West. You know... morons.
+If you want one thing too much it's likely to be a disappointment. The healthy way is to learn to like the everyday things, like soft beds and buttermilk - and feisty gentlemen.
+Once you have tasted flight, you will forever walk the earth with your eyes turned skyward, for there you have been, and there you will always long to return.
+I have love in me the likes of which you can scarcely imagine and rage the likes of which you would not believe. If I cannot satisfy the one, I will indulge the other.
+Do I need to be liked? Absolutely not. I like to be liked. I enjoy being liked. I have to be liked, but it's not like this compulsive need to be liked, like my need to be praised.
+Toby is in HR which technically means he works for corporate. So he's not really a part of our family. Also he's divorced... so he's not really a part of his family.
+What is a wave without an ocean? A beginning without an end? They are different, but they go together. Now you go among the stars, and I fall among the sand. We are different. But we go... together.
+Death is inevitable, but that doesn't make it any easier to witness, especially when it's someone you knew. A friend, a sibling, or even a lover. Tears don't make you weak. No matter what others may tell you, caring is never a weakness.
+Each day means a new twenty-four hours. Each day means everything's possible again. You live for the moment, you die in the moment, you take it all in one day at a time. You try to walk in the light.
+I would like to be remembered as a man who had a wonderful time living life, a man who had good friends, fine family - and I don't think I could ask for anything more than that, actually.
+We're in such a hurry most of the time we never get much chance to talk. The result is a kind of endless day-to-day shallowness, a monotony that leaves a person wondering years later where all the time went and sorry that it's all gone.
+But the price of freedom is high. It always has been. And it's one I'm willing to pay. And if I'm the only one, then so be it. But I'm willing to bet I'm not.
+My heart tells me this is the best and greatest feeling I have ever had. But my mind knows the difference between wanting what you can't have and wanting what you shouldn't want. And I shouldn't want you.
+Still I pictured having you for fifty, sixty more years. I thought I might be ready then to let you go. But it's you, and I realize now that I won't be anymore ready to lose you then than I am right now. Which is not at all.
+I believe the nicest and sweetest days are not those on which anything very splendid or wonderful or exciting happens, but just those that bring simple little pleasures, following one another softly, like pearls slipping off a string.
+She couldn't breathe, and she loved it. The feeling of her throat closing in on itself was a heavenly hell. But she couldn't breathe. Out of instinct, she let go, gasping for air. She almost took her own life. And boy, did she want to do it again.
+Society teaches us that having feelings and crying is bad and wrong. Well, that's baloney, because grief isn't wrong. There's such a thing as good grief. Just ask Charlie Brown.
+Also, have I mentioned I'm sick of potatoes? Because, by God, I am sick of potatoes. If I ever return to Earth, I'm going to buy a nice little home in Western Australia. Because Western Australia is on the opposite side of Earth from Idaho.
+What I told you was true, from a certain point of view. Luke, you will find that many of the truths we cling to depend greatly on our own point of view.
+I sat in a spluttering, bleeding heap protesting that I was fine and all I needed was a quiet corner to go and die in and everything would be alright.
+Guess what, I have flaws. What are they? Oh I don't know. I sing in the shower. Sometimes I spend too much time volunteering. Occasionally I'll hit somebody with my car. So sue me.
+I've never been a kiss up. It's just not how I operate. I mean, I've always subscribed to the idea that if you really want to impress your boss, you go in there and you do mediocre work, half-heartedly.
+Success is just a war of attrition. Sure, there's an element of talent you should probably possess. But if you just stick around long enough, eventually something is going to happen...
+It is impossible to escape the impression that people commonly use false standards of measurement - that they seek power, success and wealth for themselves and admire them in others, and that they underestimate what is of true value in life.
+I'm sick of being ashamed. I don't mind being dejected and rejected, but I'm not going to be ashamed about it. At least pain is real. I mean, you look around and you see nothing is real, but at least the pain is real.
+Sometimes I wonder, that one missing sock after doing laundry, is the smart one. After being unhappy for so long, it finally walks away from a frayed, worn-out relationship.
+You hang onto your pain like it means something, like it's worth something. Well, let me tell ya, it's not worth a thing. Let it go. Infinite possibilities, and all he can do is whine.
+As he looked at me, I couldn't help but turn my head away. He knew. Everything. He didn't forgive me and never would. I had taken his only chance of having children and crushed it into the dust.
+Leaves from the vine. Falling so slow. Like fragile tiny shells, drifting in the foam. Little soldier boy. Come marching home. Brave soldier boy comes marching home.
+I forget who it was that recommended men for their soul's good to do each day two things they disliked: it was a wise man, and it is a precept that I have followed scrupulously; for every day I have got up and I have gone to bed.
+The Scots language is a mark of the distinctive identity of the Scottish people; and as such we should be concerned to preserve it, even if there were no other reason, because it is ours. This statement requires neither explanation nor apology.
+Oh, no offense. Movies are entertaining enough for the masses, but the personalities on the screen just don't impress me. I mean they don't talk, they don't act, they just make a lot of dumb show.
+I would say I kind of have an unfair advantage, because I watch reality dating shows like a hawk, and I learn. I absorb information from the strategies of the winners and the losers. Actually, I probably learn more from the losers.
+Sometimes you have to take a break from being the kind of boss that's always trying to teach people things. Sometimes you just have to be the boss of dancing.
+He had withdrawn solely for his own personal pleasure, only to be near to himself. No longer distracted by anything external, he basked in his own existence and found it splendid.
+It is perfectly monstrous, the way people go about nowadays saying things against one another behind one's back that are absolutely and entirely true.
+Whoever heard of a midwife as a literary heroine? Yet midwifery is the very stuff of drama. Every child is conceived either in love or lust, is born in pain, followed by joy or sometimes remorse. A midwife is in the thick of it, she sees it all.
+Now and then in life, love catches you unawares, illuminating the dark corners of your mind, and filling them with radiance. Once in a while you are faced with a beauty and a joy that takes your soul, all unprepared, by assault.
+I am bad and that is good, I will never be good and that's not bad, there's no one I'd rather be than me. Because if that little kid likes me, how bad can I be?
+One of the most famous quotes by Japanese multimedia artist Yoko Ono is "A dream you dream alone is only a dream. A dream you dream together is reality."
+Every life is a pile of good things and bad things. The good things don't always soften the bad things but, vice versa, the bad things don't always spoil the good things or make them unimportant.
+The fashion of long beards is on the point of being renewed, an epoch which I pronounce to be nearer than people think. All our present fashions and customs are nothing more than old ones revived, and which will disappear in their turn.
+Actually, candles were originally used to protect the birthday celebrant from demons for the coming year. As a matter of fact, down to the fourth century, Christianity rejected the birthday celebration as a pagan ritual.
+I was sure that if I could get those skills I would automatically have intelligence too. Even a feeble-minded man wants to be like other men. A child may not know how to feed itself, or what to eat, yet it knows of hunger.
+A good heart can sometimes become a broken heart. People with the loudest laughs, and the biggest smiles have the most painful past. But if you try harder, you'll soon have a good heart.
+Nothing in the world is worth having or worth doing unless it means effort, pain, difficulty... I have never in my life envied a human being who led an easy life.
+Atheism is not a philosophy; it is not even a view of the world; it is simply a refusal to deny the obvious. Unfortunately, we live in a world in which the obvious is overlooked as a matter of principle.
+Mountaineering takes place in an environment indifferent to human needs, and not everyone is willing to pay the price for its intense physical and spiritual rewards.
+The future is meant for those who are willing to let go of the worst parts of the past. When you cannot take two steps without turning around to inspect your footsteps, you are getting nowhere fast.
+"I meant," said Ipslore bitterly, "what is there in this world that truly makes living worthwhile?" Death thought about it. CATS, he said eventually. CATS ARE NICE.
+If you trust in yourself - and believe in your dreams - and follow your star - you'll still get beaten by people who spent their time working hard and learning things and weren't so lazy.
+The road and the tale have both been long, would you not say so? The trip has been long and the cost has been high... but no great thing was ever attained easily. A long tale, like a tall tower, must be built a stone at a time.
+It was an eight-harlot inn, if that's how you measure an inn. I understand that now they measure inns in stars. We are in a four-star inn right now. I don't know what the conversion from harlots to stars is.
+Well, frankly, I pity the lot of you. You look out there and see a problem; I look out there and see an opportunity. I'm gonna slide on that slippery floor all the way from Holt's office to the elevator.
+Hold it up! You're gonna let some quack doctor just knife around down there?! You are blessed with a great power, and you should never snip its wings. You should let it soar.
+It is only by breaking with rhetoric that philosophical discourse, in the very act of expelling it, can constitute itself and affirm itself as a constant and permanent relationship to truth.
+Tell me, Summer, if a human was born with stumpy legs, would they breed it with another deformed human and put their children on display like the Dachshund?
+If you spend all of your life striving to be successful, then aren't you just preparing for your death? Sure, having a rich, successful life full of work can be nice. But isn't having a life with meaning nicer?
+So Einstein was wrong when he said, "God does not play dice." Consideration of black holes suggests, not only that God does play dice, but that he sometimes confuses us by throwing them where they can't be seen.
+All your weaknesses make you strong, thinking otherwise makes yourself the enemy. You have to believe in yourself to make your weakness into your greatest strength. Block out everything else and every hater out there.
+We frequently say that the key to fast typing is accuracy, but we don't consider it truly. But today, sitting in a lab with my friend, I really felt it. That yeah, it's true, and it's really the key to fast typing, so focus on accuracy, not speed.
+Many people think that the owner of a small business is some rich guy in the back counting money. In fact, they are probably struggling to figure out how they can feed their family and keep the doors open to their dream.
+You do not follow me because I am the strongest. Pax is. You do not follow me because I am the brightest. Mustang is. You follow me because you do not know where you are going. I do.
+I don't mean to dwell, but I can't help myself when I feel the vibe and taste a memory of a time in life. When years seemed to stand still, close my eyes and sink within myself, relive the gift of precious memories in need of a fix called innocence.
+Messi does not need his right foot. He only uses the left and he's still the best in the world. Imagine if he also used his right foot, then we would have serious problems.
+And as imagination bodies forth the forms of things unknown, the poet's pen turns them to shapes and gives to airy nothing a local habitation and a name.
+We keep moving forward, opening up new doors, and doing new things, because we are curious and curiosity keeps leading us down new paths. We're always exploring and experimenting.
+You'd better watch who you're calling a child, Lois. Because if I'm a child, you know what that makes you? A pedophile. And I'll be damned if I'm gonna be lectured by a pervert.
+You can do anything. But to do anything, you must think to do anything. Then you can do anything because you are unique in this world and the one in yourself.
+I am by heritage a Jew, by citizenship a Swiss, and by makeup a human being, and only a human being, without any special attachment to any state or national entity whatsoever.
+Battle is the great redeemer. The fiery crucible in which the only true heroes are forged. The one place where all men truly share the same rank, regardless of what kind of parasitic scum they were going in.
+The question," she replied, "is not whether you will love, hurt, dream, and die. It is what you will love, why you will hurt, when you will dream, and how you will die. This is your choice. You cannot pick the destination, only the path.
+When I was a girl, I had a fear of spiders. I was told they felt no emotion; that their hearts never beat, but I know the truth. At the moment of the kill, they are never more alive.
+His soul swooned slowly as he heard the snow falling faintly through the universe and faintly falling, like the descent of their last end, upon all the living and the dead.
+He drank to the undoing of his foes, a race of mighty valorous heroes, rulers of the waves, who sit on thrones of alabaster silent as the deathless gods.
+Beware of the man who works hard to learn something, learns it, and finds himself no wiser than before. He is full of murderous resentment of people who are ignorant without having come by their ignorance the hard way.
+See, the poor dream all their lives of getting enough to eat and looking like the rich. And what do the rich dream of? Losing weight and looking like the poor.
+Future you is just past you with new molecules, we shoot the old ones out follicles. And hair is dead cells, which means our faults get shed well - meaning our parts that are hard to endure get mopped up on the barber shop floor.
+Hello, starlight, you certainly gave everyone a scare. They're all just thrilled to see you safe and sound. As for this latest little game of yours... thank the stars it's over! Did you have fun? Did you get everything out of your system?
+President Snow says he's sending us a message? Well, I have one for him. You can torture us, and bomb us, and burn our districts to the ground, but do you see that? Fire is catching! And if we burn, you burn with us!
+Love and hatred are two sides of the same coin. If you love something, you hate anything that might threaten it; if you hate something, you love anything which will destroy it, including merging yourself into it.
+The artist's task is to save the soul of mankind; and anything less is a dithering while Rome burns. If artists cannot find the way, then the way cannot be found.
+We could end this war right now boy, save thousands of lives. I fight for the Lannisters, you fight for the Starks. Swords, knives, teeth, nails; choose your weapon, and we can end this.
+As much as I hate it, when you tell me that a quote will be easy, I will mess up every single word in the quote. You could have made it short and simple, but telling me how short and simple it is ruined my accuracy.
+The deep pain that is felt at the death of every friendly soul arises from the feeling that there is in every individual something which is inexpressible, peculiar to him alone, and is, therefore, absolutely and irretrievably lost.
+There are times in life when you think you're lost. When every turn you take seems wrong. Then just for a moment, you see a light. And so I began that long climb into the light. Only this time I wasn't alone.
+Look at us! Are we not proof that there is no good, no evil, no truth, no reason? Are we not proof that the universe is a drooling idiot with no fashion sense - Mr. Nobody on the fundamental philosophy of the Brotherhood of DADA.
+In all my years of conquest, violence, slaughter, it was never personal. But I'll tell you now, what I'm about to do to your stubborn, annoying little planet... I'm gonna enjoy it. Very, very much.
+There is no inherent right or wrong in this world, those labels are just artificial constructs. Right and wrong are held by positions of authority. That is the way it's always been, so how then could anyone know this truth you speak of? Don't you see the reality is that truth long ago became nothing more than a shadow of itself, it's a mere echo of the past now...
+I bit my tongue and sat through his detailed and strained explanation. Not for the first time, I realised he considered me slightly slow. My silences he mistook for a lack of wit rather than a lack of any need to speak.
+Put your right hand on your heart. I want you to feel your heartbeat. Now, we didn't earn that. It was given to us. It was a gift, and it's our job to enjoy that gift, to enjoy this life.
+The sun went down with practiced bravado. Twilight crawled across the sky, laden with foreboding. I didn't like the way the show started. But they had given me the best seat in the house. Front row center.
+My bond is with the people, and I will serve this great nation at the pleasure of myself. If there's one thing I've proven it's that you can count on me to pleasure myself.
+Beginners will first meditate upon equanimity. Once that is established, they will then meditate upon the remaining three immeasurable qualities of love, compassion, and joy.
+Today is a good day; the sun is shining, the birds are chirping and my fingers are typing away on the keyboard like there's no tomorrow! Today is a good day.
+The most loving parents and relatives commit murder with smiles on their faces. They force us to destroy the person we really are: a subtle kind of murder.
+He transformed the pain of his tormented life into ecstatic beauty. Pain is easy to portray. But to use your passion and pain to portray the ecstasy and joy and magnificence of our world.
+There are three surefire ways for a press secretary to die a quick death. You get hostile, you lie, or you guess. You do any one of those three things, and you're done.
+You're trying to take something that can be described in many, many sentences and pages of prose, but you can convert it into a couple lines of poetry and you still get the essence, so it's that compression. The best code is poetry.
+The arctic is lit by the midnight sun. The surface of the moon is lit by the face of the earth. Our little town is lit, too, by lights just above that we cannot explain.
+Few places in this world are more dangerous than home. Fear not, therefore, to try the mountain passes. They will kill care, save you from deadly apathy, set you free, and call forth every faculty into vigorous, enthusiastic action.
+Only by going alone in silence, without baggage, can one truly get into the heart of the wilderness. All other travel is mere dust and hotels and baggage and chatter.
+With a start, I realized that the room smelled like him. I had never even noticed that he had a scent. I shut my eyes and breathed deeply. What was it? The crisp edge of a winter wind. Bare branches. The smell of absence, the smell of night.
+The worst thing about prison was the Dementors. They were flying all over the place, and they were scary. And then they'd come down and they'd suck the soul out of your body, and it hurt!
+I didn't feel like I'd really won anything, but I had come through the day no worse off than I'd come into it, which, as I have been telling myself for many years now, is a victory whether it feels like one or not.
+Books are like rocks. You hold one in your hand and look at it in various lights to get a sense of it, and then when you get a good angle, you throw it through a window to see what happens.
+Not everybody wants to get out and see the world. Nothing wrong with that. Sometimes you just want to figure out how to fit yourself into the world you already know.
+I wish they'd conduct a national poll to find out who feels out of place and who doesn't. Just to get the numbers, you know? To get a feel for how many of us there are. Sometimes at work I get the feeling that it's got to be right up against 100%.
+What is a wave without the ocean? A beginning without an end? They are different, but they go together. Now you go among the stars, and I fall among the sand. We are different. But we go... together.
+Prejudices, it is well known, are most difficult to eradicate from the heart whose soil has never been loosened or fertilized by education: they grow there, firm as weeds among stones.
+There is pleasure in the pathless woods, there is rapture in the lonely shore, there is society where none intrudes, by the deep sea, and music in its roar; I love not Man the less, but Nature more.
+When the sun sets it rises in another part of the world. I often wonder how many people consider the moon to be the sun of the night. If we close our eyes and imagine a sky with no sun or moon. This is how I imagine my life without you.
+The first time I ever saw a box jellyfish, I was twelve. Our father took us to the Monterey Bay Aquarium. I never forgot what he said... That it was the most deadly creature on earth. To me it was just the most beautiful thing I'd ever seen.
+The lesson here is clear: if you want people to understand that you value their contributions and that they are important, the recognition and praise you provide must have meaning that is specific to each individual.
+I spent 8 years trying to reach this 6-year old child, and then another seven trying to keep him locked up, because I realized what was living behind that boy's eyes was purely and simply... Evil.
+When you think about it, people are kind of like eggs. On the outside of the egg, it's just the shell, and it's hollowness. On the inside of the egg, that's where all the soft spots are, and in the center is the core. The yolk.
+The trees act not as individuals, but somehow as a collective. Exactly how they do this, we don't yet know. But what we see is the power of unity. What happens to one happens to us all. We can starve together or feast together.
+In the long flow of time, living things know nothing of their ancestors, except for the genes they've inherited. Only mankind has history. Having a history differentiates mankind from all other living species. That's why I wanted to be a historian.
+Like many artists, Estelle lived in an atmosphere of chaotic funk, taken by observers to be artistic charm, but in fact no more than a civilized way of dealing with the relative poverty and uncertainty of cannibalizing one's imagination for money.
+`. trim()
+ . split(/\n/)
+ ;

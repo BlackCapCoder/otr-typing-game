@@ -12,15 +12,11 @@ body {
 #display {
   color:    white;
   position: fixed;
-  top: 15vh;
-  left: 50%;
-  transform: translateX(-50%);
   pointer-events: none;
   height: 70px;
-  transition: filter 0.05s ease-out, left 0.8s ease-out;
-  max-width: 500px;
   width: calc(100vw - 40px);
   --size: 40px;
+  margin-left: 20px;
 }
 pre {
   display: inline;
@@ -31,8 +27,8 @@ pre {
 }
 
 
-#current .content { --font-size: var(--size); }
-#next    .content { --font-size: calc(var(--size) * 0.75); }
+.current .content { --font-size: var(--size); }
+.next    .content { --font-size: calc(var(--size) * 0.75); }
 
 .content {
   font-size: var(--font-size);
@@ -48,10 +44,10 @@ pre {
   margin-right: 30px;
 
   /* Red color visible at edges, in spite of clip-path */
-  border-left: 2px solid black;
-  border-top : 1px solid black;
+  /* border-left: 2px solid black; */
+  border-top : 3px solid black;
 }
-#current .content {
+.current .content {
   transition: margin-left calc(0.08s * var(--anim)) ease-out;
 }
 
@@ -77,6 +73,9 @@ pre {
   width: 2px;
   height: calc(100% + 7px);
   background: black;
+}
+.content .tail {
+  margin-left: -1px;
 }
 
 .mask {
@@ -122,6 +121,8 @@ input {
   width: 100vw;
   height: 100vh;
   opacity: 0.0;
+  position: fixed;
+  top: 0;
 }
 input:not(:focus) ~ #display > * {
   /* filter: blur(2px); */
@@ -134,44 +135,25 @@ input:not(:focus) ~ #display::after {
   /* text-transform: Capitalize; */
 }
 
-
-#wpm {
-  bottom: 75vh;
-  color: white;
-  width: 100vw;
-  text-align: center;
-  font-size: 45px;
-  vertical-align: middle;
-  font-family: 'Roboto Mono', monospace;
-  font-weight: lighter;
-  position: relative;
-  transform: translateY(-50%);
-}
-
 .hidden {
   display: none !important;
 }
 
-#display:not(.hidden) ~ #wpm {
-  display: none;
-}
-
-
-#next {
+.next {
   opacity: 0.25;
   max-height: calc(75vh - calc(calc(var(--size) * 2.325) + 60px));
 }
 
 
-#rest {
-  font-size: 13px;
+.rest {
+  font-size: calc((var(--size) * 0.37));
   display: inline;
   line-height: 1.6em;
   word-spacing: 0.1em;
   opacity: 0.8;
   text-align: center;
 }
-#rest::before {
+.rest::before {
   content: '';
   position: absolute;
   left: 0; right: 0;
@@ -187,13 +169,15 @@ input:not(:focus) ~ #display::after {
   color: #888;
 }
 
-#main-menu:not(.active) { display: none; }
-#main-menu.active ~ #display { left: -100%; }
 #main-menu.active ~ input { display: none; }
+
+#main-menu:not(.active) {
+  margin-top: -905px;
+  margin-bottom: 15vh;
+}
 
 #main-menu {
   color: purple;
-  padding: 40px 15px 15px 15px;
   font-family: 'Roboto Mono', monospace;
   font-weight: lighter;
   text-align: center;
@@ -201,7 +185,9 @@ input:not(:focus) ~ #display::after {
   opacity: 0.85;
   display: flex;
   justify-content: center;
+  margin-top:    40px;
   margin-bottom: 40px;
+  transition: margin 0.5s ease-out;
 }
 #main-menu > .wrapper {
   max-width: 500px;
@@ -282,3 +268,23 @@ input:not(:focus) ~ #display::after {
 #main-menu table td:last-child {
   text-align: right;
 }
+
+
+.game-wrapper {
+  display: flex;
+  justify-content: space-evenly;
+}
+.player {
+  max-width: 500px;
+  flex: 1;
+}
+
+.player .wpm
+{
+  text-align: center;
+  font-size:  calc(var(--size) * 1.2);
+}
+
+.player.done .current   { display: none; }
+.player.done .next      { display: none; }
+.player:not(.done) .wpm { display: none; }

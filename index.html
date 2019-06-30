@@ -63,41 +63,66 @@
 <input autofocus/>
 
 <div id="display">
-  <div id="current">
-    <div class='content'
-      ><pre class="init"></pre
-      ><pre class="tail"></pre
-      ><div class='cursor  mask'></div
-      ><div class='color   mask'></div
-    ></div>
+
+  <div class='game-wrapper'>
+    <div class='player' id='p1'>
+      <div class="current">
+        <div class='content'
+          ><pre class="init"></pre
+          ><pre class="tail"></pre
+          ><div class='cursor  mask'></div
+          ><div class='color   mask'></div
+        ></div>
+      </div>
+      <div class="next">
+        <div class='content'
+          ><pre class="init"></pre
+          ><pre class="tail"></pre
+        ></div>
+        <div class='rest'></div>
+      </div>
+      <p class='wpm'></p>
+    </div>
+    <div class='player hidden' id='p2'>
+      <div class="current">
+        <div class='content'
+          ><pre class="init"></pre
+          ><pre class="tail"></pre
+          ><div class='cursor  mask'></div
+          ><div class='color   mask'></div
+        ></div>
+      </div>
+      <div class="next">
+        <div class='content'
+          ><pre class="init"></pre
+          ><pre class="tail"></pre
+        ></div>
+        <div class='rest'></div>
+      </div>
+      <p class='wpm'></p>
+    </div>
   </div>
-  <div id="next">
-    <div class='content'
-      ><pre class="init"></pre
-      ><pre class="focal"></pre
-      ><pre class="tail"></pre
-      ><div class='cursor  mask'></div
-      ><div class='correct mask'></div
-      ><div class='wrong   mask'></div
-    ></div>
-    <div id='rest'></div>
-  </div>
+
   <div id="difficulty">
     <p class='value'></p>
   </div>
+
 </div>
 
-<div id='wpm' tab-index='-1'>
-  <span class='val'>40</span>
-</div>
+<script src="res/simplewords.js"></script>
+<script src="res/texts.js"></script>
 
-<script src="utils.js"></script>
-<script src="hands.js"></script>
-<script src="texts.js"></script>
-<script src="simplewords.js"></script>
-<script src="words.js"></script>
-<script src="stats.js"></script>
-<script src="instantdeath.js"></script>
+<script src="js/utils.js"></script>
+<script src="js/hands.js"></script>
+<script src="js/words.js"></script>
+<script src="js/stats.js"></script>
+<script src="js/instantdeath.js"></script>
+
+<script src="js/game.js"></script>
+
+<!-- <script src="todo/level.js"></script> -->
 <!-- <script src="suffixtree.js"></script> -->
 <!-- <script src="purs.js"></script> -->
+<!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script> -->
+
 <script src="main.js"></script>

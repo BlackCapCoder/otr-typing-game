@@ -8,8 +8,7 @@ function * instantDeath ()
   //   yield (easy = !easy) ? bt._removeMin().data : bt._removeMax().data;
   // }
 
+
   for (const q of texts.slice(0).shuffle()) yield q;
-
-
-  yield * instantDeath ();
 }
+
