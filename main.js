@@ -141,11 +141,7 @@ function * quotes (difficulty)
 function * linear (text)
 {
   const xs = text.split(/\s*?\n+\s*/);
-  levelCount   = xs.length;
-  currentLevel = 0;
-  while (true) {
-    yield xs[currentLevel];
-  }
+  for (const x of xs) yield x;
 }
 
 function * easyQuotes ()
