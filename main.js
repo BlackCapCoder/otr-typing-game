@@ -109,6 +109,8 @@ function onButtonClicked (which)
   mainMenu.classList.remove('active');
   p1.classList.remove('done');
   p2.classList.remove('done');
+  p1.classList.remove('hidden');
+  p2.classList.add('hidden');
 
   window.ctrl = new PlayerControl (document.querySelector('#p1'));
   beginGame();
@@ -116,7 +118,7 @@ function onButtonClicked (which)
 
 function _play (xs)
 {
-  const s = inputElement (ctrl, inp, isEndless, isInstantDeath);
+  const s = inputElement (ctrl, userInput(inp), inp, isEndless, isInstantDeath);
   const v = masterInput  (window);
   play (xs, s, v, isRanked) . then (returnToMenu);
 }

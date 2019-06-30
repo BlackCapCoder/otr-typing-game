@@ -106,8 +106,28 @@
   <div id="difficulty">
     <p class='value'></p>
   </div>
-
 </div>
+
+
+<!-- The core Firebase JS SDK is always required and must be listed first -->
+<script src="https://www.gstatic.com/firebasejs/6.2.4/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/6.2.4/firebase-database.js"></script>
+
+<script>
+  // Your web app's Firebase configuration
+  var firebaseConfig = {
+    apiKey: "AIzaSyBGjTzsdVNyZEe1DrcjdG_aIjPprxNcZ9g",
+    authDomain: "typing-game-73b9b.firebaseapp.com",
+    databaseURL: "https://typing-game-73b9b.firebaseio.com",
+    projectId: "typing-game-73b9b",
+    storageBucket: "",
+    messagingSenderId: "95166801393",
+    appId: "1:95166801393:web:1fd2b7f21beed8c9"
+  };
+  // Initialize Firebase
+  firebase.initializeApp(firebaseConfig);
+  database = firebase.database();
+</script>
 
 <script src="res/simplewords.js"></script>
 <script src="res/texts.js"></script>
@@ -119,6 +139,7 @@
 <script src="js/instantdeath.js"></script>
 
 <script src="js/game.js"></script>
+<script src="todo/multiplayer.js"></script>
 
 <!-- <script src="todo/level.js"></script> -->
 <!-- <script src="suffixtree.js"></script> -->
@@ -126,3 +147,17 @@
 <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script> -->
 
 <script src="main.js"></script>
+
+
+<script>
+
+async function write (pth, val) {
+  return await database.ref(pth).set(val);
+}
+
+function read (pth) {
+  database.ref(pth).on('value', x => console.log(x.node_))
+}
+
+
+</script>

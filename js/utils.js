@@ -349,7 +349,7 @@ for (const Arr of [Array, TypedArray, Generator])
 const AsyncGenerator = Object.getPrototypeOf(async function*(){});
 
 AsyncGenerator.prototype.map = async function * (f) {
-  for await (const x of this) yield f(x);
+  for await (const x of this) yield await f (x);
 };
 
 AsyncGenerator.prototype.then = async function * (f) {
@@ -398,3 +398,23 @@ function * memo (n, s)
   }
   yield buf;
 }
+
+
+async function dupA (n, xs)
+{
+  const ret = new Array (n);
+
+  const q = (async function step () {
+    let cache;
+    return [cache || await xs.next(), step ()]
+  })();
+
+  for (let i = 0; i < n; i++)
+    ret[i] = (async function * (p) {
+      for (let [cur, next] = await p; !cur.done; [cur, next] = await next)
+        yield cur.value;
+    })(q);
+
+  return ret;
+}
+

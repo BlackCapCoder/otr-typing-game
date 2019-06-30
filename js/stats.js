@@ -15,7 +15,7 @@ setTimeout ( () => {
       if ('stats2' in localStorage)
         stats = decompressStats(localStorage.stats2);
       else if ('stats' in localStorage) {
-        stats = JSON.parse(stats);
+        stats = JSON.parse(localStorage.stats);
         for (const [k, [,,s]] of Object.entries(stats)) stats[k][2] = Math.floor(s);
         localStorage.stats2 = compressStats(stats);
         // delete localStorage.stats

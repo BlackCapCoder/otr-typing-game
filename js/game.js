@@ -242,10 +242,9 @@ async function * userInput (elem)
 }
 
 
-const inputElement = (ctrl, inpElem, endless = false, instantDeath = false) => l =>
+const inputElement = (ctrl, ui, inpElem, endless = false, instantDeath = false) => l =>
 {
-  const ui     = userInput(inpElem);
-  const [a, b] = dup    (2, stream(textToWords(l)));
+  const [a, b] = dup (2, stream(textToWords(l)));
 
   const inp = a.map (w => {
     inpElem.value     = '';
@@ -337,7 +336,7 @@ async function play (lvls, inp, minp, ranked = true)
 
     reset:
     while (true) {
-      for await (const [which, val] of interleave(inp(l), minp)) {
+      for await (const [which, val] of (minp !== undefined ? interleave(inp(l), minp) : inp(l))) {
         if (which === 0) {
           if (ranked) putStat(val[0], val[2], val[1]);
           didType = true;
