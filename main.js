@@ -118,7 +118,7 @@ function onButtonClicked (which)
 
 function _play (xs)
 {
-  const s = inputElement (ctrl, userInput(inp), inp, isEndless, isInstantDeath);
+  const s = inputElement (ctrl, inp, isEndless, isInstantDeath);
   const v = masterInput  (window);
   play (xs, s, v, isRanked) . then (returnToMenu);
 }
@@ -127,6 +127,7 @@ function returnToMenu ()
 {
   if (!isPlaying) return;
   isPlaying = false;
+  saveStats();
   updateStats();
   mainMenu.classList.add('active');
   lastMenuFocus.focus();

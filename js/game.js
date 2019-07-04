@@ -1,8 +1,13 @@
+let skipTimeout = 300
+  , maxPeek     = 1;
+
+
 class WordControl
 {
   constructor (elem)
   {
     this.elem     = elem;
+    this.cont     = elem.querySelector('.content')
     this.elemInit = elem.querySelector('.init');
     this.elemTail = elem.querySelector('.tail');
   }
@@ -13,15 +18,15 @@ class WordControl
   set init (x) { return this.elemInit . innerText = x }
   set tail (x) { return this.elemTail . innerText = x }
 
-  get indexMistake ( ) { return this.elem.style.getProperty('--mis')   }
-  get indexCursor  ( ) { return this.elem.style.getProperty('--cur')   }
-  get indexFocus   ( ) { return this.elem.style.getProperty('--focus') }
-  get animate      ( ) { return this.elem.style.getProperty('--anim')  }
+  get indexMistake ( ) { return this.cont.style.getProperty('--mis')   }
+  get indexCursor  ( ) { return this.cont.style.getProperty('--cur')   }
+  get indexFocus   ( ) { return this.cont.style.getProperty('--focus') }
+  get animate      ( ) { return this.cont.style.getProperty('--anim')  }
 
-  set indexMistake (x) { return this.elem.style.setProperty('--mis',   x) }
-  set indexCursor  (x) { return this.elem.style.setProperty('--cur',   x) }
-  set indexFocus   (x) { return this.elem.style.setProperty('--focus', x) }
-  set animate      (x) { return this.elem.style.setProperty('--anim',  x) }
+  set indexMistake (x) { return this.cont.style.setProperty('--mis',   x) }
+  set indexCursor  (x) { return this.cont.style.setProperty('--cur',   x) }
+  set indexFocus   (x) { return this.cont.style.setProperty('--focus', x) }
+  set animate      (x) { return this.cont.style.setProperty('--anim',  x) }
 
   get isHidden ( ) { return this.elem.classList.contains('hidden'); }
   set isHidden (x) {
@@ -31,164 +36,202 @@ class WordControl
       this.elem.classList.remove('hidden');
   }
 
-  loadWord (w, meta = true)
+  get peek ( ) { return this.elem.classList.contains('peek'); }
+  set peek (x) {
+    if (x)
+      this.elem.classList.add('peek');
+    else
+      this.elem.classList.remove('peek');
+  }
+
+  get isMain ( ) { return this.elem.classList.contains('focus'); }
+
+  loadWord (w)
   {
     this.init         = w.value.substr(0, w.otr);
     this.tail         = w.value.substr(w.otr);
     this.indexFocus   = w.otr;
     this.animate      = 0;
-    if (!meta) return;
-    this.indexCursor  = -2;
-    this.indexMistake = w.value.length;
   }
 }
 
 class WordControls
 {
-  constructor (rest, ...ctrls) {
-    this.rest      = rest;
-    this.ctrls     = ctrls;
-    this.buffer    = [];
-    this.offset    = 0;
-    this.skipTimer = -1;
-  }
-
-  set cursor (x) {
-    this._cursor = x;
-
-    if (this.offset === 0) {
-      this.ctrls[0].animate     = Number(x > 0);
-      this.ctrls[0].indexCursor = x;
-      if (this.buffer.length > 0)
-        this.ctrls[0].indexFocus = Math.max(x, this.buffer[0].otr);
-    }
-
-    return x;
-  }
-
-  set mistake (x) {
-    this._mistake = x;
-    if (this.offset === 0) this.ctrls[0].indexMistake = x;
-    return x;
-  }
-
-  update (cur, mis, lim = 1, timeout = 500)
+  constructor (rest, ...ctrls)
   {
+    this.rest      = rest;
+    this.length    = ctrls.length;
+    this.skipTimer = -1;
+
+    this.first = this.cur = new CircularList (ctrls);
+    for (; !this.cur.value.isMain; this.cur = this.cur.right);
+  }
+
+  get isPeeking ()
+  {
+    return this.peekWord !== undefined;
+  }
+  get canPeek ()
+  {
+    if (this.z.marks.cur === this.z.end) return false;
+    return this.peekWord !== this.z.end;
+  }
+
+  get focus ()
+  {
+    return this.cur.value;
+  }
+
+  set cursor (x)
+  {
+    const otr = this.z.marks.focus.value.otr;
+    this.focus.animate     = Number(x > 0);
+    this.focus.indexFocus  = Math.max(x, otr);
+    this.focus.indexCursor = x;
+  }
+
+  set mistake (x)
+  {
+    this.focus.indexMistake = x;
+  }
+
+  update (cur, mis)
+  {
+    clearTimeout(this.skipTimer);
+
+    this._cursor  = cur;
+    this._mistake = mis;
+
+    if (cur > mis)
+      return this.onMistake();
+
+    if (this.isPeeking || (cur > this.skipAt && this.peek()))
+      return this.skipTimer = setTimeout(() => this.onMistake(), skipTimeout);
+
     this.cursor  = cur;
     this.mistake = mis;
-
-    clearTimeout(this.skipTimer);
-
-    if (cur > mis) {
-      this.onMistake();
-    } else if (cur > this.skipAt) {
-      this.peek(lim);
-      this.skipTimer = setTimeout(() => this.onMistake(), timeout);
-    }
   }
 
-  onMistake () {
-    this.skipAt = Math.max(this._mistake + 4, this.skipAt);
-    this.resetPeek ();
-  }
-
-
-  initialize (s, trimRest = true)
+  onMistake ()
   {
-    clearTimeout(this.skipTimer);
+    this.skipAt  = Math.max(this._mistake + 4, this.skipAt);
+    this.resetPeek ();
+    this.cursor  = this._cursor;
+    this.mistake = this._mistake;
+  }
 
-    this.offset  = 0;
-    this.stream  = s;
-    this.buffer  = take (this.ctrls.length, s);
 
-    let i = 0, len = 0;
+  initialize (s)
+  {
+    delete this.peekWord;
+    this.last = this.first.left;
+    this.z    = new BufferedZipper (this.length + maxPeek, stream(s));
 
-    for (; i < Math.min(this.ctrls.length, this.buffer.length); i++) {
-      this.ctrls[i].loadWord(this.buffer[i]);
-      this.ctrls[i].isHidden = false;
-      len += this.buffer[i].length;
-    }
+    let len = 0, c = this.cur;
 
-    for (; i < this.ctrls.length; i++)
-      this.ctrls[i].isHidden = true;
+    do {
+      const w = this.z.end.value;
+      c.value.loadWord (w);
+      c.value.isHidden = false;
+      len += w.length;
+      c = c.right;
+    } while (c !== this.first && this.z.step());
 
-    if (this.buffer.length === 0) return;
+    for (; c != this.cur; c = c.right)
+      c.value.isHidden = true;
 
-    if (trimRest)
-      this.rest.innerText = this.rest.innerText.substr(len);
+    if (this.z.empty)
+      return;
 
-    this.cursor = 0;
-    this.skipAt = this.buffer[0].skipAt;
+    const focusZ = this.z.begin
+        , curZ   = this.z.end;
+
+    for (let i = 0; i < maxPeek && this.z.step(); i++);
+
+    this.z.marks.cur    = curZ;
+    this.z.marks.focus  = focusZ;
+    this.skipAt         = curZ.value.skipAt;
+    this.rest.innerText = this.rest.innerText.substr(len);
+    this.focus.peek     = false;
+    this.update(0, 0);
   }
 
   step ()
   {
-    clearTimeout(this.skipTimer);
-
-    if (this.offset === 1) {
-      this.buffer.shift ();
-      this.offset  = 0;
-      this.cursor  = 0;
-      this.mistake = this.buffer[0].value.length;
-      this.skipAt  = this.buffer[0].skipAt;
-      return;
+    if (this.z.streamDone) {
+      this.last.value.isHidden = true;
+      this.last = this.last.left;
+    }
+    if (!this.z.step ())
+    {
+      this.z.end.right = this.z.begin = this.z.begin.right;
+      this.z.moveRight();
     }
 
-    this.peek();
-    this.buffer.shift ();
-    this.offset = 0;
-    this.cursor = 0;
+    if (!(this.isPeeking && this.peekWord === this.z.marks.cur))
+    {
+      let c = this.last;
+      for (const w of this.z.marks.cur.until.left(this.z.begin)) {
+        c.value.loadWord (w);
+        c.value.isHidden = false;
+        c = c.left;
+      }
 
-    if (this.buffer.length > 0)
-      this.skipAt = this.buffer[0].skipAt;
+      if (!this.isPeeking)
+        this.rest.innerText = this.rest.innerText.substr(this.z.marks.cur.value.length);
+      else
+        for (; this.peekWord !== this.z.marks.cur; this.peekWord = this.peekWord.left)
+          this.rest.innerText = this.peekWord.value.value + this.rest.innerText;
+    }
+
+    delete this.peekWord;
+    this.skipAt     = this.z.marks.focus.value.skipAt;
+    this.focus.peek = false;
+    this.update(0, 0);
   }
 
-  peek (lim = -1)
+  peek ()
   {
-    if (lim > -1 && this.offset >= lim) return;
+    if (!this.canPeek)
+      return false;
 
-    let n = this.buffer.length - (++this.offset);
-    for (; n < this.ctrls.length; n++) {
-      const x = this.stream.next();
-      if (x.done) break;
-      this.buffer.push(x.value);
+    this.peekWord = this.z.marks.cur.right;
+
+    let c = this.last;
+    for (const w of this.peekWord.until.left(this.z.begin)) {
+      c.value.loadWord (w);
+      c.value.isHidden = false;
+      c = c.left;
+      if (c === this.last) break;
     }
 
-    if (n <= 0) {
-      this.offset--;
-      return;
-    }
+    this.focus.indexCursor = -2;
+    this.focus.peek = true;
+    this.rest.innerText = this.rest.innerText.substr(this.peekWord.value.length);
 
-    let len = this.buffer[n].length;
-    let i   = 0;
-    for (; i < n; i++)
-      this.ctrls[i].loadWord(this.buffer[this.offset + i], false);
-
-    for (; i < this.ctrls.length; i++) {
-      this.ctrls[i].isHidden = true;
-    }
-
-    this.ctrls[0].indexCursor = -2;
-    this.rest.innerText = this.rest.innerText.substr(len);
+    return true;
   }
 
   resetPeek ()
   {
-    if (this.offset === 0) return;
+    if (!this.isPeeking) return false;
 
-    for (let i = this.buffer.length - this.offset; i < this.buffer.length; i++)
-      this.rest.innerText
-        = this.buffer[this.buffer.length - this.offset].value
-        + this.rest.innerText;
-
-    for (let i = 0; i < Math.min(this.ctrls.length, this.buffer.length); i++) {
-      this.ctrls[i].loadWord(this.buffer[i], false);
-      this.ctrls[i].isHidden = false;
+    let c = this.last;
+    for (const w of this.z.marks.cur.until.left(this.z.begin)) {
+      c.value.loadWord (w);
+      c.value.isHidden = false;
+      c = c.left;
     }
 
-    this.offset  = 0;
-    this.cursor  = this._cursor;
-    this.mistake = this._mistake;
+    for (; c !== this.last; c = c.left)
+      c.value.isHidden = true;
+
+    for (; this.peekWord !== this.z.marks.cur; this.peekWord = this.peekWord.left)
+      this.rest.innerText = this.peekWord.value.value + this.rest.innerText;
+
+    delete this.peekWord;
+    this.focus.peek = false;
+    return true;
   }
 }
 
@@ -197,12 +240,13 @@ class PlayerControl
   constructor (elem)
   {
     this.elem        = elem
-    this.elemRest    = elem.querySelector('.next .rest');
+    this.elemRest    = elem.querySelector('.rest');
     this.elemWpm     = elem.querySelector('.wpm');
     this.words = new WordControls
       ( this.elemRest
-      , new WordControl(elem.querySelector ('.current .content'))
-      , new WordControl(elem.querySelector ('.next    .content'))
+        , ... Array.from (
+            elem.querySelectorAll('.word')
+          ) . map(x => new WordControl(x))
       );
   }
 
@@ -242,9 +286,10 @@ async function * userInput (elem)
 }
 
 
-const inputElement = (ctrl, ui, inpElem, endless = false, instantDeath = false) => l =>
+const inputElement = (ctrl, inpElem, endless = false, instantDeath = false) => l =>
 {
   const [a, b] = dup (2, stream(textToWords(l)));
+  const ui = userInput(inpElem);
 
   const inp = a.map (w => {
     inpElem.value     = '';
@@ -406,5 +451,4 @@ async function sleep (ms)
 {
   await new Promise (r => setTimeout(r, ms));
 }
-
 

@@ -329,186 +329,76 @@ function * longSentences ()
 }
 
 
-function dijkstra (h,s,g,scores, start = 0)
+function dijkstra (h,s,g,scores, start = 0, hard = false)
 {
   const dist  = new Uint16Array(s.length).fill(-1);
   const prev  = new Uint16Array(s.length).fill(-1);
-  const len   = new Uint16Array(s.length).fill(0);
   const vis   = new Uint8Array (s.length).fill(0);
-  const queue = new BinaryTree ();
+  const queue = new PriorityQueue (
+    hard ? (a,b) => dist[a] > dist[b]
+         : (a,b) => dist[a] < dist[b]
+  );
 
-  queue.insert({val: 0, data: start})
+  queue.push(start)
   dist[start] = 0;
 
-  while (queue.size > 0) {
-    const u = queue._removeMin().data;
+  for (let u = start; queue.size > 0; u = queue.pop()) {
     if (vis[u]) continue;
     vis[u] = 1;
 
     for (const v of g[u]) {
       const alt = dist[u] + scores[v];
       if (alt >= dist[v]) continue;
-      if (!vis[v]) queue.insert({val: alt, data: v});
+      if (!vis[v]) queue.push(v);
       dist[v] = alt;
       prev[v] = u
-      len [v] = len[u] + 1;
     }
   }
 
-  return [dist, prev, len]
+  return [dist, prev]
 }
 
-function test (start, end) {
-  const h      = hardLetters();
-  const s      = unsafeWords();
-  const g      = wordGraph (s);
-  const scores = new Uint16Array(s.length).map((_,i) => Math.round(scoreWord(h,s[i])));
-  const q = dijkstra(h, s, g, scores);
-  return q;
-}
-
-function * shortestTree ()
-{
-  const h      = hardLetters();
-  const s      = unsafeWords();
-  const g      = wordGraph (s);
-  const scores = new Uint16Array(s.length).map((_,i) => Math.round(scoreWord(h,s[i])));
-
-  const inits = Array.from(new Set(quoteWords().map(x => x.slice(0, x.indexOf(' ')).toLowerCase()))).map(w => binarySearch(s, w)).filter(x => x != -1).shuffle();
-
-  let sentence = [];
-  let start = inits.pop();
-
-  while (true) {
-    const [, prev, len] = dijkstra(h,s,g,scores,start);
-
-    let max = 0, ix = 0;
-    for (let i = 0; i < len.length; i++) {
-      if (len[i] < max) continue;
-      max = len[i];
-      ix  = i;
-    }
-
-    if (max <= 1) {
-      if (sentence.length == 0) {
-        start = inits.pop();
-        continue;
-      }
-      yield sentence.map(i => s[i]).join(' ');
-      sentence = [];
-      start = inits.pop();
-      continue;
-    }
-
-    let path = [];
-    let cur  = ix;
-
-    while (cur !== 65535) {
-      path.unshift(cur);
-      cur = prev[cur];
-    }
-
-    sentence = sentence.concat(path);
-
-    if (sentence.length >= 20) {
-      yield sentence.map(i => s[i]).join(' ');
-      sentence = [];
-      start = inits.pop();
-    } else {
-      start = sentence.pop();
-    }
-  }
-}
-
-function * djikLevel (_h, _s, _g, _scores)
+function * djikLevel (_h, _s, _g, _scores, hard = false)
 {
   const h      = _h      || hardLetters();
   const s      = _s      || unsafeWords();
   const g      = _g      || wordGraph (s);
-  const scores = _scores || new Uint16Array(s.length).map((_,i) => Math.round(scoreWord(h,s[i])));
+  const scores = _scores || new Uint16Array(s.length).map (
+    (_,i) => Math.round(scoreWord(h,s[i]))
+  );
 
-  const qt    = range(s.length) . maximum (i => scoreWord(h, s[i]));
-  const tried = [];
-  let   begin;
+  // A linked list, but flat
+  let llvs = new Uint16Array(s.length).map((_,i) => i).sort(
+    hard ? (a,b) => scores[b] - scores[a]
+         : (a,b) => scores[a] - scores[b]
+  );
+  let llks = new Uint16Array(s.length-1).map((_,i) => i+1);
 
-  while (begin = qt._removeMin())
-  {
-    const sentence = [s[begin.data]];
-    let [,prev,] = dijkstra(h,s,g,scores,begin.data);
+  for (let i = 0, end = s.length; i < end; i = llks[i] = llks[i]) {
+    const sentence = [s[llvs[i]]];
+    let k = i, n = 0;
 
-    for (let i = 0; i < 10; i++)
-    {
+    for (; n < 20; n++) {
+      let begin   = llvs[k];
+      let [,prev] = dijkstra(h,s,g,scores,begin,hard);
+
+      let j = k, cur = llks[k];
+      for (; prev[llvs[cur]] === 65535; j = cur, cur = llks[cur]);
+
+      if (cur === undefined) break;
+
+      llks[j] = llks[k = cur];
       const level = [];
-      let   end;
 
-      while (qt.size > 0 && prev[(end = qt._removeMin()).data] === 65535)
-        tried.push(end);
-
-      if (end === undefined) {
-        console.log('undef')
-        return;
-      }
-
-      begin = end;
-
-      while (end = tried.pop())
-        qt.insert(end);
-
-      prev = dijkstra(h,s,g,scores,begin.data)[1];
-
-      for (let cur = begin.data; cur < 65535; cur = prev[cur])
+      for (cur = llvs[cur]; prev[cur] < 65535; cur = prev[cur])
         level.unshift(s[cur]);
 
-      console.log(qt.size)
       sentence.push(level.join(' '));
     }
+
+    if (n < 3) continue;
 
     yield sentence.join(' ');
   }
 }
 
-function * djikLevel2 ()
-{
-  const h      = hardLetters();
-  const s      = unsafeWords();
-  const g      = wordGraph (s);
-  const scores = new Uint16Array(s.length).map((_,i) => Math.round(scoreWord(h,s[i])));
-
-  const backlog = maximum
-  ( x => { const [a,b] = x.split(',');
-           return (scoreWord(h, x[0]) + scoreWord(h, x[1])) / 2 }
-  , Infinity
-    , new Set( quoteWords()
-      . reduce((acc, l) => {
-        const m = l.toLowerCase().match(/^(\w+).* (\w+)[\.\?!]*$/);
-        if (m !== null && m[1] !== m[2]) acc.push(m[1] + ',' + m[2]);
-        return acc;
-      }, []))
-    ) . toSortedListRev () ;
-
-  const level = [];
-  let   cnt   = 0;
-
-  for (const p of backlog)
-  {
-    const [begin,end] = p.data.split(',').map(x => binarySearch(s, x));
-    if (begin == -1 || end == -1) continue;
-
-    const [,prev,] = dijkstra(h,s,g,scores,begin);
-    const sentence = [];
-
-    for (let cur = end; cur < 65535; cur = prev[cur], cnt++)
-      sentence.unshift(s[cur]);
-
-    if (sentence.length < 2) continue;
-
-    level.push(sentence.join(' '));
-
-    if (cnt >= 20) {
-      cnt = 0;
-      yield level.splice(0).join(', ');
-    }
-  }
-}
-
-// TODO Word classes: nouns, adjectives, adverbs ..

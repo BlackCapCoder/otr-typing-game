@@ -319,14 +319,39 @@ function * append (a, b) {
   yield * b;
 }
 
+
+function mapG (f, g) {
+  const next = g.next.bind(g);
+  g.next = (...as) => {
+    const x = next (...as);
+    if (!x.done) x.value = f (x.value);
+    return x;
+  }
+  return g;
+}
+
+function thenG (g, f) {
+  const next = g.next.bind(g);
+  g.next = (...as) => {
+    const x = next (...as);
+    if (x.done) f (x.value);
+    return x;
+  }
+  return g;
+}
+
+
 // -------------
 
 
 const TypedArray     = Object.getPrototypeOf(Int8Array);
 const Generator      = Object.getPrototypeOf(function*(){});
 
-Generator.prototype.collect = function ( ) { return Array.from(this); };
-Generator.prototype.map     = function (f) { return map(f, this); };
+Generator.prototype.collect = function (...xs) { return Array.from(this, ...xs); };
+Generator.prototype.map     = function (f)     { return mapG(f, this); };
+Generator.prototype.tail    = function ()      { this.next(); return this; };
+Generator.prototype.then    = function (f)     { return thenG(this, f); };
+
 
 for (const Arr of [Array, TypedArray])
 {

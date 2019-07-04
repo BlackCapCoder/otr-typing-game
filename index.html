@@ -1,62 +1,50 @@
-<link rel="stylesheet" href="main.css" type="text/css" media="all" />
+<link rel="stylesheet" href="main.css" type="text/css" />
 
 <div id="main-menu" class='active'>
   <div class='wrapper'>
-    <h2>Quotes</h2>
-    <button autofocus onclick='onButtonClicked("random")'>Random</button>
-    <button onclick='onButtonClicked("easy")'>Easy</button>
-    <button onclick='onButtonClicked("easy-stats")'>Easy (S)</button>
-    <button onclick='onButtonClicked("hard-stats")'>Hard (S)</button>
-    <h2>Words</h2>
-    <button onclick='onButtonClicked("easy-words")'>Easy (S)</button>
-    <button onclick='onButtonClicked("hard-words")'>Hard (S)</button>
-    <button data-tooltip="Based on how often one words appears after another" onclick='onButtonClicked("sentences")'>Senteces</button>
-    <button data-tooltip="Long sequence of unique words, each having the property that the word proceeding it has appeared directly before it in at least one quote" onclick='onButtonClicked("long-sentences")'>Long Senteces</button>
-    <button onclick='onButtonClicked("dijkstra")'>Dijkstra</button>
-    <button data-tooltip="Does not affect your stats- take your time" onclick='onButtonClicked("accuracy")'>Instant Death</button>
-    <p>(S) = Statistically - Based on your historical performance</p>
-    <h2>Custom text</h2>
-    <textarea id='custom-text'></textarea>
-    <button onclick='onButtonClicked("custom")'>Custom</button>
-    <h2>Stats</h2>
-    <table>
-      <tr>
-        <td>Average WPM</td>
-        <td id='stats-wpm'></td>
-      </tr>
-      <tr>
-        <td>Accuracy</td>
-        <td id='stats-acc'></td>
-      </tr>
-      <tr>
-        <td>Best keys</td>
-        <td id='stats-good-keys'></td>
-      </tr>
-      <tr>
-        <td>Worst keys</td>
-        <td id='stats-bad-keys'></td>
-      </tr>
-      <tr>
-        <td>Best words</td>
-        <td id='stats-good-words'></td>
-      </tr>
-      <tr>
-        <td>Worst words</td>
-        <td id='stats-bad-words'></td>
-      </tr>
-      <tr>
-        <td>Words typed</td>
-        <td id='stats-num-words'></td>
-      </tr>
-      <tr>
-        <td>Keys pressed</td>
-        <td id='stats-num-keys'></td>
-      </tr>
-      <tr>
-        <td>Time used</td>
-        <td id='stats-num-time'></td>
-      </tr>
-    </table>
+    <section>
+      <h2>Quotes</h2>
+      <button autofocus onclick='onButtonClicked("random")'>Random</button>
+      <button onclick='onButtonClicked("easy")'>Easy</button>
+      <button onclick='onButtonClicked("easy-stats")'>Easy (S)</button>
+      <button onclick='onButtonClicked("hard-stats")'>Hard (S)</button>
+    </section>
+    <section>
+      <h2>Words</h2>
+      <button onclick='onButtonClicked("easy-words")'>Easy (S)</button>
+      <button onclick='onButtonClicked("hard-words")'>Hard (S)</button>
+      <button data-tooltip="Based on how often one words appears after another" onclick='onButtonClicked("sentences")'>Senteces</button>
+      <button data-tooltip="Long sequence of unique words, each having the property that the word proceeding it has appeared directly before it in at least one quote" onclick='onButtonClicked("long-sentences")'>Long Senteces</button>
+      <button onclick='onButtonClicked("dijkstra")'>Dijkstra</button>
+      <button data-tooltip="Does not affect your stats- take your time" onclick='onButtonClicked("accuracy")'>Instant Death</button>
+      <p>(S) = Statistically - Based on your historical performance</p>
+    </section>
+    <section>
+      <h2>Custom text</h2>
+      <textarea id='custom-text'></textarea>
+      <button onclick='onButtonClicked("custom")'>Custom</button>
+    </section>
+    <section name='stats'>
+      <h2>Stats</h2>
+      <span>Average WPM</span>
+      <span id='stats-wpm'></span>
+      <span>Accuracy</span>
+      <span id='stats-acc'></span>
+      <span>Best keys</span>
+      <span id='stats-good-keys'></span>
+      <span>Worst keys</span>
+      <span id='stats-bad-keys'></span>
+      <span>Best words</span>
+      <span id='stats-good-words'></span>
+      <span>Worst words</span>
+      <span id='stats-bad-words'></span>
+      <span>Words typed</span>
+      <span id='stats-num-words'></span>
+      <span>Keys pressed</span>
+      <span id='stats-num-keys'></span>
+      <span>Time used</span>
+      <span id='stats-num-time'></span>
+    </section>
   </div>
 </div>
 
@@ -66,7 +54,13 @@
 
   <div class='game-wrapper'>
     <div class='player' id='p1'>
-      <div class="current">
+      <div class="word">
+        <div class='content'
+          ><pre class="init"></pre
+          ><pre class="tail"></pre
+        ></div>
+      </div>
+      <div class="word focus">
         <div class='content'
           ><pre class="init"></pre
           ><pre class="tail"></pre
@@ -74,7 +68,7 @@
           ><div class='color   mask'></div
         ></div>
       </div>
-      <div class="next">
+      <div class="word">
         <div class='content'
           ><pre class="init"></pre
           ><pre class="tail"></pre
@@ -109,37 +103,41 @@
 </div>
 
 
-<!-- The core Firebase JS SDK is always required and must be listed first -->
-<script src="https://www.gstatic.com/firebasejs/6.2.4/firebase-app.js"></script>
-<script src="https://www.gstatic.com/firebasejs/6.2.4/firebase-database.js"></script>
-
-<script>
-  // Your web app's Firebase configuration
-  var firebaseConfig = {
-    apiKey: "AIzaSyBGjTzsdVNyZEe1DrcjdG_aIjPprxNcZ9g",
-    authDomain: "typing-game-73b9b.firebaseapp.com",
-    databaseURL: "https://typing-game-73b9b.firebaseio.com",
-    projectId: "typing-game-73b9b",
-    storageBucket: "",
-    messagingSenderId: "95166801393",
-    appId: "1:95166801393:web:1fd2b7f21beed8c9"
-  };
-  // Initialize Firebase
-  firebase.initializeApp(firebaseConfig);
-  database = firebase.database();
-</script>
+<!-- <!&#45;&#45; The core Firebase JS SDK is always required and must be listed first &#45;&#45;> -->
+<!-- <script src="https://www.gstatic.com/firebasejs/6.2.4/firebase&#45;app.js"></script> -->
+<!-- <script src="https://www.gstatic.com/firebasejs/6.2.4/firebase&#45;database.js"></script> -->
+<!--  -->
+<!-- <script> -->
+<!--   // Your web app's Firebase configuration -->
+<!--   var firebaseConfig = { -->
+<!--     apiKey: "AIzaSyBGjTzsdVNyZEe1DrcjdG_aIjPprxNcZ9g", -->
+<!--     authDomain: "typing&#45;game&#45;73b9b.firebaseapp.com", -->
+<!--     databaseURL: "https://typing&#45;game&#45;73b9b.firebaseio.com", -->
+<!--     projectId: "typing&#45;game&#45;73b9b", -->
+<!--     storageBucket: "", -->
+<!--     messagingSenderId: "95166801393", -->
+<!--     appId: "1:95166801393:web:1fd2b7f21beed8c9" -->
+<!--   }; -->
+<!--   // Initialize Firebase -->
+<!--   firebase.initializeApp(firebaseConfig); -->
+<!--   database = firebase.database(); -->
+<!-- </script> -->
 
 <script src="res/simplewords.js"></script>
 <script src="res/texts.js"></script>
 
+<script src="data/PriorityQueue.js"></script>
+<!-- <script src="data/LinkedList.js"></script> -->
 <script src="js/utils.js"></script>
 <script src="js/hands.js"></script>
 <script src="js/words.js"></script>
 <script src="js/stats.js"></script>
 <script src="js/instantdeath.js"></script>
 
+<script src="data/Zipper.js"></script>
+
 <script src="js/game.js"></script>
-<script src="todo/multiplayer.js"></script>
+<!-- <script src="todo/multiplayer.js"></script> -->
 
 <!-- <script src="todo/level.js"></script> -->
 <!-- <script src="suffixtree.js"></script> -->
@@ -147,17 +145,3 @@
 <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script> -->
 
 <script src="main.js"></script>
-
-
-<script>
-
-async function write (pth, val) {
-  return await database.ref(pth).set(val);
-}
-
-function read (pth) {
-  database.ref(pth).on('value', x => console.log(x.node_))
-}
-
-
-</script>

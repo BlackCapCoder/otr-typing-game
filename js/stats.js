@@ -7,7 +7,7 @@ const letterStats =
 
 
 // Initialize
-setTimeout ( () => {
+window.addEventListener ('load', () => {
 
   { // Load statistics
     try {
@@ -40,7 +40,7 @@ setTimeout ( () => {
 
 }, 0 );
 
-
+newStatCount = 0;
 function putStat (word, time, mistake)
 {
   time = Math.floor (time);
@@ -53,6 +53,7 @@ function putStat (word, time, mistake)
   // Ignore bad words
   if (word.length < 1 || word.search(/[^a-z]/) !== -1) return;
 
+  newStatCount++;
 
   let   old      = stats[word] || [0, 0, 0]; // count, mistakes, sumTime
   const oldScore = (old[2] / (old[0] * word.length)) || 0;
@@ -71,6 +72,8 @@ function putStat (word, time, mistake)
 }
 
 function saveStats () {
+  if (newStatCount <= 0) return;
+  // return console.log('save avoided!');
   localStorage.stats2 = compressStats(stats);
 }
 
