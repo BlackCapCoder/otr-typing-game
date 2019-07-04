@@ -147,6 +147,8 @@ input:not(:focus) ~ #display::after {
 
 .word {
   max-height: calc(75vh - calc(calc(var(--size) * 2.325) + 60px));
+  max-width: 500px;
+  width:     100%;
 }
 .word:not(.focus) .content * {
   opacity: 0.25;

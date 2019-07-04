@@ -26,7 +26,6 @@ const unquote = word => word
   let wordsCache = null;
 
 
-  // Returns actual cache object. Safe if we only read
   window.unsafeWords = function () {
     if (wordsCache) return wordsCache;
 
@@ -34,18 +33,19 @@ const unquote = word => word
       simplewords.filter(w => w.length > 2 && w.search(/[^a-z]/) === -1)
     );
 
-    texts . join(' ')
-          . replace(cleanWords(2), '')
-          . split(' ')
-          . forEach (x => all.add(x.toLowerCase()));
+    quoteWords ()
+      . join(' ')
+      . replace(cleanWords(1), '')
+      . split(' ')
+      . forEach (x => all.add(x.toLowerCase()));
 
-    return wordsCache = Array.from(all).sort();
+    return Object.freeze(wordsCache = Array.from(all).sort());
   }
 
-  // Make a copy
-  window.words = function () {
-    return unsafeWords().slice(0);
-  }
+  Object.defineProperty(window, 'words',
+    { get: window.unsafeWords
+    }
+  );
 
   window.quoteWords = function () {
     return texts.flatMap(x => unquote(x).split(/(?<=\w)[\.\?!:;\-]+ +/));
@@ -137,7 +137,7 @@ function wordGraph (s) {
 
     const rx = cleanWords(0);
 
-    quoteWords ().forEach(txt => {
+    quoteWords () . forEach (txt => {
       const ws = txt . replace (rx, '')
                      . toLowerCase()
                      . trim()
@@ -285,36 +285,6 @@ function longSentence (start = 8430)
   return pth.map(x => s[x]);
 }
 
-function parts ()
-{
-  const s  = unsafeWords();
-  const ws = wordUsage(s)
-  const singles = Array.from(ws.length);
-
-  for (const [i, obj] of Object.entries(ws)) {
-    const ks = Object.entries(obj);
-    if (ks.length > 1) continue;
-    if (singles[i] === undefined) singles[i] = {val: i, verts: []};
-
-    for (const [k, o] of ks) {
-      if (singles[k] === undefined) singles[k] = {val: k, verts: []};
-      singles[i].verts.push(singles[k]);
-    }
-  }
-
-  return singles;
-}
-
-function frequency () {
-  const s  = unsafeWords();
-  const ws = wordUsage(s)
-  const es = ws.map((x,i) => { return {i, w: s[i], l: Object.keys(x).length, s: Object.values(x).reduce((acc,x) => acc + x, 0) }})
-  const ls = es.slice(0).sort((a,b) => b.l - a.l);
-  const ss = es.slice(0).sort((a,b) => b.s - a.s);
-  return {ls, ss};
-}
-
-
 function * longSentences ()
 {
   const s = unsafeWords();
@@ -342,6 +312,10 @@ function dijkstra (h,s,g,scores, start = 0, hard = false)
   queue.push(start)
   dist[start] = 0;
 
+  // const len   = new Uint16Array(s.length).fill(0);
+  // let best  = start;
+  // let score = 65535;
+
   for (let u = start; queue.size > 0; u = queue.pop()) {
     if (vis[u]) continue;
     vis[u] = 1;
@@ -352,10 +326,17 @@ function dijkstra (h,s,g,scores, start = 0, hard = false)
       if (!vis[v]) queue.push(v);
       dist[v] = alt;
       prev[v] = u
+      // len[v]  = len[u] + 1;
+      // if (alt / len[v] > score) continue;
+      // score = alt / len[v];
+      // best  = v;
     }
   }
 
-  return [dist, prev]
+  return [dist, prev
+    // , len
+    // , best
+    ];
 }
 
 function * djikLevel (_h, _s, _g, _scores, hard = false)
@@ -368,19 +349,20 @@ function * djikLevel (_h, _s, _g, _scores, hard = false)
   );
 
   // A linked list, but flat
-  let llvs = new Uint16Array(s.length).map((_,i) => i).sort(
+  const llvs = new Uint16Array(s.length).map((_,i) => i).sort(
     hard ? (a,b) => scores[b] - scores[a]
          : (a,b) => scores[a] - scores[b]
-  );
-  let llks = new Uint16Array(s.length-1).map((_,i) => i+1);
+  ).shuffle(0,15);
+  const llks = new Uint16Array(s.length-1).map((_,i) => i+1);
 
   for (let i = 0, end = s.length; i < end; i = llks[i] = llks[i]) {
     const sentence = [s[llvs[i]]];
     let k = i, n = 0;
 
     for (; n < 20; n++) {
-      let begin   = llvs[k];
-      let [,prev] = dijkstra(h,s,g,scores,begin,hard);
+      let begin     = llvs[k];
+      scores[begin] *= 1.1;
+      let [,prev]   = dijkstra(h,s,g,scores,begin,hard);
 
       let j = k, cur = llks[k];
       for (; prev[llvs[cur]] === 65535; j = cur, cur = llks[cur]);
@@ -402,3 +384,45 @@ function * djikLevel (_h, _s, _g, _scores, hard = false)
   }
 }
 
+
+function components ()
+{
+  const s = words;
+  const g = wordGraph (s);
+
+  let   from = 0;
+  const set  = g[from];
+  let     q  = new Set();
+
+  function addMany (v, set, q) {
+    if (g[v] === set) return set;
+    set.add(v);
+    for (const x of g[v])
+      if (q.delete(x))
+        g[v] = addMany(x, set, q);
+      else
+        g[v] = set.add(x);
+    return set;
+  }
+
+  for (let i = 1; i < g.length; i++)
+    if (set.has(i))
+      g[i] = addMany(i, set, q);
+    else if (g[i].has(from))
+      g[i] = addMany(from = i, set, q);
+    else
+      q.add(i);
+
+  return {[from]: set, rest: q};
+}
+
+
+function easiest ()
+{
+  const h      = hardLetters();
+  const s      = words;
+  const g      = wordGraph (s);
+  const scores = new Uint16Array(s.length).map (
+    (_,i) => Math.round(scoreWord(h,s[i]))
+  );
+}
