@@ -142,7 +142,7 @@ function wordGraph (s) {
                      . toLowerCase()
                      . trim()
                      . split(' ')
-                     . map (w => binarySearch(s, w));
+                     . map (w => binarySearch(s, w))
 
       for (let i = 1; i < ws.length; i++) {
         const cur = ws[i], b = ws[i-1];
@@ -416,13 +416,29 @@ function components ()
   return {[from]: set, rest: q};
 }
 
-
-function easiest ()
+function * newWords (hard = false)
 {
   const h      = hardLetters();
   const s      = words;
-  const g      = wordGraph (s);
   const scores = new Uint16Array(s.length).map (
     (_,i) => Math.round(scoreWord(h,s[i]))
   );
+
+  const used = new Set(Object.keys(stats));
+  const pq   = new PriorityQueue (
+    hard ? (a,b) => scores[a] > scores[b]
+         : (a,b) => scores[a] < scores[b]
+  );
+
+  for (let i = 0; i < s.length; i++)
+    if (!used.has(s[i]))
+      pq.push(i);
+
+  const sentence = [];
+  while (!pq.isEmpty())
+  {
+    sentence.push(s[pq.pop()]);
+    if (sentence.length >= 20)
+      yield sentence.shuffle().splice(0).join(' ');
+  }
 }

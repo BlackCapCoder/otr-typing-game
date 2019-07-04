@@ -1,7 +1,10 @@
 <link rel="stylesheet" href="main.css" type="text/css" />
 
+
 <div id="main-menu" class='active'>
   <div class='wrapper'>
+    <input type="checkbox" id="hicon"/>
+    <label for="hicon">High Contrast</label>
     <section>
       <h2>Quotes</h2>
       <button autofocus onclick='onButtonClicked("random")'>Random</button>
@@ -17,6 +20,8 @@
       <button data-tooltip="Long sequence of unique words, each having the property that the word proceeding it has appeared directly before it in at least one quote" onclick='onButtonClicked("long-sentences")'>Long Senteces</button>
       <button onclick='onButtonClicked("dijkstra")'>Dijkstra</button>
       <button data-tooltip="Does not affect your stats- take your time" onclick='onButtonClicked("accuracy")'>Instant Death</button>
+      <button data-tooltip="Words that you've never typed before" onclick='onButtonClicked("new-words")'>New Words</button>
+      <button data-tooltip="10% hardest words based sequences of letters that you are bad at, ordered easiest first based on your statistics" onclick='onButtonClicked("hard-letters")'>Hard Letters</button>
       <p>(S) = Statistically - Based on your historical performance</p>
     </section>
     <section>
@@ -48,10 +53,9 @@
   </div>
 </div>
 
-<input autofocus/>
+<input id='userinput' autofocus/>
 
 <div id="display">
-
   <div class='game-wrapper'>
     <div class='player' id='p1'>
       <div class="word">
@@ -73,7 +77,7 @@
           ><pre class="init"></pre
           ><pre class="tail"></pre
         ></div>
-        <div class='rest'></div>
+        <span class='rest'></span>
       </div>
       <p class='wpm'></p>
     </div>
@@ -101,6 +105,34 @@
     <p class='value'></p>
   </div>
 </div>
+
+
+<script>
+  const inp      = document.querySelector("#userinput")
+      , diff     = document.querySelector("#difficulty")
+      , disp     = document.querySelector("#display")
+      , mainMenu = document.querySelector('#main-menu')
+      , hicon    = document.querySelector('#hicon')
+      ;
+
+  hicon.onchange = () => {
+    if (hicon.checked) {
+      disp.classList.add('hi-contrast');
+      mainMenu.classList.add('hi-contrast');
+      localStorage.hicon = 1;
+    } else {
+      disp.classList.remove('hi-contrast');
+      mainMenu.classList.remove('hi-contrast');
+      localStorage.hicon = 0;
+    }
+  }
+
+  // Do this as early as possible
+  if ('hicon' in localStorage) {
+    hicon.checked = localStorage.hicon == 1;
+    hicon.onchange();
+  }
+</script>
 
 
 <!-- <!&#45;&#45; The core Firebase JS SDK is always required and must be listed first &#45;&#45;> -->
@@ -134,6 +166,7 @@
 <script src="js/stats.js"></script>
 <script src="js/instantdeath.js"></script>
 
+<script src="data/QuadTree.js"></script>
 <script src="data/Zipper.js"></script>
 
 <script src="js/game.js"></script>

@@ -40,11 +40,6 @@ function Word (str)
 const p1 = document.querySelector('.player#p1');
 const p2 = document.querySelector('.player#p2');
 
-const inp  = document.querySelector("input")
-    , diff = document.querySelector("#difficulty")
-    , mainMenu = document.querySelector('#main-menu')
-    ;
-
 let lastMenuFocus  = mainMenu;
 let isPlaying      = false;
 let isRanked       = true;
@@ -92,6 +87,8 @@ function onButtonClicked (which)
       case ('long-sentences'): return longSentences ();
       case ('dijkstra'):       return djikLevel ();
       case ('accuracy'):       return instantDeath ();
+      case ('new-words'):      return newWords ();
+      case ('hard-letters'):   return worstLetters ();
     }})();
 
   isRanked       = true;
@@ -149,13 +146,16 @@ function * linear (text)
 
 function * easyQuotes ()
 {
-  const hards = hardLetters();
-  const bt    = texts.concat(keyhero).maximum(x => -scoreText(hards, x), 100);
+  const hards  = hardLetters();
+  const quotes = texts.concat(keyhero);
+  const scores = quotes.map(x => scoreText(hards, x));
+  const pq     = new PriorityQueue ((a,b) => scores[a] < scores[b]);
 
-  for (const txt of bt.toSortedListRev())
-    yield txt.data
+  for (let i = 0; i < scores.length; i++)
+    pq.push(i);
 
-  yield * easyQuotes();
+  while (true)
+    yield quotes[pq.pop()];
 }
 
 function * hardQuotes ()

@@ -10,13 +10,26 @@ body {
   display: none;
 }
 #display {
+  --size: 50px;
+  --error-color: crimson;
+  --cursor-opacity: 0.14;
+  --cursor-error-opacity: 0.22;
+  --preview-opacity: 0.25;
+
   color:    white;
   position: fixed;
   pointer-events: none;
   height: 70px;
   width: calc(100vw - 40px);
-  --size: 50px;
   margin-left: 20px;
+}
+#display.hi-contrast
+{
+  font-weight: bolder !important;
+  --error-color: red;
+  --cursor-opacity: 0.4;
+  --cursor-error-opacity: 0.4;
+  --preview-opacity: 0.5;
 }
 pre {
   display: inline;
@@ -96,7 +109,7 @@ pre {
   max-width: calc(var(--unit) * var(--mis));
 
   background: rgba(0,0,0,0.8);
-  border-right: calc(var(--wrong) + 0.5px) solid crimson;
+  border-right: calc(var(--wrong) + 0.5px) solid var(--error-color);
   /* + 0.5px so the entire underline gets covered */
 
   mix-blend-mode: multiply;
@@ -115,25 +128,25 @@ pre {
   height: 100%;
 
   width:       var(--unit);
-  background:  rgba(255,255,255,0.14);
-  border-left: var(--wrong) solid rgba(255,0,0,0.22);
+  background:  rgba(255,255,255,var(--cursor-opacity));
+  border-left: var(--wrong) solid rgba(255,0,0,var(--cursor-error-opacity));
 
   clip-path: polygon(0 0, var(--unit) 0, var(--unit) 100%, 0 100%);
   mix-blend-mode: difference;
   filter: blur(1px) contrast(0.7);
 }
 
-input {
+#userinput {
   width: 100vw;
   height: 100vh;
   opacity: 0.0;
   position: fixed;
   top: 0;
 }
-input:not(:focus) ~ #display > * {
+#userinput:not(:focus) ~ #display > * {
   /* filter: blur(2px); */
 }
-input:not(:focus) ~ #display::after {
+#userinput:not(:focus) ~ #display::after {
   /* content: 'Focus lost'; */
   /* position: fixed; */
   /* top: 50%; left: 0; right: 0; */
@@ -151,7 +164,7 @@ input:not(:focus) ~ #display::after {
   width:     100%;
 }
 .word:not(.focus) .content * {
-  opacity: 0.25;
+  opacity: var(--preview-opacity);
 }
 
 
@@ -160,7 +173,7 @@ input:not(:focus) ~ #display::after {
   display: inline;
   line-height: 1.6em;
   word-spacing: 0.1em;
-  opacity: 0.25;
+  opacity: var(--preview-opacity);
   text-align: center;
 }
 .word .rest::before {
@@ -179,11 +192,29 @@ input:not(:focus) ~ #display::after {
   color: #888;
 }
 
-#main-menu.active ~ input { display: none; }
+#main-menu.active ~ #userinput { display: none; }
 
 #main-menu:not(.active) {
   height: 0;
   margin-top: 0;
+}
+
+#main-menu.hi-contrast h2 {
+  color: white;
+  font-weight: bolder;
+  text-transform: uppercase;
+}
+#main-menu.hi-contrast button,
+#main-menu.hi-contrast textarea {
+  color: white;
+  background: #444;
+  font-size: 16px;
+}
+#main-menu.hi-contrast section[name='stats'] *,
+#main-menu.hi-contrast p {
+  color: white;
+  font-weight: normal !important;
+  font-size: 13px;
 }
 
 #main-menu {
@@ -347,3 +378,7 @@ input:not(:focus) ~ #display::after {
   text-align: right;
 }
 
+label {
+  color: white;
+  font-size: 17px;
+}
