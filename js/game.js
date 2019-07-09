@@ -307,17 +307,23 @@ const inputElement = (ctrl, inpElem, endless = false, instantDeath = false) => l
   ctrl.words.initialize
     (b.map (w => new Word(w)));
 
+
+  const prediction = (60*200)/scoreText2(l);
+
   const res
     = results(inp, instantDeath)
     . then (async (r) => {
         if (endless) return r;
-        const wpm   = calcWpm(r[1], r[0]);
-        ctrl.wpm    = `${Math.round(wpm*10)/10} wpm`;
+        const wpm    = calcWpm(r[1], r[0]);
+        const actual = (60*200)/scoreText2(l);
+        const res    =  100 - (prediction/actual) * 100;
+        ctrl.wpm     = `${Math.round(wpm*10)/10} wpm\n${res > 0 ? '+' : ''}${Math.round((res)*10)/10}%`;
         ctrl.isDone = true;
         await sleep(2000);
         ctrl.isDone = false;
         return r;
       });
+
 
   inpElem.focus();
 
@@ -339,7 +345,8 @@ async function * typeString (str, is)
 }
 
 
-async function * interleave (as, bs) {
+async function * interleave (as, bs)
+{
   let a = new Promise (async (r) => r ([0, (await as.next())]));
   let b = new Promise (async (r) => r ([1, (await bs.next())]));
 
@@ -396,6 +403,7 @@ async function play (lvls, inp, minp, ranked = true)
         }
       }
       window.onkeydown({key: 'break'});
+
       break;
     }
   }

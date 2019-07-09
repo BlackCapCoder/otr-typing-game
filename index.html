@@ -11,15 +11,16 @@
       <button onclick='onButtonClicked("easy")'>Easy</button>
       <button onclick='onButtonClicked("easy-stats")'>Easy (S)</button>
       <button onclick='onButtonClicked("hard-stats")'>Hard (S)</button>
+      <button data-tooltip="Does not affect your stats- take your time" onclick='onButtonClicked("accuracy")'>Instant Death</button>
     </section>
     <section>
       <h2>Words</h2>
+      <button onclick='onButtonClicked("common-words")'>Common</button>
       <button onclick='onButtonClicked("easy-words")'>Easy (S)</button>
       <button onclick='onButtonClicked("hard-words")'>Hard (S)</button>
       <button data-tooltip="Based on how often one words appears after another" onclick='onButtonClicked("sentences")'>Senteces</button>
       <button data-tooltip="Long sequence of unique words, each having the property that the word proceeding it has appeared directly before it in at least one quote" onclick='onButtonClicked("long-sentences")'>Long Senteces</button>
       <button onclick='onButtonClicked("dijkstra")'>Dijkstra</button>
-      <button data-tooltip="Does not affect your stats- take your time" onclick='onButtonClicked("accuracy")'>Instant Death</button>
       <button data-tooltip="Words that you've never typed before" onclick='onButtonClicked("new-words")'>New Words</button>
       <button data-tooltip="10% hardest words based sequences of letters that you are bad at, ordered easiest first based on your statistics" onclick='onButtonClicked("hard-letters")'>Hard Letters</button>
       <p>(S) = Statistically - Based on your historical performance</p>
@@ -80,6 +81,7 @@
         <span class='rest'></span>
       </div>
       <p class='wpm'></p>
+      <p class='improvement'></p>
     </div>
     <div class='player hidden' id='p2'>
       <div class="current">
@@ -134,7 +136,6 @@
   }
 </script>
 
-
 <!-- <!&#45;&#45; The core Firebase JS SDK is always required and must be listed first &#45;&#45;> -->
 <!-- <script src="https://www.gstatic.com/firebasejs/6.2.4/firebase&#45;app.js"></script> -->
 <!-- <script src="https://www.gstatic.com/firebasejs/6.2.4/firebase&#45;database.js"></script> -->
@@ -155,20 +156,22 @@
 <!--   database = firebase.database(); -->
 <!-- </script> -->
 
+<script src="data/PriorityQueue.js"></script>
+<script src="data/QuadTree.js"></script>
+<script src="data/CircularList.js"></script>
+<script src="data/Zipper.js"></script>
+
 <script src="res/simplewords.js"></script>
 <script src="res/texts.js"></script>
 
-<script src="data/PriorityQueue.js"></script>
-<!-- <script src="data/LinkedList.js"></script> -->
 <script src="js/utils.js"></script>
 <script src="js/hands.js"></script>
+<script src="js/letters.js"></script>
+<script src="js/graph.js"></script>
 <script src="js/words.js"></script>
 <script src="js/stats.js"></script>
+
 <script src="js/instantdeath.js"></script>
-
-<script src="data/QuadTree.js"></script>
-<script src="data/Zipper.js"></script>
-
 <script src="js/game.js"></script>
 <!-- <script src="todo/multiplayer.js"></script> -->
 

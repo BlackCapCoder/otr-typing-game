@@ -1,7 +1,0 @@
-
-function mst (verts, edges)
-{
-
-
-
-}

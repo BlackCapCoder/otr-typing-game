@@ -20,6 +20,13 @@ return class PriorityQueue {
     return pq;
   }
 
+  static from (xs, ...as)
+  {
+    const pq = new PriorityQueue (...as);
+    for (let x of xs) pq.push (x);
+    return pq;
+  }
+
   get size () {
     return this._heap.length;
   }

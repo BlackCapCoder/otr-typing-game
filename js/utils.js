@@ -1,4 +1,3 @@
-
 // O(log n) lookup in sorted array
 function binarySearch(array, target){
   let startIndex = 0;
@@ -18,8 +17,6 @@ function binarySearch(array, target){
 
   return -1;
 }
-
-
 
 
 // xs.sort((a,b) => f(b) - f(a)).slice(0, n)
@@ -110,7 +107,7 @@ function * range (...as)
 function * chunksOf (n, xs)
 {
   if (n <= 0) return;
-  if (n == 1) { yield * xs; return; }
+  // if (n == 1) { yield * xs; return; }
 
   let buf = new Array (n);
   let i   = 0;

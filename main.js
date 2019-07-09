@@ -81,6 +81,7 @@ function onButtonClicked (which)
       case ('custom'):         return linear (document.querySelector('#custom-text').value);
       case ('easy-stats'):     return easyQuotes ();
       case ('hard-stats'):     return hardQuotes ();
+      case ('common-words'):   return commonWords () . chunksOf (20) . map (x => x.join(' '));
       case ('easy-words'):     return easyWords  ();
       case ('hard-words'):     return hardWords  ();
       case ('sentences'):      return commonSentence ();
@@ -144,12 +145,15 @@ function * linear (text)
   for (const x of xs) yield x;
 }
 
-function * easyQuotes ()
+function * easyQuotes (hard=false)
 {
   const hards  = hardLetters();
   const quotes = texts.concat(keyhero);
-  const scores = quotes.map(x => scoreText(hards, x));
-  const pq     = new PriorityQueue ((a,b) => scores[a] < scores[b]);
+  // const scores = quotes.map(x => scoreText(hards, x));
+  const scores = quotes.map(x => scoreText2(x));
+  const pq     = new PriorityQueue (
+    hard ? (a,b) => scores[a] > scores[b]
+         : (a,b) => scores[a] < scores[b] );
 
   for (let i = 0; i < scores.length; i++)
     pq.push(i);
@@ -158,16 +162,7 @@ function * easyQuotes ()
     yield quotes[pq.pop()];
 }
 
-function * hardQuotes ()
-{
-  const hards = hardLetters();
-  const bt    = texts.maximum(x => scoreText(hards, x), 100);
-
-  for (const txt of bt.toSortedListRev())
-    yield txt.data
-
-  yield * hardQuotes();
-}
+function * hardQuotes () { yield * easyQuotes(true); }
 
 
 
@@ -184,12 +179,11 @@ function updateStats ()
   document.querySelector`#stats-good-words`.innerText = words.slice(0, 5).join` `;
   document.querySelector`#stats-bad-words` .innerText = words.reverse().slice(0,5).join` `;
 
-  const sums = Object.entries(stats).reduce(([xa, ya, za], [w, [xb, yb, zb]]) =>
-    [xa+xb, ya+yb, za+zb, xa*w.length], [0,0,0,0]);
+  const sums = statsSum();
 
-  document.querySelector`#stats-num-words`.innerText = sums[0];
-  document.querySelector`#stats-num-keys` .innerText = sums[3];
-  document.querySelector`#stats-num-time` .innerText = prettyTime(sums[2]);
+  document.querySelector`#stats-num-words`.innerText = sums.words;
+  document.querySelector`#stats-num-keys` .innerText = sums.keys;
+  document.querySelector`#stats-num-time` .innerText = prettyTime(sums.time);
 }
 
 function prettyTime (t)
