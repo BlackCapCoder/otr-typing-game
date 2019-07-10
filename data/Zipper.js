@@ -2,14 +2,13 @@ class BufferedZipper
 {
   constructor (length, stream)
   {
+    this.streamDone = false;
+    this.marks   = {};
     this.begin = this.end
       = new LazyCircularList
           ( stream.then(() => this.streamDone = true)
           , length );
   }
-
-  streamDone = false;
-  marks      = {};
 
   moveLeft ()
   {
