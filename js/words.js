@@ -160,7 +160,6 @@ function * commonWords (maxlen = 10)
     let o   = freq;
     let str = "";
     let n = Math.round(Math.random() * o.cnt);
-    console.log(n)
 
     for (let i = 0; i < maxlen; i++) {
       if (n - (o.$ || 0) < 0) break;

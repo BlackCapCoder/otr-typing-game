@@ -189,37 +189,50 @@ function letterScoreWord (ls, w)
 
 function * worstLetters (hard=true, trim=0.25)
 {
-  const ls     = letterScore(1, 6, hard);
   const ws     = words;
-  const scores = new Int32Array (ws.length) . map ((_, i) => letterScoreWord(ls, ws[i]));
+  const ls     = letterScore(1, 6, hard);
+  const hl     = hardLetters();
 
-  // Hardest words
-  const hs = new PriorityQueue ((a,b) => scores[a] > scores[b]);
+  const len    = ws.length;
+  let   n      = Math.round(len * 0.1);
+
+  const buffer = new Uint16Array   (len * 3 + n);
+  const bufLSW = buffer . subarray (len * 0, len * 1);
+  const bufSW  = buffer . subarray (len * 1, len * 2);
+  const bufHS  = buffer . subarray (len * 2, len * 3);
+  const bufPQ  = buffer . subarray (len * 3, len * 3 + n);
+
+  const hs = new PriorityQueueInplace
+    (bufHS, 0, 0, (a,b) => bufLSW[a] > bufLSW[b]);
+
+  const pq = new PriorityQueueInplace
+    ( bufPQ, 0, 0
+    , trim >= 0 ? (a,b) => bufSW[a] < bufSW[b]
+                : (a,b) => bufSW[a] > bufSW[b]
+    );
+
   for (let i = 0; i < ws.length; i++) {
-    if (scores[i] < 2) continue;
+    bufSW[i]  = scoreWord(hl, ws[i]);
+    bufLSW[i] = letterScoreWord(ls, ws[i]);
+    if (bufLSW[i] < 2) continue;
     hs.push(i)
   }
 
-  const hl = hardLetters();
-  const ss = new Uint16Array(ws.length).map((_, i) => scoreWord(hl, ws[i]));
-  const pq = new PriorityQueue (
-    trim >= 0 ? (a,b) => ss[a] < ss[b]
-              : (a,b) => ss[a] > ss[b]
-  );
 
   // Easiest of the 10% hardest
-  for (let i = 0; i < hs.size / 10; i++)
+  for (let i = 0; i < n; i++)
     pq.push(hs.pop());
 
   // Remove 25% easiest
-  for (let i = 0; i < pq.size * Math.abs(trim); i++)
+  n *= Math.abs(trim);
+  for (let i = 0; i < n; i++)
     pq.pop()
 
-  while (pq.size > 0) {
+  while (!pq.empty) {
     console.log(`${Math.ceil(pq.size / 20)} levels left`);
 
     const sentence = [];
-    for (let i = 0; i < 20 && !pq.isEmpty(); i++)
+    for (let i = 0; i < 20 && !pq.empty; i++)
       sentence.push(ws[pq.pop()])
 
     yield sentence.join(' ');

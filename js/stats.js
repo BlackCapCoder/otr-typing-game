@@ -208,8 +208,8 @@ function scoreWord (_matrix, word)
     sum = ((c + m)*(c*sum + t))/(2*c*c);
   } else sum *= 1.1;
   sum /= word.length;
-  sum -= wordComfort(word) * (sum / (5*7));
-  sum *= 1 + Math.max(0, word.length - 8)/26
+  // sum -= wordComfort(word) * (sum / (5*7));
+  sum *= 1 + Math.max(0, word.length - 8)/26 - comfort(word) * 0.25;
   return sum;
 }
 

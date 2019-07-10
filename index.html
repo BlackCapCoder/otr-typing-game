@@ -156,7 +156,12 @@
 <!--   database = firebase.database(); -->
 <!-- </script> -->
 
-<script src="data/PriorityQueue.js"></script>
+<script type='module'>
+  import { PriorityQueue, PriorityQueueInplace } from './data/PriorityQueue.js';
+  window.PriorityQueue        = PriorityQueue;
+  window.PriorityQueueInplace = PriorityQueueInplace;
+</script>
+
 <script src="data/QuadTree.js"></script>
 <script src="data/CircularList.js"></script>
 <script src="data/Zipper.js"></script>
@@ -173,11 +178,6 @@
 
 <script src="js/instantdeath.js"></script>
 <script src="js/game.js"></script>
-<!-- <script src="todo/multiplayer.js"></script> -->
-
-<!-- <script src="todo/level.js"></script> -->
-<!-- <script src="suffixtree.js"></script> -->
-<!-- <script src="purs.js"></script> -->
-<!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script> -->
 
 <script src="main.js"></script>
+
