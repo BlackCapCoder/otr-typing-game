@@ -1,0 +1,10 @@
+#!/bin/bash
+
+echo 'const stories = [`'
+
+curl -s https://creepypasta.fandom.com/wiki/Category:Suggested_Reading | grep -Po '/wiki/[^":]+(?=".*member-link)' | while read -r url; do
+  curl -s "https://creepypasta.fandom.com$url" | pup 'h1.page-header__title, #mw-content-text > p:not(:last-of-type) text{}' | perl -MHTML::Entities -pe 'decode_entities($_);'
+  echo '`,`'
+done
+
+echo '`];'

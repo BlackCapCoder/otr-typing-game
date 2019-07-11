@@ -186,10 +186,9 @@ function letterScoreWord (ls, w)
   return score;
 }
 
-
 function * worstLetters (hard=true, trim=0.25)
 {
-  const ws     = words;
+  const ws     = distinctWords();
   const ls     = letterScore(1, 6, hard);
   const hl     = hardLetters();
 

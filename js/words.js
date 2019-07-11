@@ -176,3 +176,17 @@ function * commonWords (maxlen = 10)
     yield str;
   }
 }
+
+function distinctWords ()
+{
+  const ws = words, res = [];
+  let prev = ws[0];
+
+  for (let i = 1; i < ws.length; i++) {
+    if (ws[i].startsWith(prev)) continue;
+    res.push(prev);
+    prev = ws[i];
+  }
+  res.push(prev);
+  return res;
+}
